@@ -8,13 +8,11 @@ $valido['success']=array('success', false, 'mensaje'=>"");
 if ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);
     if (!preg_match("/^[a-zA-Z\s]{3,80}/", $nombre)) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "El nombre no cumple con el formato.";
+        $nombre = "No obtenidos";
     }
     $cedula = limpiarDatos($_POST['cedula']);
     if (!preg_match("/^[0-9]{7,8}/", $cedula)) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "La cedula no cumple con el formato solicitado.";
+        $cedula = "No obtenida.";
     }
     $numero = limpiarDatos($_POST['numero']);
     if (!preg_match("/\b/", $numero)) {
@@ -54,12 +52,11 @@ if ($_POST) {
     // Validacion de cantidad de veces que se a vendido el numero ingresado
 
     $valor = 2;
-
     $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numero' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
-    $rowBloqueado = mysqli_fetch_assoc($resultadoBloqueado);
-    $NumeroBloqueado = $rowBloqueado['numero'];
-    if ($numero == $NumeroBloqueado) {
+    $num = $resultadoBloqueado->num_rows;
+
+    if ($num >0) {
         $valido['success'] = false;
         $valido['mensaje'] = "Numero no permitido.";
     }else {

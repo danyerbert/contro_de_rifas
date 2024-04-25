@@ -9,8 +9,6 @@ const RegistroNumeroMoto = async()=>{
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_moto").value;
     if (numero.trim() === '' ||
         zodiaco.trim() === '' ||
-        nombreApellido.trim() === '' ||
-        cedula.trim() === '' ||
         vendedor.trim() === ''||
         fecha.trim() === '' ||
         tipoDeRifa.trim() === ''){
@@ -25,22 +23,6 @@ const RegistroNumeroMoto = async()=>{
 
     // Validaciones de campos de comprador.
 
-    if (!validarnombre(nombreApellido)) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "El nombre no cumple con los caracteres especificos.",
-        });
-      return;
-    }
-    if (!validarcedula(cedula)) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "La cedula no cumple con los caracteres establecidos.",
-        });
-      return;
-    }
     if (!validarNumeroDeRifaMoto(numero)) {
         Swal.fire({
             icon: "error",

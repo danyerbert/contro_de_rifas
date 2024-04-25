@@ -6,8 +6,6 @@ const RegistroDeDobleOportunidad = async() => {
     var fecha = document.querySelector("#fechaDoble").value;
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_doble").value;
     if (numero.trim() === '' ||
-        nombreApellido.trim() === '' ||
-        cedula.trim() === '' ||
         tipoDeRifa.trim() === '' ||
         cedulaVendedor.trim() === ''||
         fecha.trim() === ''){
@@ -20,23 +18,6 @@ const RegistroDeDobleOportunidad = async() => {
     }
 
     // Validaciones de campos de comprador.
-
-    if (!validarnombre(nombreApellido)) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "El nombre no cumple con los caracteres especificos.",
-        });
-      return;
-    }
-    if (!validarcedula(cedula)) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "La cedula no cumple con los caracteres establecidos.",
-        });
-      return;
-    }
     if (!validarNumeroDobleOportunidad(numero)) {
         Swal.fire({
             icon: "error",

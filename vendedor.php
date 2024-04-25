@@ -12,7 +12,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 date_default_timezone_set('America/Caracas');
 // GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
-$id_usuario = $_SESSION['id_usuario'];
+$cedula = $_SESSION['cedula'];
 
 $zodiaco = "SELECT id_zodiaco, zodiaco FROM zodiaco";
 $resultadoZodiaco = $mysqli->query($zodiaco);
@@ -30,8 +30,8 @@ $resultadoZodiaco = $mysqli->query($zodiaco);
   <body>
         <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="vendedor.php">Royal 11:22</a>
                 <img src="images/LOGO.jpeg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <a class="navbar-brand" href="vendedor.php">Royal 11:22</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -42,6 +42,7 @@ $resultadoZodiaco = $mysqli->query($zodiaco);
                 </div>
             </div>
         </nav>
+        <div class="container-sm text-center">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -79,7 +80,7 @@ $resultadoZodiaco = $mysqli->query($zodiaco);
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="images/millonaria.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="images/rifas/rifamillonaria.jpeg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -93,6 +94,25 @@ $resultadoZodiaco = $mysqli->query($zodiaco);
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="images/rifas/triple500.jpeg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Rifa Trible 500</h5>
+                        <p>Descripcion:</p>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaTriple">
+                        Boleto
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
 

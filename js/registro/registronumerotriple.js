@@ -9,8 +9,6 @@ const registroTriple = async() =>{
 
     if (numero.trim() === '' ||
         cantidadApostada.trim() === '' ||
-        nombreApellido.trim() === '' ||
-        cedula.trim() === '' ||
         vendedor.trim() === ''||
         fecha.trim() === '' ||
         tipoDeRifa.trim() === ''){
@@ -22,23 +20,6 @@ const registroTriple = async() =>{
             return;
     }
     // Validaciones de campos de comprador.
-
-    if (!validarnombre(nombreApellido)) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "El nombre no cumple con los caracteres especificos.",
-        });
-      return;
-    }
-    if (!validarcedula(cedula)) {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "La cedula no cumple con los caracteres establecidos.",
-        });
-      return;
-    }
     if (!validarNumeroTriple(numero)) {
         Swal.fire({
             icon: "error",
