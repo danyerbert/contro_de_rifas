@@ -12,7 +12,7 @@
           <!-- <br> -->
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
-              <label for="nombreApellidoTriple">Nombre y Apellido</label>
+              <label for="nombreApellidoTriple">Nombre</label>
               <input type="text" class="form-control" id="nombreApellidoTriple" name="nombreApellidoTriple" pattern="[a-zA-Z\s]{4,20}">
           </div>
           <div class="form-group">

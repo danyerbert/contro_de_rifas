@@ -8,7 +8,7 @@
     <div class="modal-body">
     <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
-              <label for="nombreApellido">Nombre y Apellido</label>
+              <label for="nombreApellido">Nombre</label>
               <input type="text" class="form-control" id="nombreApellidoDoble" name="nombreApellidoDoble" pattern="[a-zA-Z\s]{4,20}">
           </div>
           <div class="form-group">
