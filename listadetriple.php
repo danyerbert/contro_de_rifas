@@ -80,9 +80,9 @@ $Cantidad = $rowCantidad['numero'];
                             <h5 class="card-title">Estadisticas</h5>
                             <!-- <P>Descripcion:</P> -->
                             <p class="card-text">Numeros vendidos : <?php echo $Cantidad;?></p>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
+                            <!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
                             Generar Reporte
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>

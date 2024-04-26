@@ -60,7 +60,7 @@ if ($_POST) {
     // Va
     $valor = 2;
 
-    $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numero' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
+    $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numeroOne' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
     $rowBloqueado = mysqli_fetch_assoc($resultadoBloqueado);
     $NumeroBloqueado = $rowBloqueado['numero'];

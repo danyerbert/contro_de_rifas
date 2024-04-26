@@ -44,14 +44,8 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
                         <li class="nav-item">
                             <a class="nav-link" href="listadevendedores.php">Lista de Vendedores</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="listadeventas.php">Lista de ventas rifas</a>
-                        </li>
                         <li>
                             <div class="dropdown">
-                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Rifas
-                                </button> -->
                                 <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Lista de Rifas</a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="listademoto.php">Rifa de Moto</a></li>

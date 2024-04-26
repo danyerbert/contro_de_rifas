@@ -90,9 +90,9 @@ $Cantidad = $rowCantidad['numero'];
                                 $MontoTotal = $Cantidad * 2;
                                 echo $MontoTotal . "$";
                             ?></p>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
+                            <!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
                             Boleto
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>
