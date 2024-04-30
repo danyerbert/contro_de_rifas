@@ -39,7 +39,7 @@ $Cantidad = $rowCantidad['numero'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
   <body>
   <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
@@ -101,9 +101,7 @@ $Cantidad = $rowCantidad['numero'];
                                 $MontoTotal = $Cantidad * 2;
                                 echo $MontoTotal . "$";
                             ?></p>
-                            <!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
-                            Boleto
-                            </button> -->
+                            <a href="report/excel/reporteRifaMoto.php" target="_blank" class="btn btn-info btn-sm"><i class="bi bi-filetype-xlsx"></i> Generar Reporte</a>
                         </div>
                     </div>
                 </div>

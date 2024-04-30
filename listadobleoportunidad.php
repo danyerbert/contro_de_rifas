@@ -10,12 +10,13 @@ if (!isset($_SESSION['id_usuario'])) {
     }
 }
 date_default_timezone_set('America/Caracas');
+$fecha = date("Y-m-d");
 // GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 $cedula = $_SESSION['cedula'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
 $sqlRifaMoto = "SELECT m.numero, v.nombre FROM registro_numero_doble_oportunidad AS m 
-INNER JOIN vendedores AS v ON v.cedula = m.vendedor";
+INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
 $resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
 
 // Cantidad de numeros vendidos.
