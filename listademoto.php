@@ -101,7 +101,19 @@ $Cantidad = $rowCantidad['numero'];
                                 $MontoTotal = $Cantidad * 2;
                                 echo $MontoTotal . "$";
                             ?></p>
-                            <a href="report/excel/reporteRifaMoto.php" target="_blank" class="btn btn-info btn-sm"><i class="bi bi-filetype-xlsx"></i> Generar Reporte</a>
+                            <div class="btn-group dropend">
+                                <button type="button" class="btn btn-primary">
+                                    Generar Reporte
+                                </button>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- Dropdown menu links -->
+                                    <a href="report/excel/reporteRifaMoto.php" target="_blank" class="dropdown-item"><i class="bi bi-filetype-xlsx"></i> EXCEL</a>
+                                    <a href="report/pdf/reporteRifaMoto.php" class="dropdown-item" target="_blank"><i class="bi bi-filetype-pdf"></i> PDF</a>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
