@@ -14,7 +14,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 // Realizamos la consulta para traernos nos datos de la tabla 
 $sqlReporte = "SELECT m.numero_one, m.numero_dos, m.numero_tres, m.numero_cuatro, m.numero_cinco, v.nombre FROM registro_numero_millonaria AS m 
-INNER JOIN vendedores AS v ON v.cedula = m.vendedor";
+INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
 $resultado = $mysqli->query($sqlReporte);
 
 

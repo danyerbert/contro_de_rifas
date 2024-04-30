@@ -76,7 +76,19 @@ $resultadoRifaMoto = $mysqli->query($sqlRifaMillonaria);
         </nav>
         
                 <div class="container-fluid">
-                    <a href="report/excel/reporteRifaMillonaria.php" target="_blank" class="btn btn-info btn-sm"><i class="bi bi-filetype-xlsx"></i> Generar Reporte</a>
+                            <div class="btn-group dropend">
+                                <button type="button" class="btn btn-primary">
+                                    Generar Reporte
+                                </button>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- Dropdown menu links -->
+                                    <a href="report/excel/reporteRifaMillonaria.php" target="_blank" class="dropdown-item"><i class="bi bi-filetype-xlsx"></i> EXCEL</a>
+                                    <a href="report/pdf/reporteRifaMillonaria.php" class="dropdown-item" target="_blank"><i class="bi bi-filetype-pdf"></i> PDF</a>
+                                </ul>
+                            </div>
                         <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

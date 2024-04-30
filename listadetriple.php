@@ -92,7 +92,19 @@ $Cantidad = $rowCantidad['numero'];
                             <h5 class="card-title">Estadisticas</h5>
                             <!-- <P>Descripcion:</P> -->
                             <p class="card-text">Numeros vendidos : <?php echo $Cantidad;?></p>
-                            <a href="report/excel/reporteRifaTriple.php" target="_blank" class="btn btn-info btn-sm"><i class="bi bi-filetype-xlsx"></i> Generar Reporte</a>
+                            <div class="btn-group dropend">
+                                <button type="button" class="btn btn-primary">
+                                    Generar Reporte
+                                </button>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <!-- Dropdown menu links -->
+                                    <a href="report/excel/reporteRifaTriple.php" target="_blank" class="dropdown-item"><i class="bi bi-filetype-xlsx"></i> EXCEL</a>
+                                    <a href="report/pdf/reporteRifaTriple.php" class="dropdown-item" target="_blank"><i class="bi bi-filetype-pdf"></i> PDF</a>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
