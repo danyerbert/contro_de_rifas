@@ -11,16 +11,17 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 date_default_timezone_set('America/Caracas');
+$fecha = date("Y-m-d");
 // GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 $cedula = $_SESSION['cedula'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
 $sqlRifaMoto = "SELECT m.numero, m.monto_total, v.nombre FROM registro_numero_triple_500 AS m 
-INNER JOIN vendedores AS v ON v.cedula = m.vendedor";
+INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
 $resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
 
 // Cantidad de numeros vendidos.
-$sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_numero_doble_oportunidad";
+$sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_numero_triple_500 WHERE fecha = '$fecha'";
 $resultadoCantidadVenta = $mysqli->query($sqlCantidadVenta);
 $rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
 $Cantidad = $rowCantidad['numero'];
@@ -36,7 +37,7 @@ $Cantidad = $rowCantidad['numero'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
   <body>
   <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
@@ -91,9 +92,7 @@ $Cantidad = $rowCantidad['numero'];
                             <h5 class="card-title">Estadisticas</h5>
                             <!-- <P>Descripcion:</P> -->
                             <p class="card-text">Numeros vendidos : <?php echo $Cantidad;?></p>
-                            <!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
-                            Generar Reporte
-                            </button> -->
+                            <a href="report/excel/reporteRifaTriple.php" target="_blank" class="btn btn-info btn-sm"><i class="bi bi-filetype-xlsx"></i> Generar Reporte</a>
                         </div>
                     </div>
                 </div>

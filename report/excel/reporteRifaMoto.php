@@ -36,7 +36,7 @@ $hoja_excel->getColumnDimension('B')->setWidth(20);
 $hoja_excel->setCellValue('B2', 'Numero');
 $hoja_excel->getColumnDimension('C')->setWidth(30);
 $hoja_excel->setCellValue('C2', 'Signo');
-$hoja_excel->getColumnDimension('D')->setWidth(10);
+$hoja_excel->getColumnDimension('D')->setWidth(20);
 $hoja_excel->setCellValue('D2', 'Vendedor');
 
 
@@ -52,10 +52,10 @@ while ($row = $resultado->fetch_assoc()) {
 $hoja_excel->setCellValue('A'.$fila, 'Monto total de numeros: ');
 $hoja_excel->setCellValue('B'.$fila, $Cantidad);
 $hoja_excel->setCellValue('C'.$fila, 'Monto total: ');
-$hoja_excel->setCellValue('D'.$fila, $MontoTotal);
+$hoja_excel->setCellValue('D'.$fila, $MontoTotal . '$');
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="listadenumerorifamoto".$fecha.".xlsx"');
+header('Content-Disposition: attachment;filename="listadenumerorifamoto_'.$fecha.'_.xlsx"');
 header('Cache-Control: max-age=0');
 
 $writer = IOFactory::createWriter($excel, 'Xlsx');
