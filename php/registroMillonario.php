@@ -89,7 +89,7 @@ if ($_POST) {
         $valido['success'] = false;
         $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
     }else {
-        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre, cedula) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula')";
+        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre, cedula, tipo_de_rifa) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa')";
         $resultadoRegistro = $mysqli->query($sql);
     
         if ($resultadoRegistro === true) {
