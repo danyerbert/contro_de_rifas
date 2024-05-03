@@ -5,7 +5,15 @@ require "function.php";
 $valido['success']=array('success', false, 'mensaje'=>"");
 
 
-if ($_POST) {
+date_default_timezone_set('America/Caracas');
+$valido['success']=array('success', false, 'mensaje'=>"");
+    $horaServer =  date('h:i:s A');
+    $horaDeCierre = "08:00:00 PM";
+
+    if ($horaServer == $horaDeCierre) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Cierre realizado.";
+    }elseif ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);
     if (!preg_match("/^[a-zA-Z\s]{3,80}/", $nombre)) {
         $nombre = "No obtenidos";

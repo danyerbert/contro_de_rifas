@@ -3,10 +3,15 @@
 require "../config/conexion.php";
 require "function.php";
 
+date_default_timezone_set('America/Caracas');
 $valido['success']=array('success', false, 'mensaje'=>"");
+    $horaServer =  date('h:i:s A');
+    $horaDeCierre = "08:00:00 PM";
 
-
-if ($_POST) {
+    if ($horaServer == $horaDeCierre) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Cierre realizado.";
+    }elseif ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);
     if ($nombre == '') {
         $nombre = "No obtenidos.";
