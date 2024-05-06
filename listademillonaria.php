@@ -11,12 +11,13 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 date_default_timezone_set('America/Caracas');
+$fecha = date("Y-m-d");
 // GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 $cedula = $_SESSION['cedula'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
 $sqlRifaMillonaria = "SELECT m.numero_one, m.numero_dos, m.numero_tres, m.numero_cuatro, m.numero_cinco, v.nombre FROM registro_numero_millonaria AS m 
-INNER JOIN vendedores AS v ON v.cedula = m.vendedor";
+INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE m.fecha = '$fecha'";
 $resultadoRifaMoto = $mysqli->query($sqlRifaMillonaria);
 
 ?>

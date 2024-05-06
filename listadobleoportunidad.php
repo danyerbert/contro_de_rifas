@@ -85,15 +85,11 @@ $Cantidad = $rowCantidad['numero'];
                     <div class="col-md-12">
                         <div class="card-body">
                             <h5 class="card-title">Estadisticas</h5>
-                            <!-- <P>Descripcion:</P> -->
                             <p class="card-text">Numeros vendidos : <?php echo $Cantidad;?></p>
                             <p class="card-text">Monto Total : <?php
                                 $MontoTotal = $Cantidad * 2;
                                 echo $MontoTotal . "$";
                             ?></p>
-                            <!-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#rifaMoto">
-                            Boleto
-                            </button> -->
                             <div class="btn-group dropend">
                                 <button type="button" class="btn btn-primary">
                                     Generar Reporte
@@ -102,7 +98,6 @@ $Cantidad = $rowCantidad['numero'];
                                     <span class="visually-hidden"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <!-- Dropdown menu links -->
                                     <a href="report/excel/reporteRifaDobleOportunidad.php" target="_blank" class="dropdown-item"><i class="bi bi-filetype-xlsx"></i> EXCEL</a>
                                     <a href="report/pdf/reporteRifaDoble.php" class="dropdown-item" target="_blank"><i class="bi bi-filetype-pdf"></i> PDF</a>
                                 </ul>

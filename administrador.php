@@ -16,6 +16,10 @@ $cedula = $_SESSION['cedula'];
 
 $zodiaco = "SELECT id_zodiaco, zodiaco FROM zodiaco";
 $resultadoZodiaco = $mysqli->query($zodiaco);
+
+// Consulta para traer todas las rifas creadas
+$sqlRifas = "SELECT id_rifas, nombre FROM tipo_de_rifas";
+$resultadoRifas = $mysqli->query($sqlRifas);
 ?>
 
 <!doctype html>
@@ -61,6 +65,9 @@ $resultadoZodiaco = $mysqli->query($zodiaco);
                                 </ul>
                             </div>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#BuscarNumeros">Rifa Millonaria</a>
+                        </li> -->
                     </ul>
                 <!-- <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -163,6 +170,9 @@ $resultadoZodiaco = $mysqli->query($zodiaco);
         include "content/modal/bloquearNumeroDoble.php";
         include "content/modal/bloquearNumeroMillonaria.php";
         include "content/modal/bloquearNumeroTriple.php";
+
+        // Buscar numeros
+        include "content/modal/buscarNumeros.php";
 
         include "content/inc/script.php";
     

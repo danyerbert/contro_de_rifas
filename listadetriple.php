@@ -73,11 +73,8 @@ $Cantidad = $rowCantidad['numero'];
                                 </ul>
                             </div>
                         </li>
+                        
                     </ul>
-                <!-- <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
                 <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#logoutModal">
                     Perfil
                 </button>
@@ -90,7 +87,6 @@ $Cantidad = $rowCantidad['numero'];
                     <div class="col-md-12">
                         <div class="card-body">
                             <h5 class="card-title">Estadisticas</h5>
-                            <!-- <P>Descripcion:</P> -->
                             <p class="card-text">Numeros vendidos : <?php echo $Cantidad;?></p>
                             <div class="btn-group dropend">
                                 <button type="button" class="btn btn-primary">
@@ -100,7 +96,6 @@ $Cantidad = $rowCantidad['numero'];
                                     <span class="visually-hidden"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <!-- Dropdown menu links -->
                                     <a href="report/excel/reporteRifaTriple.php" target="_blank" class="dropdown-item"><i class="bi bi-filetype-xlsx"></i> EXCEL</a>
                                     <a href="report/pdf/reporteRifaTriple.php" class="dropdown-item" target="_blank"><i class="bi bi-filetype-pdf"></i> PDF</a>
                                 </ul>
