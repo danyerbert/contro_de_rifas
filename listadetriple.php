@@ -124,7 +124,7 @@ $Cantidad = $rowCantidad['numero'];
                                     <thead>
                                         <tr>
                                             <th>Número</th>
-                                            <th>Monto a pagar</th>
+                                            <th>triplecación</th>
                                             <th>Vendedor</th>
                                         </tr>
                                     </thead>
@@ -136,7 +136,7 @@ $Cantidad = $rowCantidad['numero'];
                                             <td><?php 
                                                 echo $rowNumero['numero'];
                                             ?></td>
-                                            <td><?php echo $rowNumero['monto_total'];?></td>
+                                            <td><?php echo $rowNumero['monto_total'] . "$";?></td>
                                             <td><?php echo $rowNumero['nombre'];?></td>        
                                             <?php 
                                                 endwhile;
