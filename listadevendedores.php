@@ -1,4 +1,5 @@
 <?php
+
 require "config/conexion.php";
 
 session_start();
@@ -17,91 +18,59 @@ $cedula = $_SESSION['cedula'];
 $sqlVendedores = "SELECT cedula, nombre, telefono, correo FROM vendedores";
 $respuestaVendedores = $mysqli->query($sqlVendedores);
 
+	include "content/inc/header.php";
+	include "content/inc/sidebar.php";
 
 ?>
+		
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ROYAL 11:22</title>
-    <link rel="shortcut icon" href="images/LOGO.jpeg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
+			<!-- Page content start  -->
+			<div class="page-content">
 
-  </head>
-  <body>
-  <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="administrador.php">Royal 11:22</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="listadevendedores.php">Lista de Vendedores</a>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Lista de Rifas</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="listademoto.php">Rifa de Moto</a></li>
-                                    <li><a class="dropdown-item" href="listadobleoportunidad.php">Rifa Doble Oportunidad</a></li>
-                                    <li><a class="dropdown-item" href="listadetriple.php">Rifa Triple 500</a></li>
-                                    <li><a class="dropdown-item" href="listademillonaria.php">Rifa Millonaria</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">Gestionar Rifa</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroMoto">Bloquear Numero Moto</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroDoble">Rifa Doble Oportunidad</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroTriple">Rifa Triple 500</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroMillonaria">Rifa Millonaria</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                <!-- <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
-                <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                    Perfil
-                </button>
-                </div>
-            </div>
-        </nav>
-                <div class="container-fluid">
-                        <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+				<!-- Main container start -->
+				<div class="main-container">
 
-                            <h6 class="m-0 font-weight-bold text-primary">Lista de Vendedores</h6>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearVendedor">
-                                Registrar Vendedor
-                            </button>
+					<?php
+						include "content/inc/navbar.php";
+					?>
 
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Cedula</th>
-                                            <th>Telefono</th>
-                                            <th>Correo</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
+					<!-- Page header start -->
+					<div class="page-header">
+
+						<!-- Breadcrumb start -->
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">Administrador | Lista de vendedores</li>
+						</ol>
+						<!-- Breadcrumb end -->
+
+					</div>
+					<!-- Page header end -->
+					<div class="row gutters">
+						<div class="col-xl-3 col-sm-6 col-12">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearVendedor">
+									Registrar Vendedor
+								</button>
+						</div>
+					</div>
+                    <br>
+					<!-- Row start -->
+					<div class="row gutters">
+						<div class="col-sm-12">
+						<div class="table-container">
+								<div class="t-header">Numeros Vendidos</div>
+								<div class="table-responsive">
+									<table id="basicExample" class="table custom-table">
+										<thead>
+											<tr>
+												<th>Nombre</th>
+												<th>Cedula</th>
+												<th>Telefono</th>
+												<th>Correo</th>
+                                                <th>Opciones</th>
+											</tr>
+										</thead>
+										<tbody>
+										<?php
                                             while ($row = $respuestaVendedores->fetch_assoc()) :
                                                 
                                             ?>
@@ -110,54 +79,57 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
                                             <td><?php echo $row['cedula']; ?></td>
                                             <td><?php echo $row['telefono']; ?></td>
                                             <td><?php echo $row['correo']; ?></td>
-                                            <td>
-
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Opciones
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crearUsuario<?php echo $row['cedula'];?>">Generar Usuario</a></li>
-                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#VerVentas<?php echo $row['cedula'];?>">Ver Ventas</a></li>
-                                                    <li><a class="dropdown-item" href="#">Editar</a></li>
-                                                    <li><a class="dropdown-item" href="#">Eliminar</a></li>
-                                                </ul>
-                                            </div>
-
-                                            </td> 
-                                        </tr>
-                                        <?php 
+                                                <td>
+                                                    <div class="btn-group dropright">
+                                                        <button type="button" class="btn btn-primary">
+                                                            Opciones
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#crearUsuario<?php echo $row['cedula'];?>">Generar Usuario</a>
+                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerVentas<?php echo $row['cedula'];?>">Ver ventas</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+											</tr>
+											<?php 
                                                 include "content/modal/crearusuario.php";
                                                 include "content/modal/verventas.php";
 
                                                 endwhile;
                                             ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row end -->
+				</div>
+				<!-- Main container end -->
 
+			</div>
+			<!-- Page content end -->
 
+		</div>
+		<!-- Page wrapper end -->
+		<?php
+				//Modales de bloqueo de numeros
+				include "content/modal/bloquearNumeroMoto.php"; 
+				include "content/modal/bloquearNumeroDoble.php"; 
+				include "content/modal/bloquearNumeroMillonaria.php"; 
+				include "content/modal/bloquearNumeroTriple.php"; 
+                // Modales de gestion de vendedores.
+                include "content/modal/crearvendedor.php";
+			//Script 
+			include "content/inc/script.php";
+		?>
+		<script src="js/funtion.js"></script>
+		<script src="js/registro/registroVendedor.js"></script>
+		<script src="js/registro/registroUsuario.js"></script>
+	</body>
 
- </div>
-
-    <?php
-        include "content/inc/logoutModal.php";
-        include "content/modal/crearvendedor.php";
-        include "content/inc/script.php";
-    
-    ?>
-
-
-
-
-
-
-
-   
-    <script src="js/funtion.js"></script>
-    <script src="js/registro/registroVendedor.js"></script>
-    <script src="js/registro/registroUsuario.js"></script>
-    </body>
 </html>

@@ -3,13 +3,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Bloquear Numero de Rifa Moto</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h3 class="modal-title fs-5" id="exampleModalLabel">Bloquear Numero de Rifa Moto</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+		    </button>
       </div>
       <div class="modal-body">
         <form id="bloqueoNumeroMoto">
         <div class="form-group">
-              <label for="numeroBloquearMoto">Numero a bloquear</label>
+              <label for="numeroBloquearMoto" class="col-form-label">Numero a bloquear</label>
               <input type="text" class="form-control" id="numeroBloquearMoto" name="numeroBloquearMoto" pattern="[0-9]{2}" maxlength="2" minlength="2">
           </div>
           <input type="hidden" name="tipo_de_rifasMoto" id="tipo_de_rifasMoto" value="1">

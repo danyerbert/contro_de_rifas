@@ -2,41 +2,43 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">RIFA MILLONARIA</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h3 class="modal-title fs-5" id="exampleModalLabel">RIFA MILLONARIA</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+		    </button>
     </div>
     <div class="modal-body">
           <form id="rifamillonaria">
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
-              <label for="nombreMillonaria">Nombre</label>
+              <label for="nombreMillonaria" class="col-form-label">Nombre</label>
               <input type="text" class="form-control" id="nombreMillonaria" name="nombreMillonaria" pattern="[a-zA-Z\s]{4,20}">
           </div>
           <div class="form-group">
-              <label for="cedulaMillonaria">Cedula</label>
+              <label for="cedulaMillonaria" class="col-form-label">Cedula</label>
               <input type="text" class="form-control" id="cedulaMillonaria" name="cedulaMillonaria" pattern="[0-9]{8}">
           </div>
           <br>
           <!-- <hr> -->
           <h5 class="modal-title fs-7">Eleccion del numero</h5>  
           <div class="form-group">
-              <label for="numeroMillonario1">Numero 1</label>
+              <label for="numeroMillonario1" class="col-form-label">Numero 1</label>
               <input type="text" class="form-control" id="numeroMillonario1" name="numeroMillonario1" pattern="[0-9]{3}" maxlength="3" minlength="3">
           </div>
           <div class="form-group">
-              <label for="numeroMillonario2">Numero 2</label>
+              <label for="numeroMillonario2" class="col-form-label">Numero 2</label>
               <input type="text" class="form-control" id="numeroMillonario2" name="numeroMillonario2" pattern="[0-9]{3}" maxlength="3" minlength="3">
           </div>
           <div class="form-group">
-              <label for="numeroMillonario3">Numero 3</label>
+              <label for="numeroMillonario3" class="col-form-label">Numero 3</label>
               <input type="text" class="form-control" id="numeroMillonario3" name="numeroMillonario3" pattern="[0-9]{3}" maxlength="3" minlength="3">
           </div>
           <div class="form-group">
-              <label for="numeroMillonario4">Numero 4</label>
+              <label for="numeroMillonario4" class="col-form-label">Numero 4</label>
               <input type="text" class="form-control" id="numeroMillonario4" name="numeroMillonario4" pattern="[0-9]{3}" maxlength="3" minlength="3">
           </div>
           <div class="form-group">
-              <label for="numeroMillonario5">Numero 5</label>
+              <label for="numeroMillonario5" class="col-form-label">Numero 5</label>
               <input type="text" class="form-control" id="numeroMillonario5" name="numeroMillonario5" pattern="[0-9]{3}" maxlength="3" minlength="3">
           </div>
           <br>

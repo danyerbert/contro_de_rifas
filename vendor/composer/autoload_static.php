@@ -57,8 +57,8 @@ class ComposerStaticInit62e10e6c8df9afc192311b196c75bb33
         ),
         'voku\\' => 
         array (
-            0 => __DIR__ . '/..' . '/voku/portable-utf8/src/voku',
-            1 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+            1 => __DIR__ . '/..' . '/voku/portable-utf8/src/voku',
         ),
         'ZipStream\\' => 
         array (

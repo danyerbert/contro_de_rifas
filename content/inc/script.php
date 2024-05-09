@@ -1,14 +1,39 @@
+<!-- Required jQuery first, then Bootstrap Bundle JS -->
+<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/moment.js"></script>
+		<!-- Slimscroll JS -->
+		<script src="vendor/slimscroll/slimscroll.min.js"></script>
+		<script src="vendor/slimscroll/custom-scrollbar.js"></script>
+		<!-- Polyfill JS -->
+		<script src="vendor/polyfill/polyfill.min.js"></script>
+		<!-- Apex Charts -->
+		<script src="vendor/apex/apexcharts.min.js"></script>
+		<script src="vendor/apex/custom/home/lineRevenueGradientGraph.js"></script>
+		<script src="vendor/apex/custom/home/radialTasks.js"></script>
+		<script src="vendor/apex/custom/home/line-graph1.js"></script>
+		<script src="vendor/apex/custom/home/line-graph2.js"></script>
+		<!-- Peity Charts -->
+		<script src="vendor/peity/peity.min.js"></script>
+		<script src="vendor/peity/custom-peity.js"></script>
+		<!-- Main JS -->
+		<script src="js/main.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<!-- SweetAlert Scripts -->
+		<!-- Data Tables -->
+		<script src="vendor/datatables/dataTables.min.js"></script>
+		<script src="vendor/datatables/dataTables.bootstrap.min.js"></script>
+
+		<!-- Custom Data tables -->
+		<script src="vendor/datatables/custom/custom-datatables.js"></script>
+		<script src="vendor/datatables/custom/fixedHeader.js"></script>
+
+		<!-- Download / CSV / Copy / Print -->
+		<script src="vendor/datatables/buttons.min.js"></script>
+		<script src="vendor/datatables/jszip.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+		<script src="vendor/datatables/vfs_fonts.js"></script>
+		<script src="vendor/datatables/html5.min.js"></script>
+		<script src="vendor/datatables/buttons.print.min.js"></script>
+
+		<!-- SweetAlert Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
-
-<!-- Datatables -->
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
-
-<script src="vendor/datatables/datatables-demo.js"></script>

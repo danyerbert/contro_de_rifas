@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Royal 11:22</title>
 
-    <link rel="shortcut icon" href="images/LOGO.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="img/LOGO.jpeg" type="image/x-icon">
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="images/LOGO.jpeg" alt="iniciar session imagen"></figure>
+                        <figure><img src="img/LOGO.jpeg" alt="iniciar session imagen"></figure>
                     </div>
 
                     <div class="signin-form">

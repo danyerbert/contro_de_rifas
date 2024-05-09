@@ -1,171 +1,139 @@
 <?php
-require "config/conexion.php";
+	require "config/conexion.php";
 
-session_start();
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: index.php");
-}else{
-    if ($_SESSION['rol'] != 1) {
-        header("Location: 404.php");
-    }
-}
+	session_start();
+	if (!isset($_SESSION['id_usuario'])) {
+		header("Location: index.php");
+	}else{
+		if ($_SESSION['rol'] != 1) {
+			header("Location: 404.php");
+		}
+	}
+	
+	date_default_timezone_set('America/Caracas');
+	$fecha = date("Y-m-d");
+	// GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
+	$cedula = $_SESSION['cedula'];
+	
+	// CONSULTA PARA EXTRAER TODOS LOS DATOS
+	$sqlRifaMoto = "SELECT m.numero, s.zodiaco, v.nombre FROM registro_moto_numero AS m 
+	INNER JOIN zodiaco AS s ON s.id_zodiaco= m.signo
+	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
+	$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
+	
+	// Cantidad de numeros vendidos.
+	$sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_moto_numero WHERE fecha = '$fecha'";
+	$resultadoCantidadVenta = $mysqli->query($sqlCantidadVenta);
+	$rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
+	$Cantidad = $rowCantidad['numero'];
+	$MontoTotal = $Cantidad * 2;
+	
 
-date_default_timezone_set('America/Caracas');
-$fecha = date("Y-m-d");
-// GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
-$cedula = $_SESSION['cedula'];
-
-// CONSULTA PARA EXTRAER TODOS LOS DATOS
-$sqlRifaMoto = "SELECT m.numero, s.zodiaco, v.nombre FROM registro_moto_numero AS m 
-INNER JOIN zodiaco AS s ON s.id_zodiaco= m.signo
-INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
-$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
-
-// Cantidad de numeros vendidos.
-$sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_moto_numero WHERE fecha = '$fecha'";
-$resultadoCantidadVenta = $mysqli->query($sqlCantidadVenta);
-$rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
-$Cantidad = $rowCantidad['numero'];
+	include "content/inc/header.php";
+	include "content/inc/sidebar.php";
 
 ?>
+		
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ROYAL 11:22</title>
-    <link rel="shortcut icon" href="images/LOGO.jpeg" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  </head>
-  <body>
-  <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="administrador.php">Royal 11:22</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="listadevendedores.php">Lista de Vendedores</a>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Rifas
-                                </button> -->
-                                <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false"> Lista de Rifas</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="listademoto.php">Rifa de Moto</a></li>
-                                    <li><a class="dropdown-item" href="listadobleoportunidad.php">Rifa Doble Oportunidad</a></li>
-                                    <li><a class="dropdown-item" href="listadetriple.php">Rifa Triple 500</a></li>
-                                    <li><a class="dropdown-item" href="listademillonaria.php">Rifa Millonaria</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <a class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">Gestionar Rifa</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroMoto">Bloquear Numero Moto</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroDoble">Rifa Doble Oportunidad</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroTriple">Rifa Triple 500</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#BloquearNumeroMillonaria">Rifa Millonaria</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                <!-- <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
-                <button type="button" class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                    Perfil
-                </button>
-                </div>
-            </div>
-        </nav>
-        <div class="container-sm text-center">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-body">
-                            <h5 class="card-title">Estadisticas</h5>
-                            <!-- <P>Descripcion:</P> -->
-                            <p class="card-text">Numeros vendidos : <?php echo $Cantidad;?></p>
-                            <p class="card-text">Monto Total : <?php
-                                $MontoTotal = $Cantidad * 2;
-                                echo $MontoTotal . "$";
-                            ?></p>
-                            <div class="btn-group dropend">
-                                <button type="button" class="btn btn-primary">
-                                    Generar Reporte
-                                </button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="visually-hidden"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <!-- Dropdown menu links -->
-                                    <a href="report/excel/reporteRifaMoto.php" target="_blank" class="dropdown-item"><i class="bi bi-filetype-xlsx"></i> EXCEL</a>
-                                    <a href="report/pdf/reporteRifaMoto.php" class="dropdown-item" target="_blank"><i class="bi bi-filetype-pdf"></i> PDF</a>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-                <div class="container-fluid">
-                        <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+			<!-- Page content start  -->
+			<div class="page-content">
 
-                            <h6 class="m-0 font-weight-bold text-primary">Numeros Vendidos Rifa Moto</h6>
+				<!-- Main container start -->
+				<div class="main-container">
 
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+					<?php
+						include "content/inc/navbar.php";
+					?>
+
+					<!-- Page header start -->
+					<div class="page-header">
+
+						<!-- Breadcrumb start -->
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item">Administrador | Lista de Rifa de Moto</li>
+						</ol>
+						<!-- Breadcrumb end -->
+					</div>
+					<!-- Page header end -->
+					<div class="row gutters">
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="info-stats2">
+								<div class="info-icon">
+									<i class="icon-activity"></i>
+								</div>
+								<div class="sale-num">
+									<h4>Estadisticas</h4>
+									<p>Numeros Vendidos:</p>
+									<h5><?php echo $Cantidad;?></h5>
+									<p>Monto Total:</p>
+									<h5><?php echo $MontoTotal . "$";?></h5>
+									<br>
+									<div class="btn-group dropright">
+										<button type="button" class="btn btn-primary">
+											<i class="icon-export"></i> Generar Reporte
+										</button>
+										<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="sr-only">Toggle Dropdown</span>
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="report/excel/reporteRifaMoto.php" target="_blank">excel</a>
+											<a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank" >PDF</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row start -->
+					<div class="row gutters">
+						<div class="col-sm-12">
+						<div class="table-container">
+								<div class="t-header">Numeros Vendidos</div>
+								<div class="table-responsive">
+									<table id="basicExample" class="table custom-table">
+										<thead>
+											<tr>
+												<th>Numero</th>
+												<th>Signo</th>
+												<th>Vendedor</th>
+											</tr>
+										</thead>
+										<tbody>
+										<?php while ($rowNumero = $resultadoRifaMoto->fetch_assoc()):?>
                                         <tr>
-                                            <th>Número</th>
-                                            <th>Signo</th>
-                                            <th>Vendedor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            <?php
-                                                while ($rowNumero = $resultadoRifaMoto->fetch_assoc()):
-                                                ?>
-                                        <tr>
-                                            <td><?php 
-                                                echo $rowNumero['numero'];
-                                            ?></td>
+                                            <td><?php echo $rowNumero['numero'];?></td>
                                             <td><?php echo $rowNumero['zodiaco'];?></td>
                                             <td><?php echo $rowNumero['nombre'];?></td>        
                                             <?php 
                                                 endwhile;
                                             ?>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row end -->
+				</div>
+				<!-- Main container end -->
 
+			</div>
+			<!-- Page content end -->
 
+		</div>
+		<!-- Page wrapper end -->
+		<?php
+			//Modales de bloqueo de numeros
+			include "content/modal/bloquearNumeroMoto.php"; 
+			include "content/modal/bloquearNumeroDoble.php"; 
+			include "content/modal/bloquearNumeroMillonaria.php"; 
+			include "content/modal/bloquearNumeroTriple.php"; 
+			//Script 
+			include "content/inc/script.php";
+		?>
 
- </div>
+	</body>
 
-    <?php
-        include "content/inc/logoutModal.php";
-        include "content/inc/script.php";
-    
-    ?>
-
-    </body>
 </html>
