@@ -8,7 +8,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
     $horaServer =  date('h:i:s A');
     $horaDeCierre = "08:00:00 PM";
 
-    if ($horaServer == $horaDeCierre) {
+    if ($horaServer >= $horaDeCierre) {
         $valido['success'] = false;
         $valido['mensaje'] = "Cierre realizado.";
     }elseif ($_POST) {
