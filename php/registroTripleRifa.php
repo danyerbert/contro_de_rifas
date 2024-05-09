@@ -34,6 +34,10 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
+    if ($cantidad < 3) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe Jugar minimo 3$.";
+    }
 
     if ($numero > 999) {
         $valido['success'] = false;

@@ -12,6 +12,18 @@
     $resultadoVerVentaDobleOportunidad = $mysqli->query($sqlVerVentasDobleOportunidad);
     $rowDobleOportunidad = mysqli_fetch_assoc($resultadoVerVentaDobleOportunidad);
     $montoDobleOportunidad = $rowDobleOportunidad['numero'];
+
+    // CONSULTA PARA VISUALIZAR TODOS LOS NUMEROS DEL VENDEDOR (RIFA MILLONARIA)
+    $sqlVerVentasDobleOportunidad = "SELECT COUNT(*) vendedor FROM registro_numero_millonaria WHERE vendedor ='$cedulaVendedor'";
+    $resultadoVerVentaDobleOportunidad = $mysqli->query($sqlVerVentasDobleOportunidad);
+    $rowDobleOportunidad = mysqli_fetch_assoc($resultadoVerVentaDobleOportunidad);
+    $VentasDeVendedor = $rowDobleOportunidad['vendedor'];
+
+    // CONSULTA PARA VISUALIZAR TODOS LOS NUMEROS DEL VENDEDOR (RIFA DOBLE OPORTUNIDAD)
+    $sqlVerVentasDobleOportunidad = "SELECT COUNT(*) numero FROM registro_numero_triple_500 WHERE vendedor ='$cedulaVendedor'";
+    $resultadoVerVentaDobleOportunidad = $mysqli->query($sqlVerVentasDobleOportunidad);
+    $rowDobleOportunidad = mysqli_fetch_assoc($resultadoVerVentaDobleOportunidad);
+    $montoTriple500= $rowDobleOportunidad['numero'];
 ?>
 <!-- Modal -->
 <div class="modal fade" id="VerVentas<?php echo $row['cedula'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,6 +63,29 @@
                     $MontoTotalDobleOportunidad = $montoDobleOportunidad * 2;
                     echo $MontoTotalDobleOportunidad
         ?></p>
+        <hr>
+        <h2 class="fs-5">RIFA MILLONARIA</h2>
+        <P>Cantidad de ventas: <?php
+                                    if ($VentasDeVendedor == 0) {
+                                      echo "No hay ventas.";
+                                  }else {
+                                      
+                                      echo $VentasDeVendedor;
+                                  }
+                                  ?>
+        </P>
+        <hr>
+        <h2 class="fs-5">RIFA Triple 500</h2>
+        <P>Numeros Vendidos:  <?php 
+                
+                                  if ($montoTriple500 == 0) {
+                                    echo "No hay ventas.";
+                                }else {
+                                    
+                                    echo $montoTriple500;
+                                }
+                                ?>
+        </P>
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-success">Generar Reporte</button> -->

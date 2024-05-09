@@ -1,8 +1,8 @@
 <!-- Loading starts -->
-		<!-- <div id="loading-wrapper">
+		<div id="loading-wrapper">
 			<div class="spinner-border" role="status">
 			</div>
-		</div> -->
+		</div>
 		<!-- Loading ends -->
 
 		<!-- Page wrapper start -->
