@@ -1,4 +1,26 @@
 <?php
+	require "config/conexion.php";
+
+	session_start();
+	if (!isset($_SESSION['id_usuario'])) {
+		header("Location: index.php");
+	}else{
+		if ($_SESSION['rol'] != 2) {
+			header("Location: 404.php");
+		}
+	}
+
+	date_default_timezone_set('America/Caracas');
+	// GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
+	$cedula = $_SESSION['cedula'];
+
+	$zodiaco = "SELECT id_zodiaco, zodiaco FROM zodiaco";
+	$resultadoZodiaco = $mysqli->query($zodiaco);
+
+	// Consulta para traer todas las rifas creadas
+	$sqlRifas = "SELECT id_rifas, nombre FROM tipo_de_rifas";
+	$resultadoRifas = $mysqli->query($sqlRifas);
+
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 ?>
@@ -31,12 +53,10 @@
 									<h4 class="pricing-title">Rifa de Moto</h4>
 								</div>
 								<ul class="pricing-features">
-									<li>5GB Linux Web Space</li>
-									<li>5 MySQL Databases</li>
-									<li>500 Emails</li>
-									<li>250Gb mothly Transfer</li>
-									<li class="text-muted"><del>24/7 Tech Support</del></li>
-									<li class="text-muted"><del>Daily Backups</del></li>
+								<li>Son 100 numeros a rifar (De dos cifras)</li>
+									<li>Los numero van desde el 00 al 99.</li>
+									<li>Incluye los 12 signos del zodiaco</li>
+									<li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
 								</ul>
 								<div class="pricing-footer">
 									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMoto">Boleto</a>
@@ -49,12 +69,10 @@
 									<h4 class="pricing-title">Rifa Doble Oportunidad</h4>
 								</div>
 								<ul class="pricing-features">
-									<li>10GB Linux Web Space</li>
-									<li>10 MySQL Databases</li>
-									<li>1000 Emails</li>
-									<li>750Gb mothly Transfer</li>
-									<li>24/7 Tech Support</li>
-									<li class="text-muted"><del>Daily Backups</del></li>
+									<li>Son 1000 números a rifar (de tres cifras)</li>
+									<li>Los números van del 000 al 999.</li>
+									<li>El número posee un valor 2$.</li>
+									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
 								</ul>
 								<div class="pricing-footer">
 									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaDobleOportunidad">Boleto</a>
@@ -67,12 +85,11 @@
 									<h4 class="pricing-title">Rifa Millonaria</h4>
 								</div>
 								<ul class="pricing-features">
-									<li>50GB Linux Web Space</li>
-									<li>100 MySQL Databases</li>
-									<li>Unlimited Emails</li>
-									<li>1000Gb mothly Transfer</li>
-									<li>24/7 Tech Support</li>
-									<li>Daily Backups</li>
+									<li>Son 1000 números a rifar (de tres cifras)</li>
+									<li>Los números van del 000 al 999.</li>
+									<li>El número posee un valor 2$.</li>
+									<li>tiene la opción de elegir 5 números.</li>
+									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
 								</ul>
 								<div class="pricing-footer">
 									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMillonaria">Boleto</a>
@@ -86,12 +103,11 @@
 									<h4 class="pricing-title">Rifa Triple 500</h4>
 								</div>
 								<ul class="pricing-features">
-									<li>50GB Linux Web Space</li>
-									<li>100 MySQL Databases</li>
-									<li>Unlimited Emails</li>
-									<li>1000Gb mothly Transfer</li>
-									<li>24/7 Tech Support</li>
-									<li>Daily Backups</li>
+									<li>Son 1000 números a rifar (de tres cifras)</li>
+									<li>Los números van del 000 al 999.</li>
+									<li>Por cada dólar 1$ apostado se gana 500 veces su monto</li>
+									<li>Debe apostar 3$ minimo.</li>
+									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
 								</ul>
 								<div class="pricing-footer">
 									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaTriple">Boleto</a>

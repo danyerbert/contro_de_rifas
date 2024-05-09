@@ -32,10 +32,10 @@
 									</div>
 								</li>
                                 <!-- GESTIONAR UN METODO PARA EL TOTAL DEL DIA -->
-								<li class="balance">
+								<!-- <li class="balance">
 									<h6>Balance</h6>
 									<h3>$25,700</h3>
-								</li>
+								</li> -->
 							</ul>
 							<!-- Header actions end -->
 						</div>
