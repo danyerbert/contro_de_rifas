@@ -15,7 +15,8 @@
           </div>
         <div class="form-group">
               <label for="cedula">Contraseña</label>
-              <input type="password" class="form-control" id="password" name="password" pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,25}">
+              <input type="password" class="form-control" id="password" name="password">
+                <!-- <input type="password" class="form-control" id="password" name="password" pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{12,25}"> -->
         </div>
 
           <input type="hidden" name="cedulaUsuario" id="cedulaUsuario" value="<?php echo $row['cedula']?>">

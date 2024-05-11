@@ -47,14 +47,6 @@ const RegistroNumeroMoto = async()=>{
           });
         return;
     }
-    if (!validarcedula(vendedor)) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "La cedula del vendedor no cumple con los caracteres establecidos.",
-      });
-    return;
-  }
 
     // Envio de datos
     const datos=new FormData();
