@@ -70,9 +70,6 @@
 														<a href="listadedoble.php">Lista de Rifa Doble Oportunidad</a>
 													</li>
 													<li>
-														<a href="listademillonaria.php">Lista de Rifa Millonaria</a>
-													</li>
-													<li>
 														<a href="listadetriple.php">Lista de Rifa Triple 500</a>
 													</li>
 												</ul>

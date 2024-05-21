@@ -145,7 +145,6 @@
 			//Modales de bloqueo de numeros
 				include "content/modal/bloquearNumeroMoto.php"; 
 				include "content/modal/bloquearNumeroDoble.php"; 
-				include "content/modal/bloquearNumeroMillonaria.php"; 
 				include "content/modal/bloquearNumeroTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
