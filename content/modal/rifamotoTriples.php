@@ -26,27 +26,27 @@
           <h5 class="modal-title fs-7">Eleccion del numero</h5>
             <div class="form-group">
                 <label for="numeroMotoTriple1" class="col-form-label">Numero</label>
-                <input type="text" class="form-control" id="numeroMotoTriple1" name="numeroMotoTriple1" pattern="[0-9]{2,2}" maxlength="2">
+                <input type="text" class="form-control" id="numeroMotoTriple1" name="numeroMotoTriple1" pattern="[0-9]{3,3}" maxlength="3">
                 <span></span>
             </div>
             <div class="form-group">
                 <label for="estado" class="col-form-label">Signo del Zodiaco</label>
                 <select name="zodiaco1" id="zodiaco1" class="form-control form-control-lg">
                 <?php foreach ($resultadoZodiaco as $row) : ?>
-                <option value="<?php echo $row['id_zodiaco']; ?>"><?php echo $row['zodiaco']; ?></option>
+                <option value="<?php echo $row['zodiaco']; ?>"><?php echo $row['zodiaco']; ?></option>
                 <?php endforeach; ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="numeroMotoTriple2" class="col-form-label">Numero</label>
-                <input type="text" class="form-control" id="numeroMotoTriple2" name="numeroMotoTriple2" pattern="[0-9]{2,2}" maxlength="2">
+                <input type="text" class="form-control" id="numeroMotoTriple2" name="numeroMotoTriple2" pattern="[0-9]{3,3}" maxlength="3">
                 <span></span>
             </div>
             <div class="form-group">
                 <label for="estado" class="col-form-label">Signo del Zodiaco</label>
                 <select name="zodiaco2" id="zodiaco2" class="form-control form-control-lg">
                 <?php foreach ($resultadoZodiaco as $row) : ?>
-                <option value="<?php echo $row['id_zodiaco']; ?>"><?php echo $row['zodiaco']; ?></option>
+                <option value="<?php echo $row['zodiaco']; ?>"><?php echo $row['zodiaco']; ?></option>
                 <?php endforeach; ?>
                 </select>
             </div>

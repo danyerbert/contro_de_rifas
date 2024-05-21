@@ -41,23 +41,23 @@ date_default_timezone_set('America/Caracas');
         }
     }
     $signoUno = limpiarDatos($_POST['zodiaco1']);
-    if ($signo == '') {
+    if ($signoUno == '') {
         $valido['success'] = false;
         $valido['mensaje'] = "Seleccione un signo zodiacal.";
     }
     $signoDos = limpiarDatos($_POST['zodiaco2']);
-    if ($signo == '') {
+    if ($signoDos == '') {
         $valido['success'] = false;
         $valido['mensaje'] = "Seleccione un signo zodiacal.";
     }
 
     if ($numeroUno > 999) {
         $valido['success'] = false;
-        $valido['mensaje'] = "Solo se permite desde el 00 al 99.";
+        $valido['mensaje'] = "Solo se permite desde el 000 al 999.";
     }
     if ($numeroDos > 999) {
         $valido['success'] = false;
-        $valido['mensaje'] = "Solo se permite desde el 00 al 99.";
+        $valido['mensaje'] = "Solo se permite desde el 000 al 999.";
     }
     $vendedor = limpiarDatos($_POST['vendedorTripleMoto']);
     if ($vendedor == '') {
@@ -75,9 +75,32 @@ date_default_timezone_set('America/Caracas');
         $valido['mensaje'] = "Rifa no coincide.";
     }
 
+    $valor = 1;
+
+    // Verificacion de numero bloqueado.
+
+    $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numeroUno' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
+    $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
+    $num = $resultadoBloqueado->num_rows;
+
+    if ($num >0) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Numero no permitido.";
+    }else {
+        $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre, cedula, valor, tipo_de_rifa) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa')";
+        $resultadoRegistro = $mysqli->query($sqlRegistro);
+
+        if ($resultadoRegistro === true) {
+            $valido['success'] = true;
+            $valido['mensaje'] = "Registro de numero exitos.";
+        }else {
+            $valido['success'] = false;
+            $valido['mensaje'] = "No se logro registrar el numero.";
+        }
+    }
 }
 
-
+echo json_encode($valido);
 
 
 
