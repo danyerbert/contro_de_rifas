@@ -8,7 +8,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
 date_default_timezone_set('America/Caracas');
 
     $horaServer =  date('h:i:s A');
-    $horaDeCierre = "08:00:00 PM";
+    $horaDeCierre = "11:00:00 PM";
 
     if ($horaServer >= $horaDeCierre) {
         $valido['success'] = false;
@@ -79,24 +79,51 @@ date_default_timezone_set('America/Caracas');
 
     // Verificacion de numero bloqueado.
 
-    $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numeroUno' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
+    $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
     $num = $resultadoBloqueado->num_rows;
-
+    
     if ($num >0) {
         $valido['success'] = false;
         $valido['mensaje'] = "Numero no permitido.";
     }else {
-        $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre, cedula, valor, tipo_de_rifa) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa')";
-        $resultadoRegistro = $mysqli->query($sqlRegistro);
+        // Validacion de numero bloqueado.
+        $sqlValidationNumero = "SELECT COUNT(*) numero_primero, COUNT(*) numero_segundo FROM registro_moto_triples WHERE fecha = '$fecha'";
+        $resultadoValidationNumero = $mysqli->query($sqlValidationNumero);
+        $row = mysqli_fetch_assoc($resultadoValidationNumero);
+        $valorNumeroPrimero = $row['numero_primero'];
+        $valorNumeroSegundo = $row['numero_segundo'];
 
-        if ($resultadoRegistro === true) {
-            $valido['success'] = true;
-            $valido['mensaje'] = "Registro de numero exitos.";
-        }else {
-            $valido['success'] = false;
-            $valido['mensaje'] = "No se logro registrar el numero.";
-        }
+
+         // Validacion de limite de venta.
+         $sqlLimiteVenta = "SELECT cantidad_venta FROM cantidad_venta WHERE tipo_de_rifa = 5 AND fecha = '$fecha'";
+         $resultadoLimite = $mysqli->query($sqlLimiteVenta);
+         $rowLimite = mysqli_fetch_assoc($resultadoLimite);
+         $dbcantidad = $rowLimite['cantidad_venta'];
+ 
+         if ($rowLimite == '') {
+             $limite_venta = 3;
+         }else {
+             $limite_venta = $rowLimite['cantidad_venta'];
+         }
+ 
+         if ($valorNumeroPrimero == $limite_venta || $valorNumeroSegundo == $limite_venta) {
+             $valido['success'] = false;
+             $valido['mensaje'] = "Numero no habilitado.";
+         }else {
+            
+            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre, cedula, valor, tipo_de_rifa) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa')";
+            $resultadoRegistro = $mysqli->query($sqlRegistro);
+
+            if ($resultadoRegistro === true) {
+                $valido['success'] = true;
+                $valido['mensaje'] = "Registro de numero exitos.";
+            }else {
+                $valido['success'] = false;
+                $valido['mensaje'] = "No se logro registrar el numero.";
+            }
+         }
+
     }
 }
 

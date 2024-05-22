@@ -6,9 +6,11 @@ $valido['success']=array('success', false, 'mensaje'=>"");
 
 
 date_default_timezone_set('America/Caracas');
-$valido['success']=array('success', false, 'mensaje'=>"");
-    $horaServer =  date('h:i:s A');
-    $horaDeCierre = "08:00:00 PM";
+$horaServer =  date('h:i:s A');
+$horaDeCierre = "11:00:00 PM";
+
+
+
 
     if ($horaServer >= $horaDeCierre) {
         $valido['success'] = false;
@@ -59,7 +61,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
     }
     // Validacion de cantidad de veces que se a vendido el numero ingresado
 
-    $valor = 2;
+    $valor = 3;
     $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numero' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
     $num = $resultadoBloqueado->num_rows;
@@ -68,13 +70,25 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['success'] = false;
         $valido['mensaje'] = "Numero no permitido.";
     }else {
+        // Validacion de numero bloqueado.
         $sqlValidationNumero = "SELECT COUNT(*) numero FROM registro_moto_numero WHERE numero = '$numero' AND fecha = '$fecha'";
         $resultadoValidationNumero = $mysqli->query($sqlValidationNumero);
-    
         $row = mysqli_fetch_assoc($resultadoValidationNumero);
         $valorNumero = $row['numero'];
-    
-        if ($valorNumero == 3) {
+
+        // Validacion de limite de venta.
+        $sqlLimiteVenta = "SELECT cantidad_venta FROM cantidad_venta WHERE tipo_de_rifa = 1 AND fecha = '$fecha'";
+        $resultadoLimite = $mysqli->query($sqlLimiteVenta);
+        $rowLimite = mysqli_fetch_assoc($resultadoLimite);
+        $dbcantidad = $rowLimite['cantidad_venta'];
+
+        if ($rowLimite == '') {
+            $limite_venta = 3;
+        }else {
+            $limite_venta = $rowLimite['cantidad_venta'];
+        }
+
+        if ($valorNumero == $limite_venta) {
             $valido['success'] = false;
             $valido['mensaje'] = "Numero no habilitado.";
         }else {
