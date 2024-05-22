@@ -97,6 +97,12 @@
 												</ul>
 											</div>
 										</li>
+										<li>
+											<a href="#" data-toggle="modal" data-target="#limitarVenta">
+												<i class="icon-line-graph"></i>
+												<span class="menu-text">Limitar Venta</span>
+											</a>
+										</li>
 										';
 										break;
 									case 2:

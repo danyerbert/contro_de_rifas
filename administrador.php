@@ -145,7 +145,9 @@
 			//Modales de bloqueo de numeros
 				include "content/modal/bloquearNumeroMoto.php"; 
 				include "content/modal/bloquearNumeroDoble.php"; 
-				include "content/modal/bloquearNumeroTriple.php"; 
+				include "content/modal/bloquearNumeroTriple.php";
+			// Limite de venta
+			include "content/modal/limitarventa.php"; 
 			//Script 
 			include "content/inc/script.php";
 		?>
@@ -161,6 +163,7 @@
 		<script src="js/bloqueo/bloqueoNumeroDoble.js"></script>
 		<script src="js/bloqueo/bloqueoNumeroMillonaria.js"></script>
 		<script src="js/bloqueo/bloqueoNumeroTriple.js"></script>
+		<script src="js/bloqueo/limitarventa.js"></script>
 	</body>
 
 </html>

@@ -25,7 +25,7 @@
           <!-- <hr> -->
           <h5 class="modal-title fs-7">Eleccion del numero</h5>
             <div class="form-group">
-                <label for="numeroMotoTriple1" class="col-form-label">Numero</label>
+                <label for="numeroMotoTriple1" class="col-form-label">Numero Uno</label>
                 <input type="text" class="form-control" id="numeroMotoTriple1" name="numeroMotoTriple1" pattern="[0-9]{3,3}" maxlength="3">
                 <span></span>
             </div>
@@ -38,7 +38,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="numeroMotoTriple2" class="col-form-label">Numero</label>
+                <label for="numeroMotoTriple2" class="col-form-label">Numero Dos</label>
                 <input type="text" class="form-control" id="numeroMotoTriple2" name="numeroMotoTriple2" pattern="[0-9]{3,3}" maxlength="3">
                 <span></span>
             </div>
