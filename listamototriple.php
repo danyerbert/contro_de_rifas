@@ -5,16 +5,24 @@
 	if (!isset($_SESSION['id_usuario'])) {
 		header("Location: index.php");
 	}
-
+	
 	date_default_timezone_set('America/Caracas');
 	$fecha = date("Y-m-d");
 	// GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 	$cedula = $_SESSION['cedula'];
-
+	
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
-	$sqlRifaMillonaria = "SELECT m.numero_one, m.numero_dos, m.numero_tres, m.numero_cuatro, m.numero_cinco, v.nombre FROM registro_numero_millonaria AS m 
-	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE m.fecha = '$fecha'";
-	$resultadoRifaMoto = $mysqli->query($sqlRifaMillonaria);
+	$sqlRifaMoto = "SELECT m.numero_primero, m.numero_segundo, m.zodiacal_primero, m.zodiacal_segundo, v.nombre FROM registro_moto_triples AS m 
+	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
+	$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
+	
+	// Cantidad de numeros vendidos.
+	$sqlCantidadVenta = "SELECT COUNT(*) numero_primero FROM registro_moto_triples WHERE fecha = '$fecha'";
+	$resultadoCantidadVenta = $mysqli->query($sqlCantidadVenta);
+	$rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
+	$CantidadPrimero = $rowCantidad['numero_primero'];
+	$MontoTotal = $CantidadPrimero * 1;
+	
 
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
@@ -37,15 +45,25 @@
 
 						<!-- Breadcrumb start -->
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item">Administrador | Lista Rifa Millonaria</li>
+							<li class="breadcrumb-item">Administrador | Lista de Rifa de Moto</li>
 						</ol>
 						<!-- Breadcrumb end -->
-
 					</div>
 					<!-- Page header end -->
 					<div class="row gutters">
 						<div class="col-xl-3 col-sm-6 col-12">
-						<div class="btn-group dropright">
+							<div class="info-stats2">
+								<div class="info-icon">
+									<i class="icon-activity"></i>
+								</div>
+								<div class="sale-num">
+									<h4>Estadisticas</h4>
+									<p>Numeros Vendidos:</p>
+									<h5><?php echo $CantidadPrimero;?></h5>
+									<p>Monto Total:</p>
+									<h5><?php echo $MontoTotal . "$";?></h5>
+									<br>
+									<div class="btn-group dropright">
 										<button type="button" class="btn btn-primary">
 											<i class="icon-export"></i> Generar Reporte
 										</button>
@@ -54,13 +72,14 @@
 											<span class="sr-only">Toggle Dropdown</span>
 										</button>
 										<div class="dropdown-menu">
-											<a class="dropdown-item" href="report/excel/reporteRifaMillonaria.php" target="_blank">EXCEL</a>
-											<a class="dropdown-item" href="#" href="report/pdf/reporteRifaMillonaria.php" target="_blank">PDF</a>
+											<a class="dropdown-item" href="report/excel/reporteRifaMotoTriples.php" target="_blank">excel</a>
+											<a class="dropdown-item" href="report/pdf/reporteRifaMotoTriples.php" target="_blank" >PDF</a>
 										</div>
 									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<br>
 					<!-- Row start -->
 					<div class="row gutters">
 						<div class="col-sm-12">
@@ -70,22 +89,20 @@
 									<table id="basicExample" class="table custom-table">
 										<thead>
 											<tr>
-												<th>Primer Numero</th>
-												<th>Segundo Numero</th>
-												<th>Tercer Numero</th>
-												<th>Cuarto Numero</th>
-												<th>Quinto Numero</th>
+												<th>Numero 1</th>
+												<th>Signo 1</th>
+												<th>Numero 2</th>
+												<th>Signo 2</th>
 												<th>Vendedor</th>
 											</tr>
 										</thead>
 										<tbody>
-										<?php while ($rowNumero = $resultadoRifaMoto->fetch_assoc()): ?>
+										<?php while ($rowNumero = $resultadoRifaMoto->fetch_assoc()):?>
                                         <tr>
-                                            <td><?php echo $rowNumero['numero_one'];?></td>
-                                            <td><?php echo $rowNumero['numero_dos'];?></td>
-                                            <td><?php echo $rowNumero['numero_tres'];?></td>
-                                            <td><?php echo $rowNumero['numero_cuatro'];?></td>
-                                            <td><?php echo $rowNumero['numero_cinco'];?></td>
+                                            <td><?php echo $rowNumero['numero_primero'];?></td>
+                                            <td><?php echo $rowNumero['zodiacal_primero'];?></td>
+                                            <td><?php echo $rowNumero['numero_segundo'];?></td>
+                                            <td><?php echo $rowNumero['zodiacal_segundo'];?></td>
                                             <td><?php echo $rowNumero['nombre'];?></td>        
                                             <?php 
                                                 endwhile;
@@ -107,10 +124,10 @@
 		</div>
 		<!-- Page wrapper end -->
 		<?php
-				//Modales de bloqueo de numeros
-				include "content/modal/bloquearNumeroMoto.php"; 
-				include "content/modal/bloquearNumeroDoble.php"; 
-				include "content/modal/bloquearNumeroTriple.php"; 
+			//Modales de bloqueo de numeros
+			include "content/modal/bloquearNumeroMoto.php"; 
+			include "content/modal/bloquearNumeroDoble.php"; 
+			include "content/modal/bloquearNumeroTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
 		?>

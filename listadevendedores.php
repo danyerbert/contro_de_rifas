@@ -5,11 +5,8 @@ require "config/conexion.php";
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: index.php");
-}else{
-    if ($_SESSION['rol'] != 1) {
-        header("Location: 404.php");
-    }
 }
+
 date_default_timezone_set('America/Caracas');
 // GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 $cedula = $_SESSION['cedula'];
@@ -47,9 +44,17 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
 					<!-- Page header end -->
 					<div class="row gutters">
 						<div class="col-xl-3 col-sm-6 col-12">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearVendedor">
-									Registrar Vendedor
-								</button>
+							<?php 
+								switch ($rol) {
+									case 1:
+										echo '
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearVendedor">
+										Registrar Vendedor
+										</button>
+										';
+										break;
+								}
+							?>
 						</div>
 					</div>
                     <br>
@@ -89,8 +94,22 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
                                                             <span class="sr-only">Toggle Dropdown</span>
                                                         </button>
                                                         <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#crearUsuario<?php echo $row['cedula'];?>">Generar Usuario</a>
-                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerVentas<?php echo $row['cedula'];?>">Ver ventas</a>
+															<?php 
+																switch ($rol) {
+																	case 1:
+																			echo '
+																			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#crearUsuario'.$row['cedula'].'">Generar Usuario</a>
+																			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerVentas'.$row['cedula'].'">Ver ventas</a>
+																			
+																			';
+																		break;
+																	case 3:
+																			echo '
+																			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerVentas'.$row['cedula'].'">Ver ventas</a>
+																			';
+																		break;
+																}
+															?>
                                                         </div>
                                                     </div>
                                                 </td>

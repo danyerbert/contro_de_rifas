@@ -4,11 +4,8 @@ require "config/conexion.php";
 	session_start();
 	if (!isset($_SESSION['id_usuario'])) {
 		header("Location: index.php");
-	}else{
-		if ($_SESSION['rol'] != 1) {
-			header("Location: 404.php");
-		}
 	}
+	
 	date_default_timezone_set('America/Caracas');
 	$fecha = date("Y-m-d");
 	// GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO

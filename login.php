@@ -71,6 +71,10 @@ if ($_POST) {
                         // Comprobacion para rederigir al vendedor
                         header("Location:vendedor.php");
                         break;
+                    case 3:
+                        // Comprobacion para rederigir al supervisor
+                        header("Location:supervisor.php");
+                        break;
                     default:
                     echo  "
                     <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
