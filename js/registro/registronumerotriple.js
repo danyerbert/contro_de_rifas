@@ -20,11 +20,6 @@ const registroTriple = async() =>{
               });
             return;
     }
-
-    if (cantidadApostada.trim() == 3) {
-      console.log('contidad 3');
-    }
-
     // Validaciones de campos de comprador.
     if (!validarNumeroTriple(numero)) {
         Swal.fire({
@@ -78,7 +73,7 @@ const registroTriple = async() =>{
             icon: "success",
             title: "Registrado",
             text: resultado.mensaje,
-            footer: '<a href="#" class = "btn btn-primary">Partica Acumulado.</a>'
+            footer: '<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#AcumuladoTriple">Partica Acumulado.</a>'
           });
         }else{
           Swal.fire({

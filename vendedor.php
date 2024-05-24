@@ -140,6 +140,7 @@
 				include "content/modal/rifaMillonaria.php";
 				include "content/modal/rifatriple.php";
 				include "content/modal/rifamotoTriples.php";
+				include "content/modal/acumuladoTriple.php";
 			//Script 
 			include "content/inc/script.php";
 		?>
@@ -149,6 +150,7 @@
 		<script src="js/registro/registroNumeroDoble.js"></script>
 		<script src="js/registro//registronumerotriple.js"></script>
 		<script src="js/registro/registroNumeroMillonaria.js"></script>
+		<script src="js/registro/registroAcomuladoTriple.js"></script>
 	</body>
 
 </html>

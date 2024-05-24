@@ -27,6 +27,11 @@ const validarNumeroMillonario = (numeroMillonario)=>{
     return /^[0-9]{3}/.test(numeroMillonario.trim());
 }
 
+// Funcion para validar el numero con el formato correcto.
+
+const validarNumeroAcomuladoTriple = (numeroAcomulado)=>{
+    return /^[0-9]{4}/.test(numeroAcomulado.trim());
+}
 
 // Validacion de nombre, que comprende solo letras, y con espacio para que pueda escribir el apellido
 const validarnombre = (nombre)=>{

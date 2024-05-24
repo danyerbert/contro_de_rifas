@@ -142,6 +142,7 @@
 				include "content/modal/rifaMillonaria.php";
 				include "content/modal/rifatriple.php";
 				include "content/modal/rifamotoTriples.php";
+				include "content/modal/acumuladoTriple.php";
 			//Modales de bloqueo de numeros
 				include "content/modal/bloquearNumeroMoto.php"; 
 				include "content/modal/bloquearNumeroDoble.php"; 
@@ -159,6 +160,7 @@
 		<script src="js/registro//registronumerotriple.js"></script>
 		<script src="js/registro/registroNumeroMillonaria.js"></script>
 		<script src="js/registro/registroNumeroTripleMoto.js"></script>
+		<script src="js/registro/registroAcomuladoTriple.js"></script>
 		<!-- JS para el bloqueo de numeros -->
 		<script src="js/bloqueo/bloqueoNumeroMoto.js"></script>
 		<script src="js/bloqueo/bloqueoNumeroDoble.js"></script>
