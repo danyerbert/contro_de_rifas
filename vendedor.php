@@ -59,7 +59,16 @@
 									<li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
 								</ul>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMoto">Boleto</a>
+									<div class="btn-group dropright">
+										<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">
+											Boleto
+										</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#rifaMotoTrtiples">1$</a>
+											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#rifaMoto">3$</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -130,6 +139,7 @@
 				include "content/modal/rifaDobleOportunidad.php";
 				include "content/modal/rifaMillonaria.php";
 				include "content/modal/rifatriple.php";
+				include "content/modal/rifamotoTriples.php";
 			//Script 
 			include "content/inc/script.php";
 		?>

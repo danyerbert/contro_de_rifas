@@ -95,9 +95,6 @@
 														<a href="#" data-toggle="modal" data-target="#BloquearNumeroDoble">Doble Oportunidad</a>
 													</li>
 													<li>
-														<a href="#" data-toggle="modal" data-target="#BloquearNumeroMillonaria">Rifa Millonaria</a>
-													</li>
-													<li>
 														<a href="#" data-toggle="modal" data-target="#BloquearNumeroTriple">Triple 500</a>
 													</li>
 												</ul>

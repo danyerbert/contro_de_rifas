@@ -151,7 +151,8 @@
 			//Script 
 			include "content/inc/script.php";
 		?>
-		<script src="js/funtion.js"></script>
+		<script src="js/funtion.js"></script>.
+		<script src="js/prueba.js"></script>
 		<!-- JS para el tema de recoleccion de informacion -->
 		<script src="js/registro/registroNumeroMoto.js"></script>
 		<script src="js/registro/registroNumeroDoble.js"></script>
@@ -164,6 +165,7 @@
 		<script src="js/bloqueo/bloqueoNumeroMillonaria.js"></script>
 		<script src="js/bloqueo/bloqueoNumeroTriple.js"></script>
 		<script src="js/bloqueo/limitarventa.js"></script>
+		
 	</body>
 
 </html>

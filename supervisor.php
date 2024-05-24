@@ -56,11 +56,11 @@
 									<div class="btn-group dropright">
 										<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">
-											Boleto
+											Ir
 										</button>
 										<div class="dropdown-menu">
-											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#rifaMotoTrtiples">1$</a>
-											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#rifaMoto">3$</a>
+											<a class="dropdown-item" href="listamototriple.php">1$</a>
+											<a class="dropdown-item" href="listademoto.php" data-toggle="modal" data-target="#rifaMoto">3$</a>
 										</div>
 									</div>
 								</div>
@@ -72,7 +72,7 @@
 									<h4 class="pricing-title">Rifa Doble Oportunidad</h4>
 								</div>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaDobleOportunidad">Boleto</a>
+									<a href="listadedoble.php" class="btn btn-secondary btn-lg" >Ir</a>
 									
 								</div>
 							</div>
@@ -83,7 +83,7 @@
 									<h4 class="pricing-title">Rifa Millonaria</h4>
 								</div>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMillonaria">Boleto</a>
+									<a href="listademillonaria.php" class="btn btn-primary btn-lg">Ir</a>
 								</div>
 							</div>
 						</div>
@@ -94,7 +94,7 @@
 									<h4 class="pricing-title">Rifa Triple 500</h4>
 								</div>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaTriple">Boleto</a>
+									<a href="listadetriple.php" class="btn btn-secondary btn-lg">Ir</a>
 								</div>
 							</div>
 						</div>

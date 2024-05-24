@@ -7,6 +7,7 @@ const registroTriple = async() =>{
     var fecha = document.querySelector("#fechaTriple").value;
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_triple").value;
 
+   
     if (numero.trim() === '' ||
         cantidadApostada.trim() === '' ||
         vendedor.trim() === ''||
@@ -19,6 +20,11 @@ const registroTriple = async() =>{
               });
             return;
     }
+
+    if (cantidadApostada.trim() == 3) {
+      console.log('contidad 3');
+    }
+
     // Validaciones de campos de comprador.
     if (!validarNumeroTriple(numero)) {
         Swal.fire({
@@ -65,16 +71,28 @@ const registroTriple = async() =>{
     var resultado=await respuesta.json();
   
     if (resultado.success == true) {
-      Swal.fire({
-        icon: "success",
-        title: "EXITO",
-        text: resultado.mensaje,
-      });
+        if (cantidadApostada.trim() == 3 ||
+            cantidadApostada.trim() > 3      
+      ) {
+          Swal.fire({
+            icon: "success",
+            title: "Registrado",
+            text: resultado.mensaje,
+            footer: '<a href="#" class = "btn btn-primary">Partica Acumulado.</a>'
+          });
+        }else{
+          Swal.fire({
+            icon: "success",
+            title: "Registrado",
+            text: resultado.mensaje,
+          });
+        }
+      
       document.querySelector("#registroNumeroTriple").reset();
     }else{
       Swal.fire({
         icon: "error",
-        title: "ERROR",
+        title: "Fallo al registrar",
         text: resultado.mensaje,
       });
     }
