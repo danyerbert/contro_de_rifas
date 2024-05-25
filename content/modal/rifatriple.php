@@ -10,7 +10,8 @@
 		    </button>
     </div>
     <div class="modal-body">
-        <form action="" id="registroNumeroTriple">
+        <form id="registroNumeroTriple">
+        <!-- <form id="registroNumeroTriple" action="php/registroTripleRifa2.php" method="POST"> -->
           <!-- <br> -->
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
@@ -31,8 +32,23 @@
           </div>
           <div class="form-group">
               <label for="cantidadApuesta" class="col-form-label">Cantidad Apostada</label>
-              <input type="text" class="form-control" id="cantidadApuesta" name="cantidadApuesta" pattern="[0-9]">
+              <input type="text" class="form-control" id="cantidad_apuesta" name="cantidad_apuesta" pattern="[0-9]">
               <span></span>
+          </div>
+          <h5 class="modal-title fs-7">Seleccion de loteria:</h5>
+          <br>
+          <div class="form-control">
+            <div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input loteria" id="loteriaOne" name="loteria" value="triple Tachira A">
+							<label class="custom-control-label" for="loteriaOne">Triple Tachira A</label>
+						</div>
+          </div>
+          <br>
+          <div class="form-control">
+            <div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input loteria" id="loteriaDos" name="loteria" value="triple gana">
+							<label class="custom-control-label" for="loteriaDos">Triple Gana</label>
+						</div>
           </div>
 
           <input type="hidden" name="vendedorTriple" id="vendedorTriple" value="<?php echo $cedula;?>">
@@ -40,11 +56,12 @@
             $fecha = date("Y-m-d");
             echo $fecha;
           ?>">
-          <input type="hidden" name="tipo_de_rifa_moto" id="tipo_de_rifa_triple" value="4">
+          <input type="hidden" name="tipo_de_rifa_triple" id="tipo_de_rifa_triple" value="4">
+          <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
         </form>
     </div>
     <div class="modal-footer">
-        <input type="submit" class="btn btn-success" onclick="registroTriple()" value="Guardar">
+        <input type="submit" class="btn btn-success" onclick="registroTriple2()" value="Guardar">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>

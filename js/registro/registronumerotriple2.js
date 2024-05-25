@@ -1,4 +1,6 @@
-const registroTriple = async() =>{
+
+
+const registroTriple2 = async() =>{
     var numero = document.querySelector("#numeroTriple").value;
     var cantidadApostada = document.querySelector("#cantidad_apuesta").value;
     var nombreApellido = document.querySelector("#nombreApellidoTriple").value;
@@ -14,13 +16,11 @@ const registroTriple = async() =>{
         valoresSeleccionados.push(checkboxes[i].value);
     }
 
-
     if (numero.trim() === '' ||
         cantidadApostada.trim() === '' ||
         vendedor.trim() === ''||
         fecha.trim() === '' ||
-        tipoDeRifa.trim() === '' ||
-        loteria === ''){
+        tipoDeRifa.trim() === ''){
             Swal.fire({
                 icon: "error",
                 title: "Error",
@@ -96,7 +96,7 @@ const registroTriple = async() =>{
     }else{
       Swal.fire({
         icon: "error",
-        title: "Fallo al registrar",
+        title: "Fallo",
         text: resultado.mensaje,
       });
     }

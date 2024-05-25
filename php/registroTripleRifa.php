@@ -6,12 +6,9 @@ require "function.php";
 date_default_timezone_set('America/Caracas');
 $valido['success']=array('success', false, 'mensaje'=>"");
     $horaServer =  date('h:i:s A');
-    $horaDeCierre = "08:00:00 PM";
+    $horaDeCierre = "01:00:00 AM";
 
-    if ($horaServer >= $horaDeCierre) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Cierre realizado.";
-    }elseif ($_POST) {
+    if ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);
     if (!preg_match("/^[a-zA-Z\s]{3,80}/", $nombre)) {
         $nombre = "No obtenido.";
@@ -34,15 +31,17 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
-    if ($cantidad < 3) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Debe Jugar minimo 3$.";
-    }
-
     if ($numero > 999) {
         $valido['success'] = false;
         $valido['mensaje'] = "Solo se permite desde el 00 al 99.";
     }
+
+    $loteria = $_POST['loterias'];
+    if ($loteria == '') {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Seleccione una loteria.";
+    }
+
     $vendedor = limpiarDatos($_POST['vendedor']);
     if ($vendedor == '') {
         $valido['success'] = false;
@@ -80,7 +79,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
         
-        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, numero, cantidad, monto_total,vendedor, fecha, nombre, cedula, tipo_de_rifa) VALUES (NULL, '$numero','$cantidad', '$monto_total', '$vendedor', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa')";
+        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre, cedula, tipo_de_rifa) VALUES (NULL, '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa')";
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {

@@ -152,12 +152,12 @@
 			//Script 
 			include "content/inc/script.php";
 		?>
-		<script src="js/funtion.js"></script>.
-		<script src="js/prueba.js"></script>
+		<script src="js/funtion.js"></script>
 		<!-- JS para el tema de recoleccion de informacion -->
 		<script src="js/registro/registroNumeroMoto.js"></script>
 		<script src="js/registro/registroNumeroDoble.js"></script>
 		<script src="js/registro//registronumerotriple.js"></script>
+		<script src="js/registro//registronumerotriple2.js"></script>
 		<script src="js/registro/registroNumeroMillonaria.js"></script>
 		<script src="js/registro/registroNumeroTripleMoto.js"></script>
 		<script src="js/registro/registroAcomuladoTriple.js"></script>
