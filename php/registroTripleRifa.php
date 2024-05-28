@@ -6,7 +6,7 @@ require "function.php";
 date_default_timezone_set('America/Caracas');
 $valido['success']=array('success', false, 'mensaje'=>"");
     $horaServer =  date('h:i:s A');
-    $horaDeCierre = "01:00:00 AM";
+    $horaDeCierre = "01:00:00 PM";
 
     if ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);

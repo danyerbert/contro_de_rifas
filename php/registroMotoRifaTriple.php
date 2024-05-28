@@ -88,7 +88,7 @@ date_default_timezone_set('America/Caracas');
         $valido['mensaje'] = "Numero no permitido.";
     }else {
         // Validacion de numero bloqueado.
-        $sqlValidationNumero = "SELECT COUNT(*) numero_primero, COUNT(*) numero_segundo FROM registro_moto_triples WHERE fecha = '$fecha'";
+        $sqlValidationNumero = "SELECT COUNT(*) numero_primero, COUNT(*) numero_segundo FROM registro_moto_triples WHERE numero_primero = '$numeroUno' AND numero_segundo = '$numeroDos' AND fecha = '$fecha'";
         $resultadoValidationNumero = $mysqli->query($sqlValidationNumero);
         $row = mysqli_fetch_assoc($resultadoValidationNumero);
         $valorNumeroPrimero = $row['numero_primero'];
@@ -101,7 +101,7 @@ date_default_timezone_set('America/Caracas');
          $rowLimite = mysqli_fetch_assoc($resultadoLimite);
          $dbcantidad = $rowLimite['cantidad_venta'];
  
-         if ($rowLimite == '') {
+         if ($dbcantidad == '') {
              $limite_venta = 3;
          }else {
              $limite_venta = $rowLimite['cantidad_venta'];

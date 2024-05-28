@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <div class="main">
@@ -28,14 +30,15 @@
                         <form method="POST" class="register-form" id="login-form" action="login.php">
                             <div class="form-group">
                                 <label for="usuario"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="usuario" id="usuario" placeholder="usuario"/>
+                                <input type="text" name="usuario" id="usuario" placeholder="usuario" />
                             </div>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="Password"/>
+                                <input type="password" name="password" id="password" placeholder="Contraseña" />
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Iniciar Session"/>
+                                <input type="submit" name="signin" id="signin" class="form-submit"
+                                    value="Iniciar Session" />
                             </div>
                         </form>
                     </div>
@@ -48,4 +51,5 @@
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
+
 </html>
