@@ -64,19 +64,19 @@
 											<div class="sidebar-submenu">
 												<ul>
 													<li>
-														<a href="listademoto.php">Lista de Rifa de Moto</a>
+														<a href="listademoto.php">Rifa de Moto</a>
 													</li>
 													<li>
-														<a href="listadedoble.php">Lista de Rifa Royal</a>
+														<a href="listadedoble.php">Rifa Royal</a>
 													</li>
 													<li>
-														<a href="listadetriple.php">Lista de Rifa Triple 500</a>
+														<a href="listadetriple.php">Rifa Triple 500</a>
 													</li>
 													<li>
-														<a href="listademillonaria.php">Lista de Rifa Millonaria</a>
+														<a href="listademillonaria.php">Rifa Millonaria</a>
 													</li>
 													<li>
-														<a href="listamototriple.php">Lista de Rifa Moto Triples</a>
+														<a href="listamototriple.php">Rifa Moto Triples</a>
 													</li>
 												</ul>
 											</div>
@@ -140,19 +140,19 @@
 											<div class="sidebar-submenu">
 												<ul>
 													<li>
-														<a href="listademoto.php">Lista de Rifa de Moto</a>
+														<a href="listademoto.php">Rifa de Moto</a>
 													</li>
 													<li>
-														<a href="listadedoble.php">Lista de Rifa Doble Oportunidad</a>
+														<a href="listadedoble.php">Rifa Doble Oportunidad</a>
 													</li>
 													<li>
-														<a href="listadetriple.php">Lista de Rifa Triple 500</a>
+														<a href="listadetriple.php">Rifa Triple 500</a>
 													</li>
 													<li>
-														<a href="listademillonaria.php">Lista de Rifa Millonaria</a>
+														<a href="listademillonaria.php">Rifa Millonaria</a>
 													</li>
 													<li>
-														<a href="listamototriple.php">Lista de Rifa Moto Triples</a>
+														<a href="listamototriple.php">Rifa Moto Triples</a>
 													</li>
 												</ul>
 											</div>

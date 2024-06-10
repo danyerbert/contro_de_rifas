@@ -9,7 +9,9 @@ const RegistroNumerosTripleMoto = async() =>{
     var fechaTripleMoto = document.querySelector("#fechaTripleMoto").value;
     var tipoDeRifaMotoTriple = document.querySelector("#tipo_de_rifa_moto_triple").value;
 
-    if (numeroTripleUno.trim() === '' ||
+    if (nombre.trim() === '' ||
+        cedula.trim() === '' ||
+        numeroTripleUno.trim() === '' ||
         zodiacoUno.trim() === '' ||
         numeroTripleDos.trim() === '' ||
         zodiacoDos.trim() === '' ||
@@ -27,8 +29,24 @@ const RegistroNumerosTripleMoto = async() =>{
 
 
      // Validaciones de campos de comprador.
+    if (!validarnombre(nombre)) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "El nombre no cumple con los caracteres establecidos.",
+        });
+      return;
+    }  
 
-     if (!validarNumeroDeRifaMotoTriple(numeroTripleUno)) {
+    if (!validarcedula(cedula)) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Debe ingresar la cedula en el formato correcto.",
+        });
+      return;
+    }
+    if (!validarNumeroDeRifaMotoTriple(numeroTripleUno)) {
         Swal.fire({
             icon: "error",
             title: "Error",

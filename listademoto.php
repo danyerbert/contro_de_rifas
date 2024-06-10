@@ -81,6 +81,27 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 col-sm-12 col-12">
+
+							<div class="card">
+								<div class="card-body">
+									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img src="img/rifas/rifa_de_moto.png" class="rounded d-block w-100" alt="AI Dashboards">
+											</div>
+											<div class="carousel-item">
+												<img src="img/rifas/rifa_de_moto.png" class="rounded d-block w-100" alt="AI Dashboards">
+											</div>
+											<div class="carousel-item">
+												<img src="img/rifas/rifa_de_moto_2.png" class="rounded d-block w-100" alt="AI Dashboards">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
         </div>
         <!-- Row start -->
         <div class="row gutters">

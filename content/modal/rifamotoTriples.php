@@ -15,22 +15,22 @@
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
               <label for="nombreApellido" class="col-form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombreApellido" name="nombreApellido" pattern="[a-zA-Z\s]{4,20}">
+              <input type="text" class="form-control" id="nombreApellido" name="nombreApellido" pattern="[a-zA-Z\s]{4,20}" maxlength="20">
           </div>
           <div class="form-group">
               <label for="cedulaTripleMoto" class="col-form-label">Cedula</label>
-              <input type="text" class="form-control" id="cedulaTripleMoto" name="cedulaTripleMoto" pattern="[0-9]{8}">
+              <input type="text" class="form-control" id="cedulaTripleMoto" name="cedulaTripleMoto" pattern="[0-9]{8}" maxlength="8">
           </div>
           <br>
           <!-- <hr> -->
-          <h5 class="modal-title fs-7">Eleccion del numero</h5>
+          <h5 class="modal-title fs-7">Eleccion los triples</h5>
             <div class="form-group">
-                <label for="numeroMotoTriple1" class="col-form-label">Numero Uno</label>
+                <label for="numeroMotoTriple1" class="col-form-label">Primer Triple</label>
                 <input type="text" class="form-control" id="numeroMotoTriple1" name="numeroMotoTriple1" pattern="[0-9]{3,3}" maxlength="3">
                 <span></span>
             </div>
             <div class="form-group">
-                <label for="estado" class="col-form-label">Signo del Zodiaco</label>
+                <label for="estado" class="col-form-label">Primer Signo del Zodiaco</label>
                 <select name="zodiaco1" id="zodiaco1" class="form-control form-control-lg">
                 <?php foreach ($resultadoZodiaco as $row) : ?>
                 <option value="<?php echo $row['zodiaco']; ?>"><?php echo $row['zodiaco']; ?></option>
@@ -38,7 +38,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="numeroMotoTriple2" class="col-form-label">Numero Dos</label>
+                <label for="numeroMotoTriple2" class="col-form-label">Segundo Triple</label>
                 <input type="text" class="form-control" id="numeroMotoTriple2" name="numeroMotoTriple2" pattern="[0-9]{3,3}" maxlength="3">
                 <span></span>
             </div>

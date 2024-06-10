@@ -16,11 +16,13 @@ date_default_timezone_set('America/Caracas');
     }elseif ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);
     if (!preg_match("/^[a-zA-Z\s]{3,80}/", $nombre)) {
-        $nombre = "No obtenidos";
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe ingresar el nombre.";
     }
     $cedula = limpiarDatos($_POST['cedulaTripleMoto']);
     if (!preg_match("/^[0-9]{7,8}/", $cedula)) {
-        $cedula = "No obtenida.";
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe ingresar la cedula.";
     }
     $numeroUno = limpiarDatos($_POST['numeroMotoTriple1']);
     if (!preg_match("/\b/", $numeroUno)) {
