@@ -14,8 +14,8 @@
           <!-- <br> -->
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
-              <label for="nombreApellido" class="col-form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombreApellido" name="nombreApellido" pattern="[a-zA-Z\s]{4,20}" maxlength="20">
+              <label for="nombreTriple" class="col-form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombreTriple" name="nombreTriple" pattern="[a-zA-Z\s]{4,20}" maxlength="20">
           </div>
           <div class="form-group">
               <label for="cedulaTripleMoto" class="col-form-label">Cedula</label>
@@ -50,7 +50,47 @@
                 <?php endforeach; ?>
                 </select>
             </div>
-
+            <h5 class="modal-title fs-7">Selecciona el metodo de pago</h5>
+          <div class="form-control">
+            <div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="customRadioInline2" name="metodoDePago" class="custom-control-input" value = "1">
+							<label class="custom-control-label" for="customRadioInline2" onclick = "javascript: var ch=document.getElementById('ReferenciaPagoMovil');ch.style.display='inline' ; 
+              var ch2=document.getElementById('cantidadBolivares');ch2.style.display='none' ;
+              var ch3=document.getElementById('cantidadDivisas');ch3.style.display='none' ;
+              " >Pago Movil</label>
+						</div>
+          </div>
+          <br>
+          <div class="form-control">
+            <div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="customRadioInline1" name="metodoDePago" value = "2" class="custom-control-input" onclick = "javascript: var ch=document.getElementById('ReferenciaPagoMovil');ch.style.display='none';
+                var ch2=document.getElementById('cantidadDivisas');ch2.style.display='inline' ; 
+                var ch3=document.getElementById('cantidadBolivares');ch3.style.display='none' ; 
+              ">
+							<label class="custom-control-label" for="customRadioInline1">Efectivo Divisas $</label>
+						</div>
+          </div>
+          <br>
+          <div class="form-control">
+            <div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="customRadioInline3" name="metodoDePago" value = "3" class="custom-control-input" onclick = "javascript: var ch=document.getElementById('cantidadDivisas');ch.style.display='none';
+                var ch2=document.getElementById('cantidadBolivares');ch2.style.display='inline' ; 
+              ">
+							<label class="custom-control-label" for="customRadioInline3">Efectivo Bolivares</label>
+						</div>
+          </div>
+          <div class="form-group" id="ReferenciaPagoMovil" style="display:none">
+              <label for="ReferenciaPagoMovilN" class="col-form-label">Referencia</label>
+              <input type="text" class="form-control" id="ReferenciaPagoMovilN" name="ReferenciaPagoMovilN" pattern="[0-9]" maxlength="20">
+          </div>
+          <div class="form-group" id="cantidadDivisas" style="display:none">
+              <label for="cantidadDivisasN" class="col-form-label">Cantidad en Dolares</label>
+              <input type="text" class="form-control" id="cantidadDivisasN" name="cantidadDivisasN" pattern="[0-9]" maxlength="20">
+          </div>
+          <div class="form-group" id="cantidadBolivares" style="display:none">
+              <label for="cantidadBolivaresN" class="col-form-label">Cantidad en Bolivares</label>
+              <input type="text" class="form-control" id="cantidadBolivaresN" name="cantidadBolivaresN" pattern="[0-9]" maxlength="20">
+          </div>
           <input type="hidden" name="vendedorTripleMoto" id="vendedorTripleMoto" value="<?php echo $cedula;?>">
           <input type="hidden" name="fechaTripleMoto" id="fechaTripleMoto" value="<?php 
             $fecha = date("Y-m-d");

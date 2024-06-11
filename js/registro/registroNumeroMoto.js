@@ -7,7 +7,18 @@ const RegistroNumeroMoto = async()=>{
     var vendedor = document.querySelector("#vendedor").value;
     var fecha = document.querySelector("#fecha").value;
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_moto").value;
-    if (numero.trim() === '' ||
+    var metodoDePago = document.querySelector('input[name="metodoDePagoMoto"]:checked').value;
+    var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilNA").value;
+    var cantidadDivisas = document.querySelector("#cantidadDivisasNA").value;
+    var cantidadDeBolivares = document.querySelector("#cantidadBolivaresNA").value;
+    var valores = []; 
+    for (var i = 0; i < metodoDePago.length; i++) {
+      valores.push(metodoDePago[i].value);
+  }
+
+    if (nombreApellido.trim() === '' ||
+        cedula.trim() === '' ||
+        numero.trim() === '' ||
         zodiaco.trim() === '' ||
         vendedor.trim() === ''||
         fecha.trim() === '' ||
@@ -22,7 +33,23 @@ const RegistroNumeroMoto = async()=>{
     }
 
     // Validaciones de campos de comprador.
+    if (!validarnombre(nombreApellido)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El nombre no cumple con los caracteres establecidos.",
+      });
+    return;
+  }  
 
+  if (!validarcedula(cedula)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Debe ingresar la cedula en el formato correcto.",
+      });
+    return;
+  }
     if (!validarNumeroDeRifaMoto(numero)) {
         Swal.fire({
             icon: "error",
@@ -48,6 +75,38 @@ const RegistroNumeroMoto = async()=>{
         return;
     }
 
+    switch (metodoDePago) {
+      case "1":
+          if (!validadPagoMovil(ReferenciaPagoMovil)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar numeros en la referencia",
+            });
+          return;
+          }
+        break;
+      case "2": 
+          if (!validarDivisas(cantidadDivisas)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar el monto en numeros.",
+            });
+          return;
+          }
+        break
+        case "3":
+            if (!validadBolivares(cantidadDeBolivares)) {
+                Swal.fire({
+                  icon: "error",
+                  title: "Error",
+                  text: "Debe ingresar la cantidad en numeros.",
+                });
+              return;
+            } 
+          break
+    }
     // Envio de datos
     const datos=new FormData();
     datos.append("vendedor", vendedor);
@@ -57,6 +116,23 @@ const RegistroNumeroMoto = async()=>{
     datos.append("zodiaco", zodiaco);
     datos.append("fecha", fecha);
     datos.append("tipo_de_rifa", tipoDeRifa)
+    switch (metodoDePago) {
+      case "1":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", ReferenciaPagoMovil); 
+        console.log(ReferenciaPagoMovil);
+        break;
+      case "2":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDivisas);
+        console.log(cantidadDivisas); 
+        break;
+      case "3":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDeBolivares);
+        console.log(cantidadDeBolivares); 
+        break;
+    }
 
     // Envio de datos al backend
     var respuesta = await fetch("php/registroMotoRifa.php", {

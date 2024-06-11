@@ -76,7 +76,16 @@ date_default_timezone_set('America/Caracas');
         $valido['success'] = false;
         $valido['mensaje'] = "Rifa no coincide.";
     }
-
+    $metodoDePago = limpiarDatos($_POST['metodoDePago']);
+    if (!preg_match("/\b/" , $metodoDePago)) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "No selecciono el metodo de pago.";
+    }
+    $cantidaPago = limpiarDatos($_POST['referencia']);
+    if ($cantidaPago === '') {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe ingresar una cantidad.";
+    }
     $valor = 1;
 
     // Verificacion de numero bloqueado.
@@ -103,7 +112,7 @@ date_default_timezone_set('America/Caracas');
          $rowLimite = mysqli_fetch_assoc($resultadoLimite);
          $dbcantidad = $rowLimite['cantidad_venta'];
  
-         if ($dbcantidad == '') {
+         if ($dbcantidad = 0) {
              $limite_venta = 3;
          }else {
              $limite_venta = $rowLimite['cantidad_venta'];
@@ -114,7 +123,7 @@ date_default_timezone_set('America/Caracas');
              $valido['mensaje'] = "Numero no habilitado.";
          }else {
             
-            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre, cedula, valor, tipo_de_rifa) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa')";
+            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sqlRegistro);
 
             if ($resultadoRegistro === true) {

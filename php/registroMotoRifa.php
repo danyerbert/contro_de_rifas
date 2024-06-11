@@ -59,6 +59,16 @@ $horaDeCierre = "11:00:00 PM";
         $valido['success'] = false;
         $valido['mensaje'] = "Rifa no coincide.";
     }
+    $metodoDePago = limpiarDatos($_POST['metodoDePago']);
+    if (!preg_match("/\b/" , $metodoDePago)) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "No selecciono el metodo de pago.";
+    }
+    $cantidaPago = limpiarDatos($_POST['referencia']);
+    if ($cantidaPago === '') {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe ingresar una cantidad.";
+    }
     // Validacion de cantidad de veces que se a vendido el numero ingresado
 
     $valor = 3;
@@ -93,7 +103,7 @@ $horaDeCierre = "11:00:00 PM";
             $valido['mensaje'] = "Numero no habilitado.";
         }else {
             
-            $sql = "INSERT INTO registro_moto_numero (id_moto, numero, signo, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa) VALUES (NULL, '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa')";
+            $sql = "INSERT INTO registro_moto_numero (id_moto, numero, signo, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sql);
     
             if ($resultadoRegistro === true) {

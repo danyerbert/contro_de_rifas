@@ -1,5 +1,5 @@
 const RegistroNumerosTripleMoto = async() =>{
-    var nombre = document.querySelector("#nombreApellido").value;
+    var nombre = document.querySelector("#nombreTriple").value;
     var cedula = document.querySelector("#cedulaTripleMoto").value;
     var numeroTripleUno = document.querySelector("#numeroMotoTriple1").value;
     var zodiacoUno = document.querySelector("#zodiaco1").value;
@@ -8,6 +8,14 @@ const RegistroNumerosTripleMoto = async() =>{
     var vendedorTripleMoto = document.querySelector("#vendedorTripleMoto").value;
     var fechaTripleMoto = document.querySelector("#fechaTripleMoto").value;
     var tipoDeRifaMotoTriple = document.querySelector("#tipo_de_rifa_moto_triple").value;
+    var metodoDePago = document.querySelector('input[name="metodoDePago"]:checked').value;
+    var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilN").value;
+    var cantidadDivisas = document.querySelector("#cantidadDivisasN").value;
+    var cantidadDeBolivares = document.querySelector("#cantidadBolivaresN").value;
+    var valores = []; 
+    for (var i = 0; i < metodoDePago.length; i++) {
+      valores.push(metodoDePago[i].value);
+  }
 
     if (nombre.trim() === '' ||
         cedula.trim() === '' ||
@@ -26,8 +34,6 @@ const RegistroNumerosTripleMoto = async() =>{
             return;
         
     }
-
-
      // Validaciones de campos de comprador.
     if (!validarnombre(nombre)) {
         Swal.fire({
@@ -95,6 +101,39 @@ const RegistroNumerosTripleMoto = async() =>{
         return;
     }
 
+
+    switch (metodoDePago) {
+      case "1":
+          if (!validadPagoMovil(ReferenciaPagoMovil)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar numeros en la referencia",
+            });
+          return;
+          }
+        break;
+      case "2": 
+          if (!validarDivisas(cantidadDivisas)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar el monto en numeros.",
+            });
+          return;
+          }
+        break
+        case "3":
+            if (!validadBolivares(cantidadDeBolivares)) {
+                Swal.fire({
+                  icon: "error",
+                  title: "Error",
+                  text: "Debe ingresar la cantidad en numeros.",
+                });
+              return;
+            } 
+          break
+    }
     // Envio datos al backend 
 
     const datos = new FormData();
@@ -109,6 +148,23 @@ const RegistroNumerosTripleMoto = async() =>{
     datos.append("fechaTripleMoto", fechaTripleMoto);
     datos.append("tipo_de_rifa_moto_triple", tipoDeRifaMotoTriple);
 
+    switch (metodoDePago) {
+      case "1":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", ReferenciaPagoMovil); 
+        console.log(ReferenciaPagoMovil);
+        break;
+      case "2":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDivisas);
+        console.log(cantidadDivisas); 
+        break;
+      case "3":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDeBolivares);
+        console.log(cantidadDeBolivares); 
+        break;
+    }
     // Envio de datos al backend
     var respuesta = await fetch("php/registroMotoRifaTriple.php", {
         method: 'POST',

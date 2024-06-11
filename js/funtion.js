@@ -64,3 +64,19 @@ const validarusuario = (usuario) =>{
 const validarpassword=(password)=>{
     return /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{12,16}$/.test(password.trim());
 }
+
+
+
+// VALIDACIONES DE METODO DE PAGO
+// PAGO MOVIL
+const validadPagoMovil =(pagoMovil)=>{
+    return /^[0-9]/.test(pagoMovil.trim());
+}
+// PAGO MOVIL
+const validarDivisas =(divisas)=>{
+    return /^[0-9]/.test(divisas.trim());
+}
+// PAGO MOVIL
+const validadBolivares =(bolivares)=>{
+    return /^[0-9]/.test(bolivares.trim());
+}
