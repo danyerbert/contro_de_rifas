@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
         <input type="submit" class="btn btn-success" onclick="BloquearNumeroDoble()" value="Bloquear">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
