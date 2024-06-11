@@ -11,12 +11,12 @@
           <form id="rifamillonaria">
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
-              <label for="nombreMillonaria" class="col-form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombreMillonaria" name="nombreMillonaria" pattern="[a-zA-Z\s]{4,20}">
-          </div>
-          <div class="form-group">
               <label for="cedulaMillonaria" class="col-form-label">Cedula</label>
               <input type="text" class="form-control" id="cedulaMillonaria" name="cedulaMillonaria" pattern="[0-9]{8}">
+          </div>
+          <div class="form-group">
+              <label for="nombreMillonaria" class="col-form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombreMillonaria" name="nombreMillonaria" pattern="[a-zA-Z\s]{4,20}">
           </div>
           <br>
           <!-- <hr> -->

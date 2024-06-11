@@ -14,12 +14,12 @@
           <!-- <br> -->
           <h5 class="modal-title fs-7">Datos del Comprador</h5>
           <div class="form-group">
-              <label for="nombreApellido" class="col-form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombreApellido" name="nombreApellido" pattern="[a-zA-Z\s]{4,20}">
-          </div>
-          <div class="form-group">
               <label for="cedula" class="col-form-label">Cedula</label>
               <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]{8}">
+          </div>
+          <div class="form-group">
+              <label for="nombreApellido" class="col-form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombreApellido" name="nombreApellido" pattern="[a-zA-Z\s]{4,20}">
           </div>
           <br>
           <!-- <hr> -->
