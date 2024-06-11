@@ -9,9 +9,6 @@ date_default_timezone_set('America/Caracas');
 $horaServer =  date('h:i:s A');
 $horaDeCierre = "11:00:00 PM";
 
-
-
-
     if ($horaServer >= $horaDeCierre) {
         $valido['success'] = false;
         $valido['mensaje'] = "Cierre realizado.";

@@ -5,7 +5,7 @@ require "function.php";
 date_default_timezone_set('America/Caracas');
 $valido['success']=array('success', false, 'mensaje'=>"");
     $horaServer =  date('h:i:s A');
-    $horaDeCierre = "08:00:00 PM";
+    $horaDeCierre = "11:00:00 PM";
 
     if ($horaServer >= $horaDeCierre) {
         $valido['success'] = false;
@@ -62,39 +62,49 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['success'] = false;
         $valido['mensaje'] = "Rifa no coincide.";
     }
+    $metodoDePago = limpiarDatos($_POST['metodoDePago']);
+    if (!preg_match("/\b/" , $metodoDePago)) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "No selecciono el metodo de pago.";
+    }
+    $cantidaPago = limpiarDatos($_POST['referencia']);
+    if ($cantidaPago === '') {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe ingresar una cantidad.";
+    }
     // Va
     $valor = 2;
 
-    $sqlNumeroBloqueado = "SELECT numero FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
-    $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
-    $rowBloqueado = mysqli_fetch_assoc($resultadoBloqueado);
-    $NumeroBloqueado = $rowBloqueado['numero'];
+    // $sqlNumeroBloqueado = "SELECT numero FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
+    // $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
+    // $rowBloqueado = mysqli_fetch_assoc($resultadoBloqueado);
+    // $NumeroBloqueado = $rowBloqueado['numero'];
 
-    if ($numeroOne == $NumeroBloqueado) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Numero no permitido: " . $numeroOne;
-    }elseif (
-        $numeroDos == $NumeroBloqueado
-    ) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Numero no permitido: " . $numeroDos;
-    }elseif (
-        $numeroTres == $NumeroBloqueado
-    ) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Numero no permitido: " . $numeroTres;
-    }elseif (
-        $numeroCuatro == $NumeroBloqueado
-    ) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Numero no permitido: " . $numeroCuatro;
-    }elseif (
-        $numeroCinco == $NumeroBloqueado
-    ) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
-    }else {
-        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre, cedula, tipo_de_rifa) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa')";
+    // if ($numeroOne == $NumeroBloqueado) {
+    //     $valido['success'] = false;
+    //     $valido['mensaje'] = "Numero no permitido: " . $numeroOne;
+    // }elseif (
+    //     $numeroDos == $NumeroBloqueado
+    // ) {
+    //     $valido['success'] = false;
+    //     $valido['mensaje'] = "Numero no permitido: " . $numeroDos;
+    // }elseif (
+    //     $numeroTres == $NumeroBloqueado
+    // ) {
+    //     $valido['success'] = false;
+    //     $valido['mensaje'] = "Numero no permitido: " . $numeroTres;
+    // }elseif (
+    //     $numeroCuatro == $NumeroBloqueado
+    // ) {
+    //     $valido['success'] = false;
+    //     $valido['mensaje'] = "Numero no permitido: " . $numeroCuatro;
+    // }elseif (
+    //     $numeroCinco == $NumeroBloqueado
+    // ) {
+    //     $valido['success'] = false;
+    //     $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
+    // }else {
+        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
     
         if ($resultadoRegistro === true) {
@@ -108,7 +118,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
 
 
   
-}
+// }
 
 echo json_encode($valido);
 

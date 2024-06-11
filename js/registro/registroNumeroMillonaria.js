@@ -9,8 +9,17 @@ const RegistroNumeroMillonaria = async() =>{
     var numeroCuatro = document.querySelector("#numeroMillonario4").value;
     var numeroCinco = document.querySelector("#numeroMillonario5").value;
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_millonaria").value;
+    var metodoDePago = document.querySelector('input[name="metodoDePagoMillo"]:checked').value;
+    var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilMi").value;
+    var cantidadDivisas = document.querySelector("#cantidadDivisasMi").value;
+    var cantidadDeBolivares = document.querySelector("#cantidadBolivaresMi").value;
+    var valores = []; 
+    for (var i = 0; i < metodoDePago.length; i++) {
+      valores.push(metodoDePago[i].value);
+  }
 
-    if (
+    if (nombreApellido.trim() === '' ||
+        cedula.trim() === '' ||
         numeroOne.trim() === ''|| 
         numeroDos.trim() === ''|| 
         numeroTres.trim() === ''|| 
@@ -27,6 +36,23 @@ const RegistroNumeroMillonaria = async() =>{
           });
         return;
     }
+    if (!validarnombre(nombreApellido)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El nombre no cumple con los caracteres establecidos.",
+      });
+    return;
+  }  
+
+  if (!validarcedula(cedula)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Debe ingresar la cedula en el formato correcto.",
+      });
+    return;
+  }
     if (numeroOne > 999) {
         Swal.fire({
           icon: "error",
@@ -75,6 +101,38 @@ const RegistroNumeroMillonaria = async() =>{
         });
       return;
     }
+    switch (metodoDePago) {
+      case "1":
+          if (!validadPagoMovil(ReferenciaPagoMovil)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar numeros en la referencia",
+            });
+          return;
+          }
+        break;
+      case "2": 
+          if (!validarDivisas(cantidadDivisas)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar el monto en numeros.",
+            });
+          return;
+          }
+        break
+        case "3":
+            if (!validadBolivares(cantidadDeBolivares)) {
+                Swal.fire({
+                  icon: "error",
+                  title: "Error",
+                  text: "Debe ingresar la cantidad en numeros.",
+                });
+              return;
+            } 
+          break
+    }
    
     // Envio de datos
 
@@ -90,6 +148,23 @@ const RegistroNumeroMillonaria = async() =>{
     datos.append("vendedor", vendedor);
     datos.append("fecha", fecha);
     datos.append("tipo_de_rifa", tipoDeRifa)
+    switch (metodoDePago) {
+      case "1":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", ReferenciaPagoMovil); 
+        console.log(ReferenciaPagoMovil);
+        break;
+      case "2":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDivisas);
+        console.log(cantidadDivisas); 
+        break;
+      case "3":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDeBolivares);
+        console.log(cantidadDeBolivares); 
+        break;
+    }
 
     var respuesta = await fetch("php/registroMillonario.php", {
         method: 'POST',

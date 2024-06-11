@@ -53,8 +53,8 @@
             <h5 class="modal-title fs-7">Selecciona el metodo de pago</h5>
           <div class="form-control">
             <div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="customRadioInline2" name="metodoDePago" class="custom-control-input" value = "1">
-							<label class="custom-control-label" for="customRadioInline2" onclick = "javascript: var ch=document.getElementById('ReferenciaPagoMovil');ch.style.display='inline' ; 
+							<input type="radio" id="mtTripleMoto1" name="metodoDePago" class="custom-control-input" value = "1">
+							<label class="custom-control-label" for="mtTripleMoto1" onclick = "javascript: var ch=document.getElementById('ReferenciaPagoMovil');ch.style.display='inline' ; 
               var ch2=document.getElementById('cantidadBolivares');ch2.style.display='none' ;
               var ch3=document.getElementById('cantidadDivisas');ch3.style.display='none' ;
               " >Pago Movil</label>
@@ -63,20 +63,20 @@
           <br>
           <div class="form-control">
             <div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="customRadioInline1" name="metodoDePago" value = "2" class="custom-control-input" onclick = "javascript: var ch=document.getElementById('ReferenciaPagoMovil');ch.style.display='none';
+							<input type="radio" id="mtTripleMoto2" name="metodoDePago" value = "2" class="custom-control-input" onclick = "javascript: var ch=document.getElementById('ReferenciaPagoMovil');ch.style.display='none';
                 var ch2=document.getElementById('cantidadDivisas');ch2.style.display='inline' ; 
                 var ch3=document.getElementById('cantidadBolivares');ch3.style.display='none' ; 
               ">
-							<label class="custom-control-label" for="customRadioInline1">Efectivo Divisas $</label>
+							<label class="custom-control-label" for="mtTripleMoto2">Efectivo Divisas $</label>
 						</div>
           </div>
           <br>
           <div class="form-control">
             <div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="customRadioInline3" name="metodoDePago" value = "3" class="custom-control-input" onclick = "javascript: var ch=document.getElementById('cantidadDivisas');ch.style.display='none';
+							<input type="radio" id="mtTripleMoto3" name="metodoDePago" value = "3" class="custom-control-input" onclick = "javascript: var ch=document.getElementById('cantidadDivisas');ch.style.display='none';
                 var ch2=document.getElementById('cantidadBolivares');ch2.style.display='inline' ; 
               ">
-							<label class="custom-control-label" for="customRadioInline3">Efectivo Bolivares</label>
+							<label class="custom-control-label" for="mtTripleMoto3">Efectivo Bolivares</label>
 						</div>
           </div>
           <div class="form-group" id="ReferenciaPagoMovil" style="display:none">
