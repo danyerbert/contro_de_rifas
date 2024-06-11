@@ -12,8 +12,9 @@
 	$cedula = $_SESSION['cedula'];
 
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
-	$sqlRifaMillonaria = "SELECT m.numero_one, m.numero_dos, m.numero_tres, m.numero_cuatro, m.numero_cinco, v.nombre FROM registro_numero_millonaria AS m 
-	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE m.fecha = '$fecha'";
+	$sqlRifaMillonaria = "SELECT m.numero_one, m.numero_dos, m.numero_tres, m.numero_cuatro, m.numero_cinco, m.nombre_comprador, m.cedula, m.cantidad_pago, p.metodo, v.nombre FROM registro_numero_millonaria AS m 
+	INNER JOIN vendedores AS v ON v.cedula = m.vendedor 
+	INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago WHERE m.fecha = '$fecha'";
 	$resultadoRifaMoto = $mysqli->query($sqlRifaMillonaria);
 
 	include "content/inc/header.php";
@@ -76,6 +77,10 @@
 												<th>Cuarto Numero</th>
 												<th>Quinto Numero</th>
 												<th>Vendedor</th>
+												<th>Nombre del Comprador</th>
+												<th>Cedula del Comprador</th>
+												<th>Metodo de Pago</th>
+												<th>Cantidad Pagada</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -86,7 +91,11 @@
                                             <td><?php echo $rowNumero['numero_tres'];?></td>
                                             <td><?php echo $rowNumero['numero_cuatro'];?></td>
                                             <td><?php echo $rowNumero['numero_cinco'];?></td>
-                                            <td><?php echo $rowNumero['nombre'];?></td>        
+                                            <td><?php echo $rowNumero['nombre'];?></td>
+											<td><?php echo $rowNumero['nombre_comprador'];?></td>
+											<td><?php echo $rowNumero['cedula'];?></td>
+											<td><?php echo $rowNumero['metodo'];?></td>
+											<td><?php echo $rowNumero['cantidad_pago'];?></td>       
                                             <?php 
                                                 endwhile;
                                             ?>

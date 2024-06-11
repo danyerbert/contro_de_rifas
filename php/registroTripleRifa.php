@@ -89,7 +89,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
         
-        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {

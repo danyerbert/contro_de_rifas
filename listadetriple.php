@@ -13,8 +13,9 @@ $fecha = date("Y-m-d");
 $cedula = $_SESSION['cedula'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
-$sqlRifaMoto = "SELECT m.numero, m.monto_total, v.nombre FROM registro_numero_triple_500 AS m 
-INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
+$sqlRifaMoto = "SELECT m.numero, m.monto_total, m.nombre_comprador, m.cedula, m.cantidad_pago, p.metodo, v.nombre FROM registro_numero_triple_500 AS m 
+INNER JOIN vendedores AS v ON v.cedula = m.vendedor 
+INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago WHERE fecha = '$fecha'";
 $resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
 
 // Cantidad de numeros vendidos.
@@ -89,6 +90,10 @@ $Cantidad = $rowCantidad['numero'];
 												<th>Numero</th>
 												<th>Triplicacion</th>
 												<th>Vendedor</th>
+												<th>Nombre del Comprador</th>
+												<th>Cedula del Comprador</th>
+												<th>Metodo de Pago</th>
+												<th>Cantidad Pagada</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -96,7 +101,11 @@ $Cantidad = $rowCantidad['numero'];
                                         <tr>
                                             <td><?php echo $rowNumero['numero'];?></td>
                                             <td><?php echo $rowNumero['monto_total'] . "$";?></td>
-                                            <td><?php echo $rowNumero['nombre'];?></td>        
+                                            <td><?php echo $rowNumero['nombre'];?></td>
+											<td><?php echo $rowNumero['nombre_comprador'];?></td>
+											<td><?php echo $rowNumero['cedula'];?></td>
+											<td><?php echo $rowNumero['metodo'];?></td>
+											<td><?php echo $rowNumero['cantidad_pago'];?></td>        
                                             <?php 
                                                 endwhile;
                                             ?>

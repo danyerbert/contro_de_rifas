@@ -123,7 +123,7 @@ date_default_timezone_set('America/Caracas');
              $valido['mensaje'] = "Numero no habilitado.";
          }else {
             
-            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre_comprador, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sqlRegistro);
 
             if ($resultadoRegistro === true) {

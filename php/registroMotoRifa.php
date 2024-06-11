@@ -100,7 +100,7 @@ $horaDeCierre = "11:00:00 PM";
             $valido['mensaje'] = "Numero no habilitado.";
         }else {
             
-            $sql = "INSERT INTO registro_moto_numero (id_moto, numero, signo, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$cantidaPago')";
+            $sql = "INSERT INTO registro_moto_numero (id_moto, numero, signo, vendedor, fecha, nombre_comprador, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sql);
     
             if ($resultadoRegistro === true) {

@@ -104,7 +104,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
     //     $valido['success'] = false;
     //     $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
     // }else {
-        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
     
         if ($resultadoRegistro === true) {

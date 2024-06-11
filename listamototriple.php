@@ -12,8 +12,9 @@
 	$cedula = $_SESSION['cedula'];
 	
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
-	$sqlRifaMoto = "SELECT m.numero_primero, m.numero_segundo, m.zodiacal_primero, m.zodiacal_segundo, v.nombre FROM registro_moto_triples AS m 
-	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
+	$sqlRifaMoto = "SELECT m.numero_primero, m.numero_segundo, m.zodiacal_primero, m.zodiacal_segundo, m.nombre_comprador, m.cedula, m.cantidad_pago, p.metodo, v.nombre FROM registro_moto_triples AS m 
+	INNER JOIN vendedores AS v ON v.cedula = m.vendedor
+	INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago  WHERE fecha = '$fecha'";
 	$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
 	
 	// Cantidad de numeros vendidos.
@@ -94,6 +95,10 @@
 												<th>Numero 2</th>
 												<th>Signo 2</th>
 												<th>Vendedor</th>
+												<th>Nombre del Comprador</th>
+												<th>Cedula del Comprador</th>
+												<th>Metodo de Pago</th>
+												<th>Cantidad Pagada</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -104,6 +109,10 @@
                                             <td><?php echo $rowNumero['numero_segundo'];?></td>
                                             <td><?php echo $rowNumero['zodiacal_segundo'];?></td>
                                             <td><?php echo $rowNumero['nombre'];?></td>        
+											<td><?php echo $rowNumero['nombre_comprador'];?></td>
+											<td><?php echo $rowNumero['cedula'];?></td>
+											<td><?php echo $rowNumero['metodo'];?></td>
+											<td><?php echo $rowNumero['cantidad_pago'];?></td>
                                             <?php 
                                                 endwhile;
                                             ?>
