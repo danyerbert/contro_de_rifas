@@ -75,7 +75,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="report/excel/reporteRifaMoto.php"
-                                    target="_blank">excel</a>
+                                    target="_blank">Excel</a>
                                 <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
                             </div>
                         </div>
