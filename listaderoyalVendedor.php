@@ -13,11 +13,11 @@ require "config/conexion.php";
 
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
 	$sqlRifaMoto = "SELECT m.numero, v.nombre FROM registro_numero_doble_oportunidad AS m 
-	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
+	INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha' AND vendedor = '$cedula'";
 	$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
 
 	// Cantidad de numeros vendidos.
-	$sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_numero_doble_oportunidad WHERE fecha = '$fecha'";
+	$sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_numero_doble_oportunidad WHERE fecha = '$fecha' AND vendedor = '$cedula'";
 	$resultadoCantidadVenta = $mysqli->query($sqlCantidadVenta);
 	$rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
 	$Cantidad = $rowCantidad['numero'];

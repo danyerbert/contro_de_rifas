@@ -116,6 +116,31 @@
 												<span class="menu-text">Inicio</span>
 											</a>
 										</li>
+										<li class="sidebar-dropdown">
+											<a href="#">
+												<i class="icon-calendar1"></i>
+												<span class="menu-text">Ver Ventas</span>
+											</a>
+											<div class="sidebar-submenu">
+												<ul>
+													<li>
+														<a href="listamotoVendedor.php">Rifa de Moto</a>
+													</li>
+													<li>
+														<a href="listaderoyalVendedor.php">Rifa Royal</a>
+													</li>
+													<li>
+														<a href="listadetripleVendedor.php">Rifa Triple 500</a>
+													</li>
+													<li>
+														<a href="listademillonariaVendedor.php">Rifa Millonaria</a>
+													</li>
+													<li>
+														<a href="listademototripleVendedor.php">Rifa Moto Triples</a>
+													</li>
+												</ul>
+											</div>
+										</li>
 										';
 										break;
 									case 3:
