@@ -70,7 +70,7 @@
 						<div class="col-lg-4 col-sm-6">
 							<div class="pricing-plan">
 								<div class="pricing-header secondary">
-									<h4 class="pricing-title">Rifa Doble Oportunidad</h4>
+									<h4 class="pricing-title">Rifa Royal</h4>
 								</div>
 								<ul class="pricing-features">
 									<li>Son 1000 números a rifar (de tres cifras)</li>

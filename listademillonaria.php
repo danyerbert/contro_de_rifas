@@ -46,7 +46,19 @@
 					<!-- Page header end -->
 					<div class="row gutters">
 						<div class="col-xl-3 col-sm-6 col-12">
-						<div class="btn-group dropright">
+							<div class="card">
+								<div class="card-body pricing-plan">
+									<h5 class="card-title">Reglas del Juego</h5>
+									<ul class="pricing-features">
+										<li>Son 1000 números a rifar (de tres cifras)</li>
+										<li>Los números van del 000 al 999.</li>
+										<li>El número posee un valor 2$.</li>
+										<li>tiene la opción de elegir 5 números.</li>
+										<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
+									</ul>
+								</div>
+							</div>
+							<div class="btn-group dropright">
 										<button type="button" class="btn btn-primary">
 											<i class="icon-export"></i> Generar Reporte
 										</button>

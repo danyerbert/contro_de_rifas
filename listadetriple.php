@@ -81,6 +81,20 @@ $Cantidad = $rowCantidad['numero'];
 						</div>
 						<div class="col-xl-3 col-sm-6 col-12">
 							<div class="card">
+								<div class="card-body pricing-plan">
+									<h5 class="card-title">Reglas del Juego</h5>
+									<ul class="pricing-features">
+										<li>Son 1000 números a rifar (de tres cifras)</li>
+										<li>Los números van del 000 al 999.</li>
+										<li>Por cada dólar 1$ apostado se <br> gana 500 veces su monto</li>
+										<li>Debe apostar 3$ minimo.</li>
+										<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
 								<div class="card-body">
 									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
 										<div class="carousel-inner">

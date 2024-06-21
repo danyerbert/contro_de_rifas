@@ -80,6 +80,18 @@
 								</div>
 							</div>
 						</div>
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body pricing-plan">
+									<h5 class="card-title">Reglas del Juego</h5>
+									<ul class="pricing-features">
+										<li>Son 1000 numeros a rifar (De tres cifras)</li>
+										<li>Los numero van desde el 000 al 999.</li>
+										<li>Incluye los 12 signos del zodiaco</li>
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 					<!-- Row start -->
 					<div class="row gutters">

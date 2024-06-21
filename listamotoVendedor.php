@@ -87,6 +87,19 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+					<div class="card-body pricing-plan">
+						<h5 class="card-title">Reglas del Juego</h5>
+                        <ul class="pricing-features">
+                            <li>Son 100 numeros a rifar (De dos cifras)</li>
+							<li>Los numero van desde el 00 al 99.</li>
+							<li>Incluye los 12 signos del zodiaco</li>
+							<li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
+						</ul>
+					</div>
+				</div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
 							<div class="card">
 								<div class="card-body">
 									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
