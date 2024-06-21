@@ -122,6 +122,12 @@
 				include "content/modal/bloquearNumeroTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
+			switch ($rol) {
+				case 1:
+					include "content/modal/limitarventa.php"; 
+					echo '<script src="js/bloqueo/limitarventa.js"></script>';
+					break;
+			}
 		?>
 
 	</body>

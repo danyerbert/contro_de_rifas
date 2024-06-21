@@ -5,6 +5,14 @@ const RegistroDeDobleOportunidad = async() => {
     var cedulaVendedor = document.querySelector("#cedulaVendedorDoble").value;
     var fecha = document.querySelector("#fechaDoble").value;
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_doble").value;
+    var metodoDePago = document.querySelector('input[name="metodoDePagoRoyal"]:checked').value;
+    var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilRoyal").value;
+    var cantidadDivisas = document.querySelector("#cantidadDivisasRoyal").value;
+    var cantidadDeBolivares = document.querySelector("#cantidadBolivaresROYAL").value;
+    var valores = []; 
+    for (var i = 0; i < metodoDePago.length; i++) {
+      valores.push(metodoDePago[i].value);
+  }
     if (numero.trim() === '' ||
         tipoDeRifa.trim() === '' ||
         cedulaVendedor.trim() === ''||
@@ -16,8 +24,24 @@ const RegistroDeDobleOportunidad = async() => {
               });
             return;
     }
-
     // Validaciones de campos de comprador.
+    if (!validarnombre(nombreApellido)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "El nombre no cumple con los caracteres establecidos.",
+      });
+    return;
+  }  
+
+  if (!validarcedula(cedula)) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Debe ingresar la cedula en el formato correcto.",
+      });
+    return;
+  }
     if (!validarNumeroDobleOportunidad(numero)) {
         Swal.fire({
             icon: "error",
@@ -42,6 +66,39 @@ const RegistroDeDobleOportunidad = async() => {
       });
     return;
   }
+  
+  switch (metodoDePago) {
+    case "1":
+        if (!validadPagoMovil(ReferenciaPagoMovil)) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Debe ingresar numeros en la referencia",
+          });
+        return;
+        }
+      break;
+    case "2": 
+        if (!validarDivisas(cantidadDivisas)) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Debe ingresar el monto en numeros.",
+          });
+        return;
+        }
+      break
+      case "3":
+          if (!validadBolivares(cantidadDeBolivares)) {
+              Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Debe ingresar la cantidad en numeros.",
+              });
+            return;
+          } 
+        break
+  }
     // Envio de datos
     const datos=new FormData();
     datos.append("cedulaVendedor", cedulaVendedor);
@@ -50,7 +107,23 @@ const RegistroDeDobleOportunidad = async() => {
     datos.append("tipo_de_rifa", tipoDeRifa);
     datos.append("numero", numero);
     datos.append("fecha", fecha);
-
+    switch (metodoDePago) {
+      case "1":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", ReferenciaPagoMovil); 
+        console.log(ReferenciaPagoMovil);
+        break;
+      case "2":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDivisas);
+        console.log(cantidadDivisas); 
+        break;
+      case "3":
+        datos.append("metodoDePago", metodoDePago); 
+        datos.append("referencia", cantidadDeBolivares);
+        console.log(cantidadDeBolivares); 
+        break;
+    }
     var respuesta = await fetch("php/registroDobleRifa.php", {
       method: 'POST',
       body: datos

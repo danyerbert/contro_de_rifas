@@ -6,7 +6,7 @@ require "function.php";
 date_default_timezone_set('America/Caracas');
 $valido['success']=array('success', false, 'mensaje'=>"");
     $horaServer =  date('h:i:s A');
-    $horaDeCierre = "08:00:00 PM";
+    $horaDeCierre = "11:00:00 PM";
 
     if ($horaServer >= $horaDeCierre) {
         $valido['success'] = false;
@@ -50,6 +50,16 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['success'] = false;
         $valido['mensaje'] = "Rifa no coincide.";
     }
+    $metodoDePago = limpiarDatos($_POST['metodoDePago']);
+    if (!preg_match("/\b/" , $metodoDePago)) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "No selecciono el metodo de pago.";
+    }
+    $cantidaPago = limpiarDatos($_POST['referencia']);
+    if ($cantidaPago === '') {
+        $valido['success'] = false;
+        $valido['mensaje'] = "Debe ingresar una cantidad.";
+    }
     $valor = 2;
 
 
@@ -74,7 +84,7 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
         
-        $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa) VALUES (NULL, '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa')";
+        $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {

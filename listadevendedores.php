@@ -145,6 +145,12 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
                 include "content/modal/crearvendedor.php";
 			//Script 
 			include "content/inc/script.php";
+			switch ($rol) {
+				case 1:
+					include "content/modal/limitarventa.php"; 
+					echo '<script src="js/bloqueo/limitarventa.js"></script>';
+					break;
+			}
 		?>
 		<script src="js/funtion.js"></script>
 		<script src="js/registro/registroVendedor.js"></script>

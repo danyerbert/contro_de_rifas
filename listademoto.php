@@ -82,8 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-12 col-12">
-
+            <div class="col-xl-3 col-sm-6 col-12">
 							<div class="card">
 								<div class="card-body">
 									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
@@ -101,9 +100,8 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
-        </div>
+            </div>
         <!-- Row start -->
         <div class="row gutters">
             <div class="col-sm-12">
@@ -160,6 +158,12 @@
 			include "content/modal/bloquearNumeroTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
+            switch ($rol) {
+				case 1:
+					include "content/modal/limitarventa.php"; 
+					echo '<script src="js/bloqueo/limitarventa.js"></script>';
+					break;
+			}
 		?>
 
 </body>

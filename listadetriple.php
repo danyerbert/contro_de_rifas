@@ -11,6 +11,7 @@ date_default_timezone_set('America/Caracas');
 $fecha = date("Y-m-d");
 // GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 $cedula = $_SESSION['cedula'];
+$rol = $_SESSION['rol'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
 $sqlRifaMoto = "SELECT m.numero, m.monto_total, m.nombre_comprador, m.cedula, m.cantidad_pago, p.metodo, v.nombre FROM registro_numero_triple_500 AS m 
@@ -51,7 +52,7 @@ $Cantidad = $rowCantidad['numero'];
 					</div>
 					<!-- Page header end -->
 					<div class="row gutters">
-						<div class="col-xl-3 col-sm-6 col-12">
+					<div class="col-xl-3 col-sm-6 col-12">
 							<div class="info-stats2">
 								<div class="info-icon">
 									<i class="icon-activity"></i>
@@ -76,8 +77,30 @@ $Cantidad = $rowCantidad['numero'];
 									</div>
 								</div>
 							</div>
+							
 						</div>
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
+										<div class="carousel-inner">
+											<div class="carousel-item active">
+												<img src="img/rifas/rifa_triple_500.png" class="rounded d-block w-100" alt="AI Dashboards">
+											</div>
+											<div class="carousel-item">
+												<img src="img/rifas/rifa_triple_500.png" class="rounded d-block w-100" alt="AI Dashboards">
+											</div>
+											<div class="carousel-item">
+												<img src="img/rifas/reglas_rrifas.png" class="rounded d-block w-100" alt="AI Dashboards">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
 					</div>
+					</div>
+					
 					<!-- Row start -->
 					<div class="row gutters">
 						<div class="col-sm-12">
@@ -132,6 +155,13 @@ $Cantidad = $rowCantidad['numero'];
 			include "content/modal/bloquearNumeroTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
+			
+			switch ($rol) {
+				case 1:
+					include "content/modal/limitarventa.php"; 
+					echo '<script src="js/bloqueo/limitarventa.js"></script>';
+					break;
+			}
 		?>
 
 	</body>
