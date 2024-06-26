@@ -7,16 +7,13 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
-    // Logo
-    // $this->Image("../../images/LOGO.jpeg",15,8,33);
-    // Arial bold 15
     $this->SetFont("Arial", "B", 12);
     // Título
-    $this->Cell(200, 5,"Lista de numero de moto triples", 0, 0, "C");
+    $this->Cell(200, 5,"Gran Rifa De Moto", 0, 0, "C");
     //Formato de fecha
-    $this->Cell(-30, 5, "Fecha: ". date("d/m/Y"), 0, 1, "C");
+    // $this->Cell(-30, 5, "Fecha: ". date("d/m/Y"), 0, 1, "C");
     // Salto de línea
-    $this->Ln(20);
+    $this->Ln(10);
 }
 
 // Pie de página

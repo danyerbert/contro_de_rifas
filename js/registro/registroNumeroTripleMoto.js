@@ -178,6 +178,7 @@ const RegistroNumerosTripleMoto = async() =>{
           icon: "success",
           title: "EXITO",
           text: resultado.mensaje,
+          footer: '<a href="report/pdf/ticketRifaMotoTriple.php?irmt='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a>'
         });
         document.querySelector("#registroNumeroMoto").reset();
       }else{

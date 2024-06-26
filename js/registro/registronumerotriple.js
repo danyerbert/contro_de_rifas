@@ -91,7 +91,6 @@ const registroTriple = async() =>{
             text: resultado.mensaje,
           });
         }
-      
       document.querySelector("#registroNumeroTriple").reset();
     }else{
       Swal.fire({

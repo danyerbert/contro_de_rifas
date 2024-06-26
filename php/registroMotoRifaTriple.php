@@ -2,7 +2,7 @@
 require "../config/conexion.php";
 require "function.php";
 
-$valido['success']=array('success', false, 'mensaje'=>"");
+$valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
 
 
 date_default_timezone_set('America/Caracas');
@@ -88,6 +88,22 @@ date_default_timezone_set('America/Caracas');
     }
     $valor = 1;
 
+    $datos = "SELECT MAX(id_rifa_moto_triple) AS id_rifa_moto_triple FROM registro_moto_triples WHERE fecha = '$fecha'";
+    $resultado=mysqli_query($mysqli,$datos);
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $valor1 = $row['id_rifa_moto_triple'];
+            $contadordb = 0;
+            for ($i=0; $i <= $valor1 ; $i++) { 
+                if ($valor1 == 0) {
+                    $contadordb = 1;
+                }else {
+                    $contadordb++;
+                }
+            }
+            $irmt =  date("Y", strtotime($fecha)) ."-"."MT". "-". $contadordb ;
+    }
+
+
     // Verificacion de numero bloqueado.
 
     $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
@@ -123,12 +139,13 @@ date_default_timezone_set('America/Caracas');
              $valido['mensaje'] = "Numero no habilitado.";
          }else {
             
-            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre_comprador, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, irmt, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre_comprador, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$irmt', '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sqlRegistro);
 
             if ($resultadoRegistro === true) {
                 $valido['success'] = true;
                 $valido['mensaje'] = "Registro de numero exitos.";
+                $valido['ticket'] = $irmt;
             }else {
                 $valido['success'] = false;
                 $valido['mensaje'] = "No se logro registrar el numero.";

@@ -147,6 +147,7 @@ const RegistroNumeroMoto = async()=>{
         icon: "success",
         title: "EXITO",
         text: resultado.mensaje,
+        footer: '<a href="report/pdf/ticketRifaMoto.php?irmd='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a>'
       });
       document.querySelector("#registroNumeroMoto").reset();
     }else{

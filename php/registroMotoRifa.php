@@ -2,17 +2,14 @@
 require "../config/conexion.php";
 require "function.php";
 
-$valido['success']=array('success', false, 'mensaje'=>"");
+$valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
 
 
 date_default_timezone_set('America/Caracas');
 $horaServer =  date('h:i:s A');
-$horaDeCierre = "11:00:00 PM";
-
-    if ($horaServer >= $horaDeCierre) {
-        $valido['success'] = false;
-        $valido['mensaje'] = "Cierre realizado.";
-    }elseif ($_POST) {
+$horaDeCierre = "01:00:00 PM";
+    
+if ($_POST) {
     $nombre = limpiarDatos($_POST['nombreApellido']);
     if (!preg_match("/^[a-zA-Z\s]{3,80}/", $nombre)) {
         $nombre = "No obtenidos";
@@ -66,7 +63,21 @@ $horaDeCierre = "11:00:00 PM";
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
-    // Validacion de cantidad de veces que se a vendido el numero ingresado
+
+    $datos = "SELECT MAX(id_moto) AS id_moto FROM registro_moto_numero WHERE fecha = '$fecha'";
+    $resultado=mysqli_query($mysqli,$datos);
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $valor1 = $row['id_moto'];
+            $contadordb = 0;
+            for ($i=0; $i <= $valor1 ; $i++) { 
+                if ($valor1 == 0) {
+                    $contadordb = 1;
+                }else {
+                    $contadordb++;
+                }
+            }
+            $irmot =  date("Y", strtotime($fecha)) ."-"."MD". "-". $contadordb ;
+    }
 
     $valor = 3;
     $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numero' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
@@ -100,12 +111,13 @@ $horaDeCierre = "11:00:00 PM";
             $valido['mensaje'] = "Numero no habilitado.";
         }else {
             
-            $sql = "INSERT INTO registro_moto_numero (id_moto, numero, signo, vendedor, fecha, nombre_comprador, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$cantidaPago')";
+            $sql = "INSERT INTO registro_moto_numero (id_moto, irm, numero, signo, vendedor, fecha, nombre_comprador, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$irmot', '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sql);
     
             if ($resultadoRegistro === true) {
                 $valido['success'] = true;
                 $valido['mensaje'] = "Registro Realizado.";
+                $valido['ticket'] = $irmot;
             }else {
                 $valido['success'] = false;
                 $valido['mensaje'] = "No se realizo el registro";
