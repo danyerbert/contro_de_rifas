@@ -1,10 +1,12 @@
 const registroAcomulado = async() => {
+    var cedula = document.querySelector("#cedulaAcumulado").value;
     var numeroAcumulado = document.querySelector("#numeroAcumuladoTriple").value;
     var vendedorAcumulado = document.querySelector("#vendedorTripleAcumulado").value;
     var fechaAcumulado = document.querySelector("#fechaTripleAcumulado").value;
     var participaAcumulado = document.querySelector("#ParticipaAcumulado").value;
 
-    if (numeroAcumulado.trim() === '' ||
+    if (cedula.trim() === '' ||
+        numeroAcumulado.trim() === '' ||
         vendedorAcumulado.trim() === '' ||
         fechaAcumulado.trim() === '' ||
         participaAcumulado.trim() === ''
@@ -28,6 +30,7 @@ const registroAcomulado = async() => {
 
     const datos = new FormData();
 
+    datos.append("cedula", cedula);
     datos.append("numero_acomulado", numeroAcumulado);
     datos.append("vendedor", vendedorAcumulado);
     datos.append("fecha", fechaAcumulado);

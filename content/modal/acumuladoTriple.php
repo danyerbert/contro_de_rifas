@@ -12,6 +12,10 @@
     <div class="modal-body">
         <form action="" id="registroNumeroAcumuladoTriple">
           <h5 class="modal-title fs-7">Eleccion del numero</h5>
+          <div class="form-group">
+              <label for="cedulaAcumulado" class="col-form-label">Cedula</label>
+              <input type="text" class="form-control" id="cedulaAcumulado" name="cedulaAcumulado" pattern="[0-9]{8}">
+          </div>
         <div class="form-group">
               <label for="numeroAcumuladoTriple" class="col-form-label">Numero</label>
               <input type="text" class="form-control" id="numeroAcumuladoTriple" name="numeroAcumuladoTriple" pattern="[0-9]{4,4}" maxlength="4">
