@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Iniciar Session</h2>
+                        <h2 class="form-title">App de Rifas</h2>
                         <form method="POST" class="register-form" id="login-form" action="login.php">
                             <div class="form-group">
                                 <label for="usuario"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit"
-                                    value="Iniciar Session" />
+                                    value="Iniciar Sesión" />
                             </div>
                         </form>
                     </div>
