@@ -6,9 +6,9 @@ const RegistroDeDobleOportunidad = async() => {
     var fecha = document.querySelector("#fechaDoble").value;
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_doble").value;
     var metodoDePago = document.querySelector('input[name="metodoDePagoRoyal"]:checked').value;
-    var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilRoyal").value;
-    var cantidadDivisas = document.querySelector("#cantidadDivisasRoyal").value;
-    var cantidadDeBolivares = document.querySelector("#cantidadBolivaresROYAL").value;
+    var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilRoyala").value;
+    var cantidadDivisas = document.querySelector("#cantidadDivisasRoyala").value;
+    var cantidadDeBolivares = document.querySelector("#cantidadBolivaresROYALa").value;
     var valores = []; 
     for (var i = 0; i < metodoDePago.length; i++) {
       valores.push(metodoDePago[i].value);
@@ -136,6 +136,7 @@ const RegistroDeDobleOportunidad = async() => {
         icon: "success",
         title: "EXITO",
         text: resultado.mensaje,
+        footer: '<a href="report/pdf/ticketRifaRoyal.php?irroyal='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a>'
       });
       document.querySelector("#registroNumeroMoto").reset();
     }else{

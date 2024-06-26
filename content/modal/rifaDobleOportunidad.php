@@ -56,15 +56,15 @@
           </div>
           <div class="form-group" id="ReferenciaPagoMovilRoyal" style="display:none">
               <label for="ReferenciaPagoMovilRoyal" class="col-form-label">Referencia</label>
-              <input type="text" class="form-control" id="ReferenciaPagoMovilRoyal" name="ReferenciaPagoMovilRoyal" pattern="[0-9]" maxlength="20">
+              <input type="text" class="form-control" id="ReferenciaPagoMovilRoyala" name="ReferenciaPagoMovilRoyala" pattern="[0-9]" maxlength="20">
           </div>
           <div class="form-group" id="cantidadDivisasRoyal" style="display:none">
               <label for="cantidadDivisasRoyal" class="col-form-label">Cantidad en Dolares</label>
-              <input type="text" class="form-control" id="cantidadDivisasRoyal" name="cantidadDivisasRoyal" pattern="[0-9]" maxlength="20">
+              <input type="text" class="form-control" id="cantidadDivisasRoyala" name="cantidadDivisasRoyala" pattern="[0-9]" maxlength="20">
           </div>
           <div class="form-group" id="cantidadBolivaresRoyal" style="display:none">
               <label for="cantidadBolivaresROYAL" class="col-form-label">Cantidad en Bolivares</label>
-              <input type="text" class="form-control" id="cantidadBolivaresROYAL" name="cantidadBolivaresROYAL" pattern="[0-9]" maxlength="20">
+              <input type="text" class="form-control" id="cantidadBolivaresROYALa" name="cantidadBolivaresROYALa" pattern="[0-9]" maxlength="20">
           </div>
           <input type="hidden" name="cedulaVendedor" id="cedulaVendedorDoble" value="<?php echo $cedula?>">
           <input type="hidden" name="fechaDoble" id="fechaDoble" value="<?php 

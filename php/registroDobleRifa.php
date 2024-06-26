@@ -4,7 +4,7 @@ require "../config/conexion.php";
 require "function.php";
 
 date_default_timezone_set('America/Caracas');
-$valido['success']=array('success', false, 'mensaje'=>"");
+$valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     $horaServer =  date('h:i:s A');
     $horaDeCierre = "11:00:00 PM";
 
@@ -62,6 +62,20 @@ $valido['success']=array('success', false, 'mensaje'=>"");
     }
     $valor = 2;
 
+    $datos = "SELECT MAX(id_doble_oportunidad) AS id_doble_oportunidad FROM registro_numero_doble_oportunidad WHERE fecha = '$fecha'";
+    $resultado=mysqli_query($mysqli,$datos);
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $valor1 = $row['id_doble_oportunidad'];
+            $contadordb = 0;
+            for ($i=0; $i <= $valor1 ; $i++) { 
+                if ($valor1 == 0) {
+                    $contadordb = 1;
+                }else {
+                    $contadordb++;
+                }
+            }
+            $irroyal =  date("Y", strtotime($fecha)) ."-"."RR". "-". $contadordb ;
+    }
 
     $sqlNumeroBloqueado = "SELECT numero, fecha, tipo_de_rifa FROM numero_bloqueado WHERE numero = '$numero' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
@@ -84,12 +98,13 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
         
-        $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, irroyal, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$irroyal', '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {
             $valido['success'] = true;
             $valido['mensaje'] = "Registro Realizado.";
+            $valido['ticket'] = $irroyal;
         }else {
             $valido['success'] = false;
             $valido['mensaje'] = "Fallo al realizar el registro.";
