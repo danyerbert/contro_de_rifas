@@ -3,7 +3,7 @@
 require "../config/conexion.php";
 require "function.php";
 date_default_timezone_set('America/Caracas');
-$valido['success']=array('success', false, 'mensaje'=>"");
+$valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     $horaServer =  date('h:i:s A');
     $horaDeCierre = "11:00:00 PM";
 
@@ -72,7 +72,6 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
-    // Va
     $valor = 2;
 
     // $sqlNumeroBloqueado = "SELECT numero FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
@@ -104,12 +103,28 @@ $valido['success']=array('success', false, 'mensaje'=>"");
     //     $valido['success'] = false;
     //     $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
     // }else {
-        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        $datos = "SELECT MAX(id_millonaria) AS id_millonaria  FROM registro_numero_millonaria WHERE fecha = '$fecha'";
+        $resultado=mysqli_query($mysqli,$datos);
+        while ($row = mysqli_fetch_assoc($resultado)) {
+            $valor1 = $row['id_millonaria'];
+                $contadordb = 0;
+                for ($i=0; $i <= $valor1 ; $i++) { 
+                    if ($valor1 == 0) {
+                        $contadordb = 1;
+                    }else {
+                        $contadordb++;
+                    }
+                }
+                $irmm =  date("Y", strtotime($fecha)) ."-"."MM". "-". $contadordb ;
+        }
+
+        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, irmm, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$irmm', '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
     
         if ($resultadoRegistro === true) {
             $valido['success'] = true;
             $valido['mensaje'] = "Se registro correctamente.";
+            $valido['ticket'] = $irmm;
         }else {
             $valido['success'] = false;
             $valido['mensaje'] = "No se realizo el registro.";

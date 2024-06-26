@@ -178,6 +178,7 @@ const RegistroNumeroMillonaria = async() =>{
           icon: "success",
           title: "EXITO",
           text: resultado.mensaje,
+          footer: '<a href="report/pdf/ticketRifaMillonaria.php?irmm='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a>'
         });
         document.querySelector("#rifamillonaria").reset();
       }else{
