@@ -146,7 +146,7 @@
 									case 3:
 										echo '
 										<li class="active">
-											<a href="administrador.php" class="current-page">
+											<a href="supervisor.php" class="current-page">
 												<i class="icon-home2"></i>
 												<span class="menu-text">Inicio</span>
 											</a>

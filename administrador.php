@@ -60,16 +60,29 @@
 									<li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
 								</ul>
 								<div class="pricing-footer">
-									<div class="btn-group dropright">
-										<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMotoTrtiples">Ticket de 1$</a> <br>
-										<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMoto">Ticket de 3$</a>
-									</div>
+									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMoto">Ticket</a>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-sm-6">
 							<div class="pricing-plan">
 								<div class="pricing-header secondary">
+									<h4 class="pricing-title">Rifa de Moto Triples</h4>
+								</div>
+								<ul class="pricing-features">
+									<li>Son 1000 numeros a rifar (De tres cifras)</li>
+									<li>Los numero van desde el 000 al 999.</li>
+									<li>Incluye los 12 signos del zodiaco</li>
+									<li>El premio se gana con el triple del <br> número más el signo del zodiaco.</li>
+								</ul>
+								<div class="pricing-footer">
+									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaMotoTrtiples">Ticket</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+							<div class="pricing-plan">
+								<div class="pricing-header">
 									<h4 class="pricing-title">Rifa Royal</h4>
 								</div>
 								<ul class="pricing-features">
@@ -79,13 +92,13 @@
 									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
 								</ul>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaDobleOportunidad">Ticket</a>
+									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaDobleOportunidad">Ticket</a>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-sm-12">
 							<div class="pricing-plan">
-								<div class="pricing-header">
+								<div class="pricing-header secondary">
 									<h4 class="pricing-title">Rifa Millonaria</h4>
 								</div>
 								<ul class="pricing-features">
@@ -96,14 +109,14 @@
 									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
 								</ul>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMillonaria">Ticket</a>
+									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaMillonaria">Ticket</a>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-4 col-sm-12">
 							<div class="pricing-plan">
-								<div class="pricing-header secondary">
+								<div class="pricing-header">
 									<h4 class="pricing-title">Rifa Triple 500</h4>
 								</div>
 								<ul class="pricing-features">
@@ -114,7 +127,7 @@
 									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
 								</ul>
 								<div class="pricing-footer">
-									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaTriple">Ticket</a>
+									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaTriple">Ticket</a>
 								</div>
 							</div>
 						</div>
