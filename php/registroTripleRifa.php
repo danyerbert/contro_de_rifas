@@ -4,7 +4,7 @@ require "../config/conexion.php";
 require "function.php";
 
 date_default_timezone_set('America/Caracas');
-$valido['success']=array('success', false, 'mensaje'=>"");
+$valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     $horaServer =  date('h:i:s A');
     $horaDeCierre = "01:00:00 PM";
 
@@ -71,6 +71,21 @@ $valido['success']=array('success', false, 'mensaje'=>"");
     }
     $monto_total = $cantidad * 500;
 
+    $datos = "SELECT MAX(id_triple) AS id_triple FROM registro_numero_triple_500 WHERE fecha = '$fecha'";
+    $resultado=mysqli_query($mysqli,$datos);
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $valor1 = $row['id_triple'];
+            $contadordb = 0;
+            for ($i=0; $i <= $valor1 ; $i++) { 
+                if ($valor1 == 0) {
+                    $contadordb = 1;
+                }else {
+                    $contadordb++;
+                }
+            }
+            $irtq =  date("Y", strtotime($fecha)) ."-"."TQ". "-". $contadordb ;
+    }
+    // BUSCAR NUMERO BLOQUEADO
     $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE numero = '$numero' AND fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
     $num = $resultadoBloqueado->num_rows;
@@ -89,12 +104,13 @@ $valido['success']=array('success', false, 'mensaje'=>"");
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
         
-        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, irtq, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$irtq', '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {
             $valido['success'] = true;
             $valido['mensaje'] = "Registro Realizado.";
+            $valido['ticket'] = $irtq;
         }else {
             $valido['success'] = false;
             $valido['mensaje'] = "No se realizo el registro";

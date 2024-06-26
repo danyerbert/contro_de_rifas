@@ -154,15 +154,16 @@ const registroTriple2 = async() =>{
       ) {
           Swal.fire({
             icon: "success",
-            title: "Registrado",
-            text: resultado.mensaje,
-            footer: '<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#AcumuladoTriple">Partica Acumulado.</a>'
+            title: resultado.mensaje,
+            html: '<a href="report/pdf/ticketRifaTriple500.php?irt500='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a> ',
+            footer: '<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#AcumuladoTriple">Partica Acumulado.</a> <br> '
           });
         }else{
           Swal.fire({
             icon: "success",
             title: "Registrado",
             text: resultado.mensaje,
+            footer: '<a href="report/pdf/ticketRifaTriple500.php?irt500='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a> '
           });
         }
       
