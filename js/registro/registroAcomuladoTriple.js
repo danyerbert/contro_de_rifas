@@ -48,6 +48,7 @@ const registroAcomulado = async() => {
           icon: "success",
           title: "EXITO",
           text: resultado.mensaje,
+          footer: '<a href="report/pdf/ticketAcumulado.php?irta='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a>'
         });
         document.querySelector("#registroNumeroAcumuladoTriple").reset();
       }else{
