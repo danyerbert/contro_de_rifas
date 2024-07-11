@@ -24,110 +24,130 @@
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 ?>
-		
 
-			<!-- Page content start  -->
-			<div class="page-content">
 
-				<!-- Main container start -->
-				<div class="main-container">
+<!-- Page content start  -->
+<div class="page-content">
 
-					<?php
+    <!-- Main container start -->
+    <div class="main-container">
+
+        <?php
 						include "content/inc/navbar.php";
 					?>
 
-					<!-- Page header start -->
-					<div class="page-header">
+        <!-- Page header start -->
+        <div class="page-header">
 
-						<!-- Breadcrumb start -->
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item">Vendedor Home</li>
-						</ol>
-					</div>
-					<!-- Page header end -->
-					<!-- Row start -->
-					<div class="row gutters">
-						<div class="col-lg-4 col-sm-6">
-							<div class="pricing-plan">
-								<div class="pricing-header">
-									<h4 class="pricing-title">Rifa de Moto</h4>
-								</div>
-								<ul class="pricing-features">
-								<li>Son 100 numeros a rifar (De dos cifras)</li>
-									<li>Los numero van desde el 00 al 99.</li>
-									<li>Incluye los 12 signos del zodiaco</li>
-									<li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
-								</ul>
-								<div class="pricing-footer">
-									<div class="btn-group dropright">
-									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMotoTrtiples">Ticket de 1$</a> <br>
-										<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMoto">Ticket de 3$</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="pricing-plan">
-								<div class="pricing-header secondary">
-									<h4 class="pricing-title">Rifa Doble Oportunidad</h4>
-								</div>
-								<ul class="pricing-features">
-									<li>Son 1000 números a rifar (de tres cifras)</li>
-									<li>Los números van del 000 al 999.</li>
-									<li>El número posee un valor 2$.</li>
-									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
-								</ul>
-								<div class="pricing-footer">
-									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaDobleOportunidad">Ticket</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-12">
-							<div class="pricing-plan">
-								<div class="pricing-header">
-									<h4 class="pricing-title">Rifa Millonaria</h4>
-								</div>
-								<ul class="pricing-features">
-									<li>Son 1000 números a rifar (de tres cifras)</li>
-									<li>Los números van del 000 al 999.</li>
-									<li>El número posee un valor 2$.</li>
-									<li>tiene la opción de elegir 5 números.</li>
-									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
-								</ul>
-								<div class="pricing-footer">
-									<a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaMillonaria">Ticket</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-sm-12">
-							<div class="pricing-plan">
-								<div class="pricing-header secondary">
-									<h4 class="pricing-title">Rifa Triple 500</h4>
-								</div>
-								<ul class="pricing-features">
-									<li>Son 1000 números a rifar (de tres cifras)</li>
-									<li>Los números van del 000 al 999.</li>
-									<li>Por cada dólar 1$ apostado se gana 500 veces su monto</li>
-									<li>Debe apostar 3$ minimo.</li>
-									<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
-								</ul>
-								<div class="pricing-footer">
-									<a href="#" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#rifaTriple">Ticket</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
-				</div>
-				<!-- Main container end -->
+            <!-- Breadcrumb start -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Vendedor Home</li>
+            </ol>
+        </div>
+        <!-- Page header end -->
+        <!-- Row start -->
+        <div class="row gutters">
+            <div class="col-lg-4 col-sm-6">
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h4 class="pricing-title">Rifa de Moto</h4>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Son 100 numeros a rifar (De dos cifras)</li>
+                        <li>Los numero van desde el 00 al 99.</li>
+                        <li>Incluye los 12 signos del zodiaco</li>
+                        <li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#rifaMoto">Ticket</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="pricing-plan">
+                    <div class="pricing-header secondary">
+                        <h4 class="pricing-title">Rifa de Moto Triples</h4>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Son 1000 numeros a rifar (De tres cifras)</li>
+                        <li>Los numero van desde el 000 al 999.</li>
+                        <li>Incluye los 12 signos del zodiaco</li>
+                        <li>El premio se gana con el triple del <br> número más el signo del zodiaco.</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-secondary btn-lg" data-toggle="modal"
+                            data-target="#rifaMotoTrtiples">Ticket</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h4 class="pricing-title">Rifa Doble Oportunidad</h4>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Son 1000 números a rifar (de tres cifras)</li>
+                        <li>Los números van del 000 al 999.</li>
+                        <li>El número posee un valor 2$.</li>
+                        <li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o
+                            Triple Gana.</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#rifaDobleOportunidad">Ticket</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="pricing-plan">
+                    <div class="pricing-header secondary">
+                        <h4 class="pricing-title">Rifa Millonaria</h4>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Son 1000 números a rifar (de tres cifras)</li>
+                        <li>Los números van del 000 al 999.</li>
+                        <li>El número posee un valor 2$.</li>
+                        <li>tiene la opción de elegir 5 números.</li>
+                        <li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o
+                            Triple Gana.</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#" class="btn btn-secondary btn-lg" data-toggle="modal"
+                            data-target="#rifaMillonaria">Ticket</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="pricing-plan">
+                <div class="pricing-header">
+                    <h4 class="pricing-title">Rifa Triple 500</h4>
+                </div>
+                <ul class="pricing-features">
+                    <li>Son 1000 números a rifar (de tres cifras)</li>
+                    <li>Los números van del 000 al 999.</li>
+                    <li>Por cada dólar 1$ apostado se gana 500 veces su monto</li>
+                    <li>Debe apostar 3$ minimo.</li>
+                    <li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o
+                        Triple Gana.</li>
+                </ul>
+                <div class="pricing-footer">
+                    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaTriple">Ticket</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+</div>
+<!-- Main container end -->
 
-			</div>
-			<!-- Page content end -->
+</div>
+<!-- Page content end -->
 
-		</div>
-		<!-- Page wrapper end -->
-		<?php
+</div>
+<!-- Page wrapper end -->
+<?php
 			// Modales Registrar Numeros de Rifas
 				include "content/modal/rifamoto.php";
 				include "content/modal/rifaDobleOportunidad.php";
@@ -138,13 +158,13 @@
 			//Script 
 			include "content/inc/script.php";
 		?>
-		<script src="js/funtion.js"></script>
-		<!-- JS para el tema de recoleccion de informacion -->
-		<script src="js/registro/registroNumeroMoto.js"></script>
-		<script src="js/registro/registroNumeroDoble.js"></script>
-		<script src="js/registro//registronumerotriple2.js"></script>
-		<script src="js/registro/registroNumeroMillonaria.js"></script>
-		<script src="js/registro/registroAcomuladoTriple.js"></script>
-	</body>
+<script src="js/funtion.js"></script>
+<!-- JS para el tema de recoleccion de informacion -->
+<script src="js/registro/registroNumeroMoto.js"></script>
+<script src="js/registro/registroNumeroDoble.js"></script>
+<script src="js/registro//registronumerotriple2.js"></script>
+<script src="js/registro/registroNumeroMillonaria.js"></script>
+<script src="js/registro/registroAcomuladoTriple.js"></script>
+</body>
 
 </html>

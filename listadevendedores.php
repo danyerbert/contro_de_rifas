@@ -15,36 +15,43 @@ $cedula = $_SESSION['cedula'];
 $sqlVendedores = "SELECT cedula, nombre, telefono, correo FROM vendedores";
 $respuestaVendedores = $mysqli->query($sqlVendedores);
 
+$zodiaco = "SELECT id_zodiaco, zodiaco FROM zodiaco";
+	$resultadoZodiaco = $mysqli->query($zodiaco);
+	
+	// Consulta para traer todas las rifas creadas
+	$sqlRifas = "SELECT id_rifas, nombre FROM tipo_de_rifas";
+	$resultadoRifas = $mysqli->query($sqlRifas);
+
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 
 ?>
-		
 
-			<!-- Page content start  -->
-			<div class="page-content">
 
-				<!-- Main container start -->
-				<div class="main-container">
+<!-- Page content start  -->
+<div class="page-content">
 
-					<?php
+    <!-- Main container start -->
+    <div class="main-container">
+
+        <?php
 						include "content/inc/navbar.php";
 					?>
 
-					<!-- Page header start -->
-					<div class="page-header">
+        <!-- Page header start -->
+        <div class="page-header">
 
-						<!-- Breadcrumb start -->
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item">Administrador | Lista de vendedores</li>
-						</ol>
-						<!-- Breadcrumb end -->
+            <!-- Breadcrumb start -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Administrador | Lista de vendedores</li>
+            </ol>
+            <!-- Breadcrumb end -->
 
-					</div>
-					<!-- Page header end -->
-					<div class="row gutters">
-						<div class="col-xl-3 col-sm-6 col-12">
-							<?php 
+        </div>
+        <!-- Page header end -->
+        <div class="row gutters">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <?php 
 								switch ($rol) {
 									case 1:
 										echo '
@@ -55,46 +62,47 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
 										break;
 								}
 							?>
-						</div>
-					</div>
-                    <br>
-					<!-- Row start -->
-					<div class="row gutters">
-						<div class="col-sm-12">
-						<div class="table-container">
-								<div class="t-header">Numeros Vendidos</div>
-								<div class="table-responsive">
-									<table id="basicExample" class="table custom-table">
-										<thead>
-											<tr>
-												<th>Nombre</th>
-												<th>Cedula</th>
-												<th>Telefono</th>
-												<th>Correo</th>
-                                                <th>Opciones</th>
-											</tr>
-										</thead>
-										<tbody>
-										<?php
+            </div>
+        </div>
+        <br>
+        <!-- Row start -->
+        <div class="row gutters">
+            <div class="col-sm-12">
+                <div class="table-container">
+                    <div class="t-header">Numeros Vendidos</div>
+                    <div class="table-responsive">
+                        <table id="basicExample" class="table custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Cedula</th>
+                                    <th>Telefono</th>
+                                    <th>Correo</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                             while ($row = $respuestaVendedores->fetch_assoc()) :
                                                 
                                             ?>
-                                        <tr>
-                                            <td><?php echo $row['nombre']; ?></td>
-                                            <td><?php echo $row['cedula']; ?></td>
-                                            <td><?php echo $row['telefono']; ?></td>
-                                            <td><?php echo $row['correo']; ?></td>
-                                                <td>
-                                                    <div class="btn-group dropright">
-                                                        <button type="button" class="btn btn-primary">
-                                                            Opciones
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            <span class="sr-only">Toggle Dropdown</span>
-                                                        </button>
-                                                        <div class="dropdown-menu">
-															<?php 
+                                <tr>
+                                    <td><?php echo $row['nombre']; ?></td>
+                                    <td><?php echo $row['cedula']; ?></td>
+                                    <td><?php echo $row['telefono']; ?></td>
+                                    <td><?php echo $row['correo']; ?></td>
+                                    <td>
+                                        <div class="btn-group dropright">
+                                            <button type="button" class="btn btn-primary">
+                                                Opciones
+                                            </button>
+                                            <button type="button"
+                                                class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <?php 
 																switch ($rol) {
 																	case 1:
 																			echo '
@@ -110,32 +118,32 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
 																		break;
 																}
 															?>
-                                                        </div>
-                                                    </div>
-                                                </td>
-											</tr>
-											<?php 
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php 
                                                 include "content/modal/crearusuario.php";
                                                 include "content/modal/verventas.php";
 
                                                 endwhile;
                                             ?>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
-				</div>
-				<!-- Main container end -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row end -->
+    </div>
+    <!-- Main container end -->
 
-			</div>
-			<!-- Page content end -->
+</div>
+<!-- Page content end -->
 
-		</div>
-		<!-- Page wrapper end -->
-		<?php
+</div>
+<!-- Page wrapper end -->
+<?php
 				//Modales de bloqueo de numeros
 				include "content/modal/bloquearNumeroMoto.php"; 
 				include "content/modal/bloquearNumeroDoble.php"; 
@@ -152,9 +160,15 @@ $respuestaVendedores = $mysqli->query($sqlVendedores);
 					break;
 			}
 		?>
-		<script src="js/funtion.js"></script>
-		<script src="js/registro/registroVendedor.js"></script>
-		<script src="js/registro/registroUsuario.js"></script>
-	</body>
+<script src="js/funtion.js"></script>
+<script src="js/registro/registroVendedor.js"></script>
+<script src="js/registro/registroUsuario.js"></script>
+<!-- JS para el bloqueo de numeros -->
+<script src="js/bloqueo/bloqueoNumeroMoto.js"></script>
+<script src="js/bloqueo/bloqueoNumeroDoble.js"></script>
+<script src="js/bloqueo/bloqueoNumeroMillonaria.js"></script>
+<script src="js/bloqueo/bloqueoNumeroTriple.js"></script>
+<script src="js/bloqueo/limitarventa.js"></script>
+</body>
 
 </html>
