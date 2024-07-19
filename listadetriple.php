@@ -29,140 +29,145 @@ $Cantidad = $rowCantidad['numero'];
 	include "content/inc/sidebar.php";
 
 ?>
-		
 
-			<!-- Page content start  -->
-			<div class="page-content">
 
-				<!-- Main container start -->
-				<div class="main-container">
+<!-- Page content start  -->
+<div class="page-content">
 
-					<?php
+    <!-- Main container start -->
+    <div class="main-container">
+
+        <?php
 						include "content/inc/navbar.php";
 					?>
 
-					<!-- Page header start -->
-					<div class="page-header">
+        <!-- Page header start -->
+        <div class="page-header">
 
-						<!-- Breadcrumb start -->
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item">Administrador | Lista de Rifa Triple 500</li>
-						</ol>
-						<!-- Breadcrumb end -->
-					</div>
-					<!-- Page header end -->
-					<div class="row gutters">
-					<div class="col-xl-3 col-sm-6 col-12">
-							<div class="info-stats2">
-								<div class="info-icon">
-									<i class="icon-activity"></i>
-								</div>
-								<div class="sale-num">
-									<h4>Estadisticas</h4>
-									<p>Numeros Vendidos:</p>
-									<h5><?php echo $Cantidad;?></h5>
-									<br>
-									<div class="btn-group dropright">
-										<button type="button" class="btn btn-primary">
-											<i class="icon-export"></i> Generar Reporte
-										</button>
-										<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-											data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<span class="sr-only">Toggle Dropdown</span>
-										</button>
-										<div class="dropdown-menu">
-											<a class="dropdown-item" href="report/excel/reporteRifaTriple.php" target="_blank">Excel</a>
-											<a class="dropdown-item" href="report/pdf/reporteRifaTriple.php" target="_blank">PDF</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-						<div class="col-xl-3 col-sm-6 col-12">
-							<div class="card">
-								<div class="card-body pricing-plan">
-									<h5 class="card-title">Reglas del Juego</h5>
-									<ul class="pricing-features">
-										<li>Son 1000 números a rifar (de tres cifras)</li>
-										<li>Los números van del 000 al 999.</li>
-										<li>Por cada dólar 1$ apostado se <br> gana 500 veces su monto</li>
-										<li>Debe apostar 3$ minimo.</li>
-										<li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple Táchira o Triple Gana.</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-sm-6 col-12">
-							<div class="card">
-								<div class="card-body">
-									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<img src="img/rifas/rifa_triple_500.png" class="rounded d-block w-100" alt="AI Dashboards">
-											</div>
-											<div class="carousel-item">
-												<img src="img/rifas/rifa_triple_500.png" class="rounded d-block w-100" alt="AI Dashboards">
-											</div>
-											<div class="carousel-item">
-												<img src="img/rifas/reglas_rrifas.png" class="rounded d-block w-100" alt="AI Dashboards">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+            <!-- Breadcrumb start -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Administrador | Lista de Rifa Triple 500</li>
+            </ol>
+            <!-- Breadcrumb end -->
+        </div>
+        <!-- Page header end -->
+        <div class="row gutters">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="info-stats2">
+                    <div class="info-icon">
+                        <i class="icon-activity"></i>
+                    </div>
+                    <div class="sale-num">
+                        <h4>Estadisticas</h4>
+                        <p>Numeros Vendidos:</p>
+                        <h5><?php echo $Cantidad;?></h5>
+                        <br>
+                        <div class="btn-group dropright">
+                            <button type="button" class="btn btn-primary">
+                                <i class="icon-export"></i> Generar Reporte
+                            </button>
+                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="report/excel/reporteRifaTriple.php"
+                                    target="_blank">Excel</a>
+                                <a class="dropdown-item" href="report/pdf/reporteRifaTriple.php" target="_blank">PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-					</div>
-					</div>
-					
-					<!-- Row start -->
-					<div class="row gutters">
-						<div class="col-sm-12">
-						<div class="table-container">
-								<div class="t-header">Numeros Vendidos</div>
-								<div class="table-responsive">
-									<table id="basicExample" class="table custom-table">
-										<thead>
-											<tr>
-												<th>Numero</th>
-												<th>Triplicacion</th>
-												<th>Vendedor</th>
-												<th>Nombre del Comprador</th>
-												<th>Cedula del Comprador</th>
-												<th>Metodo de Pago</th>
-												<th>Cantidad Pagada</th>
-											</tr>
-										</thead>
-										<tbody>
-										<?php while ($rowNumero = $resultadoRifaMoto->fetch_assoc()):?>
-                                        <tr>
-                                            <td><?php echo $rowNumero['numero'];?></td>
-                                            <td><?php echo $rowNumero['monto_total'] . "$";?></td>
-                                            <td><?php echo $rowNumero['nombre'];?></td>
-											<td><?php echo $rowNumero['nombre_comprador'];?></td>
-											<td><?php echo $rowNumero['cedula'];?></td>
-											<td><?php echo $rowNumero['metodo'];?></td>
-											<td><?php echo $rowNumero['cantidad_pago'];?></td>        
-                                            <?php 
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body pricing-plan">
+                        <h5 class="card-title">Reglas del Juego</h5>
+                        <ul class="pricing-features">
+                            <li>Son 1000 números a rifar (de tres cifras)</li>
+                            <li>Los números van del 000 al 999.</li>
+                            <li>Por cada dólar 1$ apostado se <br> gana 500 veces su monto</li>
+                            <li>Debe apostar 3$ minimo.</li>
+                            <li>El premio se gana con el triple del <br> número pegado en las loterías <br> Triple
+                                Táchira o Triple Gana.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="img/rifas/rifa_triple_500.png" class="rounded d-block w-100"
+                                        alt="AI Dashboards">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/rifas/rifa_triple_500.png" class="rounded d-block w-100"
+                                        alt="AI Dashboards">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/rifas/reglas_rrifas.png" class="rounded d-block w-100"
+                                        alt="AI Dashboards">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Row start -->
+        <div class="row gutters">
+            <div class="col-sm-12">
+                <div class="table-container">
+                    <div class="t-header">Numeros Vendidos</div>
+                    <div class="table-responsive">
+                        <table id="basicExample" class="table custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Numero</th>
+                                    <th>Triplicacion</th>
+                                    <th>Vendedor</th>
+                                    <th>Nombre del Comprador</th>
+                                    <th>Cedula del Comprador</th>
+                                    <th>Metodo de Pago</th>
+                                    <th>Cantidad Pagada</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($rowNumero = $resultadoRifaMoto->fetch_assoc()):?>
+                                <tr>
+                                    <td><?php echo $rowNumero['numero'];?></td>
+                                    <td><?php echo $rowNumero['monto_total'] . "$";?></td>
+                                    <td><?php echo $rowNumero['nombre'];?></td>
+                                    <td><?php echo $rowNumero['nombre_comprador'];?></td>
+                                    <td><?php echo $rowNumero['cedula'];?></td>
+                                    <td><?php echo $rowNumero['metodo'];?></td>
+                                    <td><?php echo $rowNumero['cantidad_pago'];?></td>
+                                    <?php 
                                                 endwhile;
                                             ?>
-                                        </tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Row end -->
-				</div>
-				<!-- Main container end -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row end -->
+    </div>
+    <!-- Main container end -->
 
-			</div>
-			<!-- Page content end -->
+</div>
+<!-- Page content end -->
 
-		</div>
-		<!-- Page wrapper end -->
-		<?php
+</div>
+<!-- Page wrapper end -->
+<?php
 			//Modales de bloqueo de numeros
 			include "content/modal/bloquearNumeroMoto.php"; 
 			include "content/modal/bloquearNumeroDoble.php"; 
@@ -178,6 +183,6 @@ $Cantidad = $rowCantidad['numero'];
 			}
 		?>
 
-	</body>
+</body>
 
 </html>
