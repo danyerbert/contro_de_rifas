@@ -10,6 +10,7 @@
 	$fecha = date("Y-m-d");
 	// GUARDAMOS EL VALOR DE LA SESSION EN UNA VARIABLE PARA SU USO
 	$cedula = $_SESSION['cedula'];
+    $rol = $_SESSION['rol'];
 	
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
 	$sqlRifaMoto = "SELECT m.numero, m.fecha, m.nombre_comprador, m.cedula, m.cantidad_pago, m.referencia_pm, p.metodo, s.zodiaco, v.nombre FROM registro_moto_numero AS m 
@@ -25,7 +26,8 @@
 	$Cantidad = $rowCantidad['numero'];
 	$MontoTotal = $Cantidad * 3;
 	
-
+    $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
+    $resultadoMetodoPago = $mysqli->query($sqlMetodoPago);
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 
@@ -65,20 +67,8 @@
                         <p>Monto Total:</p>
                         <h5><?php echo $MontoTotal . "$";?></h5>
                         <br>
-                        <div class="btn-group dropright">
-                            <button type="button" class="btn btn-primary">
-                                <i class="icon-export"></i> Generar Reporte
-                            </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="report/excel/reporteRifaMoto.php"
-                                    target="_blank">Excel</a>
-                                <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
-                            </div>
-                        </div>
+                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#generarReporte"> <i
+                                class="icon-export"></i> Generar Reporte</a>
                     </div>
                 </div>
             </div>
@@ -174,6 +164,7 @@
 			include "content/modal/bloquearNumeroMoto.php"; 
 			include "content/modal/bloquearNumeroDoble.php"; 
 			include "content/modal/bloquearNumeroTriple.php"; 
+			include "content/modal/report/generarReporteRifaMoto.php"; 
 			//Script 
 			include "content/inc/script.php";
             switch ($rol) {

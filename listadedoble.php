@@ -24,6 +24,9 @@ require "config/conexion.php";
 	$Cantidad = $rowCantidad['numero'];
 	$MontoTotal = $Cantidad * 2;
 
+    $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
+    $resultadoMetodoPago = $mysqli->query($sqlMetodoPago);
+
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 
@@ -63,20 +66,8 @@ require "config/conexion.php";
                         <p>Monto Total:</p>
                         <h5><?php echo $MontoTotal . "$";?></h5>
                         <br>
-                        <div class="btn-group dropright">
-                            <button type="button" class="btn btn-primary">
-                                <i class="icon-export"></i> Generar Reporte
-                            </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="report/excel/reporteRifaMoto.php"
-                                    target="_blank">Excel</a>
-                                <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
-                            </div>
-                        </div>
+                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#generarReporteRoyal"> <i class="icon-export"></i> Generar Reporte</a>
                     </div>
                 </div>
             </div>
@@ -163,6 +154,7 @@ require "config/conexion.php";
 			include "content/modal/bloquearNumeroMoto.php"; 
 			include "content/modal/bloquearNumeroDoble.php"; 
 			include "content/modal/bloquearNumeroTriple.php"; 
+			include "content/modal/report/generarReporteRifaRoyal.php"; 
 			//Script 
 			include "content/inc/script.php";
 			switch ($rol) {
