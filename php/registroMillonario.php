@@ -73,6 +73,10 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
+    $montoBolivares = limpiarDatos($_POST['montoBolivares']);
+    if ($montoBolivares === '') {
+        $montoBolivares = "N/A";
+    } 
     $valor = 2;
 
     // $sqlNumeroBloqueado = "SELECT numero FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
@@ -104,6 +108,7 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     //     $valido['success'] = false;
     //     $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
     // }else {
+    
         $datos = "SELECT MAX(id_millonaria) AS id_millonaria  FROM registro_numero_millonaria WHERE fecha = '$fecha'";
         $resultado=mysqli_query($mysqli,$datos);
         while ($row = mysqli_fetch_assoc($resultado)) {
@@ -118,10 +123,16 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
                 }
                 $irmm =  date("Y", strtotime($fecha)) ."-"."MM". "-". $contadordb ;
         }
-
-        $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, irmm, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$irmm', '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        switch ($metodoDePago) {
+            case 1:
+                $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, irmm, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irmm', '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$montoBolivares', '$cantidaPago')";
+                break;
+            
+            default:
+                $sql = "INSERT INTO registro_numero_millonaria (id_millonaria, irmm, numero_one, numero_dos, numero_tres, numero_cuatro, numero_cinco, vendedor, valor, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irmm', '$numeroOne','$numeroDos','$numeroTres','$numeroCuatro','$numeroCinco','$vendedor','$valor','$fecha','$nombre','$cedula', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago', '$montoBolivares')";
+                break;
+        }
         $resultadoRegistro = $mysqli->query($sql);
-    
         if ($resultadoRegistro === true) {
             $valido['success'] = true;
             $valido['mensaje'] = "Se registro correctamente.";
@@ -131,11 +142,6 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
             $valido['mensaje'] = "No se realizo el registro.";
         }
     }
-
-
-  
 // }
-
 echo json_encode($valido);
-
 ?>

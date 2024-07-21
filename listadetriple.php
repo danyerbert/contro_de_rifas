@@ -14,7 +14,7 @@ $cedula = $_SESSION['cedula'];
 $rol = $_SESSION['rol'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
-$sqlRifaMoto = "SELECT m.numero, m.monto_total, m.nombre_comprador, m.cedula, m.cantidad_pago, p.metodo, v.nombre FROM registro_numero_triple_500 AS m 
+$sqlRifaMoto = "SELECT m.numero, m.monto_total, m.nombre_comprador, m.cedula, m.cantidad_pago, m.referencia_pm, p.metodo, v.nombre FROM registro_numero_triple_500 AS m 
 INNER JOIN vendedores AS v ON v.cedula = m.vendedor 
 INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago WHERE fecha = '$fecha'";
 $resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
@@ -136,6 +136,7 @@ $Cantidad = $rowCantidad['numero'];
                                     <th>Cedula del Comprador</th>
                                     <th>Metodo de Pago</th>
                                     <th>Cantidad Pagada</th>
+                                    <th>Referencia</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -148,6 +149,7 @@ $Cantidad = $rowCantidad['numero'];
                                     <td><?php echo $rowNumero['cedula'];?></td>
                                     <td><?php echo $rowNumero['metodo'];?></td>
                                     <td><?php echo $rowNumero['cantidad_pago'];?></td>
+                                    <td><?php echo $rowNumero['referencia_pm'];?></td>
                                     <?php 
                                                 endwhile;
                                             ?>

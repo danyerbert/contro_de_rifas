@@ -69,6 +69,10 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
+    $montoBolivares = limpiarDatos($_POST['montoBolivares']);
+    if ($montoBolivares === '') {
+        $montoBolivares = "N/A";
+    } 
     $monto_total = $cantidad * 500;
 
     $datos = "SELECT MAX(id_triple) AS id_triple FROM registro_numero_triple_500 WHERE fecha = '$fecha'";
@@ -103,8 +107,15 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         $valido['success'] = false;
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
-        
-        $sql = "INSERT INTO registro_numero_triple_500 (id_triple, irtq, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$irtq', '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
+        switch ($metodoDePago) {
+            case 1:
+                $sql = "INSERT INTO registro_numero_triple_500 (id_triple, irtq, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irtq', '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$montoBolivares','$cantidaPago')";
+                break;
+            
+            default:
+                $sql = "INSERT INTO registro_numero_triple_500 (id_triple, irtq, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irtq', '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago', '$montoBolivares')";
+                break;
+        }
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {
@@ -118,12 +129,6 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         
     }
     }
-
-    
-
 }
-
 echo json_encode($valido);
-
-
 ?>
