@@ -9,6 +9,7 @@ const RegistroDeDobleOportunidad = async() => {
     var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilRoyala").value;
     var cantidadDivisas = document.querySelector("#cantidadDivisasRoyala").value;
     var cantidadDeBolivares = document.querySelector("#cantidadBolivaresROYALa").value;
+    var montoBolivares = document.querySelector("#montoBolivaresRoyala").value;
     var valores = []; 
     for (var i = 0; i < metodoDePago.length; i++) {
       valores.push(metodoDePago[i].value);
@@ -77,6 +78,14 @@ const RegistroDeDobleOportunidad = async() => {
           });
         return;
         }
+        if (!validarMontoBolivares(montoBolivares)) {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Debe ingresar el monto correspondiente",
+          });
+        return;
+        }
       break;
     case "2": 
         if (!validarDivisas(cantidadDivisas)) {
@@ -110,18 +119,18 @@ const RegistroDeDobleOportunidad = async() => {
     switch (metodoDePago) {
       case "1":
         datos.append("metodoDePago", metodoDePago); 
-        datos.append("referencia", ReferenciaPagoMovil); 
-        console.log(ReferenciaPagoMovil);
+        datos.append("referencia", ReferenciaPagoMovil);
+        datos.append("montoBolivares", montoBolivares); 
         break;
       case "2":
         datos.append("metodoDePago", metodoDePago); 
         datos.append("referencia", cantidadDivisas);
-        console.log(cantidadDivisas); 
+        datos.append("montoBolivares", montoBolivares);
         break;
       case "3":
         datos.append("metodoDePago", metodoDePago); 
         datos.append("referencia", cantidadDeBolivares);
-        console.log(cantidadDeBolivares); 
+        datos.append("montoBolivares", montoBolivares);
         break;
     }
     var respuesta = await fetch("php/registroDobleRifa.php", {

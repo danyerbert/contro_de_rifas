@@ -61,6 +61,10 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
+    $montoBolivares = limpiarDatos($_POST['montoBolivares']);
+    if ($montoBolivares === '') {
+        $montoBolivares = "N/A";
+    } 
     $valor = 2;
 
     $datos = "SELECT MAX(id_doble_oportunidad) AS id_doble_oportunidad FROM registro_numero_doble_oportunidad WHERE fecha = '$fecha'";
@@ -98,8 +102,16 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         $valido['success'] = false;
         $valido['mensaje'] = "Numero no habilitado.";
     }else {
+        switch ($metodoDePago) {
+            case 1:
+                $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, irroyal, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irroyal', '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa', '$metodoDePago','$montoBolivares','$cantidaPago')";
+                break;
+            
+            default:
+                $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, irroyal, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irroyal', '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago', '$montoBolivares')";
+                break;
+        }
         
-        $sql = "INSERT INTO registro_numero_doble_oportunidad (id_doble_oportunidad, irroyal, numero, vendedor, fecha, nombre, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$irroyal', '$numero', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor', '$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
         $resultadoRegistro = $mysqli->query($sql);
 
         if ($resultadoRegistro === true) {
