@@ -16,7 +16,7 @@
 	$cedula = $_SESSION['cedula'];
 	
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
-	$sqlRifaMoto = "SELECT m.numero, m.fecha, m.nombre_comprador, m.cedula, m.cantidad_pago, p.metodo, s.zodiaco, v.nombre FROM registro_moto_numero AS m 
+	$sqlRifaMoto = "SELECT m.numero, m.fecha, m.nombre_comprador, m.cedula, m.cantidad_pago, m.referencia_pm, p.metodo, s.zodiaco, v.nombre FROM registro_moto_numero AS m 
 	INNER JOIN zodiaco AS s ON s.id_zodiaco= m.signo
 	INNER JOIN vendedores AS v ON v.cedula = m.vendedor 
     INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago WHERE m.fecha = '$fecha' AND vendedor = '$cedula'";
@@ -88,37 +88,40 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
-					<div class="card-body pricing-plan">
-						<h5 class="card-title">Reglas del Juego</h5>
+                    <div class="card-body pricing-plan">
+                        <h5 class="card-title">Reglas del Juego</h5>
                         <ul class="pricing-features">
                             <li>Son 100 numeros a rifar (De dos cifras)</li>
-							<li>Los numero van desde el 00 al 99.</li>
-							<li>Incluye los 12 signos del zodiaco</li>
-							<li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
-						</ul>
-					</div>
-				</div>
+                            <li>Los numero van desde el 00 al 99.</li>
+                            <li>Incluye los 12 signos del zodiaco</li>
+                            <li>El premio se gana con el terminal del <br> número más el signo del zodiaco.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
-							<div class="card">
-								<div class="card-body">
-									<div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<img src="img/rifas/rifa_de_moto.png" class="rounded d-block w-100" alt="AI Dashboards">
-											</div>
-											<div class="carousel-item">
-												<img src="img/rifas/rifa_de_moto.png" class="rounded d-block w-100" alt="AI Dashboards">
-											</div>
-											<div class="carousel-item">
-												<img src="img/rifas/rifa_de_moto_2.png" class="rounded d-block w-100" alt="AI Dashboards">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide m-0" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="img/rifas/rifa_de_moto.png" class="rounded d-block w-100"
+                                        alt="AI Dashboards">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/rifas/rifa_de_moto.png" class="rounded d-block w-100"
+                                        alt="AI Dashboards">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/rifas/rifa_de_moto_2.png" class="rounded d-block w-100"
+                                        alt="AI Dashboards">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         <!-- Row start -->
         <div class="row gutters">
             <div class="col-sm-12">
@@ -136,6 +139,7 @@
                                     <th>Cedula del Comprador</th>
                                     <th>Metodo de Pago</th>
                                     <th>Cantidad Pagada</th>
+                                    <th>referencia</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -149,6 +153,7 @@
                                     <td><?php echo $rowNumero['cedula'];?></td>
                                     <td><?php echo $rowNumero['metodo'];?></td>
                                     <td><?php echo $rowNumero['cantidad_pago'];?></td>
+                                    <td><?php echo $rowNumero['referencia_pm'];?></td>
                                     <?php 
                                                 endwhile;
                                             ?>

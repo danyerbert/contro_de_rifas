@@ -8,8 +8,6 @@ const registroTriple = async() =>{
     var tipoDeRifa = document.querySelector("#tipo_de_rifa_triple").value;
     var valoresSeleccionados = [];
     var checkboxes = document.querySelectorAll('input[name="loteria"]:checked');
-  
-
     for (var i = 0; i < checkboxes.length; i++) {
         valoresSeleccionados.push(checkboxes[i].value);
     }

@@ -3,13 +3,9 @@ require "../config/conexion.php";
 require "function.php";
 
 $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
-
-
 date_default_timezone_set('America/Caracas');
-
     $horaServer =  date('h:i:s A');
     $horaDeCierre = "11:00:00 PM";
-
     // if ($horaServer >= $horaDeCierre) {
     //     $valido['success'] = false;
     //     $valido['mensaje'] = "Cierre realizado.";
@@ -87,8 +83,12 @@ date_default_timezone_set('America/Caracas');
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
+    
+    $montoBolivares = limpiarDatos($_POST['montoBolivares']);
+    if ($montoBolivares === '') {
+        $montoBolivares = "N/A";
+    }
     $valor = 1;
-
     $datos = "SELECT MAX(id_rifa_moto_triple) AS id_rifa_moto_triple FROM registro_moto_triples WHERE fecha = '$fecha'";
     $resultado=mysqli_query($mysqli,$datos);
     while ($row = mysqli_fetch_assoc($resultado)) {
@@ -103,10 +103,7 @@ date_default_timezone_set('America/Caracas');
             }
             $irmt =  date("Y", strtotime($fecha)) ."-"."MT". "-". $contadordb ;
     }
-
-
     // Verificacion de numero bloqueado.
-
     $sqlNumeroBloqueado = "SELECT numero, fecha FROM numero_bloqueado WHERE fecha = '$fecha' AND tipo_de_rifa = '$tipo_de_rifa'";
     $resultadoBloqueado = $mysqli->query($sqlNumeroBloqueado);
     $num = $resultadoBloqueado->num_rows;
@@ -139,8 +136,16 @@ date_default_timezone_set('America/Caracas');
              $valido['success'] = false;
              $valido['mensaje'] = "Numero no habilitado.";
          }else {
+            switch ($metodoDePago) {
+                case 1:
+                    $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, irmt, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre_comprador, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irmt', '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$montoBolivares', '$cantidaPago')";
+                    break;
+                
+                default:
+                    $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, irmt, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre_comprador, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago,  referencia_pm) VALUES (NULL, '$irmt', '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago', '$montoBolivares')";
+                    break;
+            }
             
-            $sqlRegistro = "INSERT INTO registro_moto_triples (id_rifa_moto_triple, irmt, numero_primero, numero_segundo, zodiacal_primero, zodiacal_segundo, fecha, vendedor, nombre_comprador, cedula, valor, tipo_de_rifa, metodo_pago, cantidad_pago) VALUES (NULL, '$irmt', '$numeroUno','$numeroDos','$signoUno','$signoDos','$fecha','$vendedor','$nombre','$cedula','$valor','$tipo_de_rifa', '$metodoDePago', '$cantidaPago')";
             $resultadoRegistro = $mysqli->query($sqlRegistro);
 
             if ($resultadoRegistro === true) {
@@ -152,17 +157,7 @@ date_default_timezone_set('America/Caracas');
                 $valido['mensaje'] = "No se logro registrar el numero.";
             }
          }
-
     }
 }
-
 echo json_encode($valido);
-
-
-
-
-
-
-
-
 ?>

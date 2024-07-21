@@ -63,7 +63,11 @@ if ($_POST) {
         $valido['success'] = false;
         $valido['mensaje'] = "Debe ingresar una cantidad.";
     }
-
+    $montoBolivares = limpiarDatos($_POST['montoBolivares']);
+    if ($montoBolivares === '') {
+        $montoBolivares = "N/A";
+    } 
+    
     $datos = "SELECT MAX(id_moto) AS id_moto FROM registro_moto_numero WHERE fecha = '$fecha'";
     $resultado=mysqli_query($mysqli,$datos);
     while ($row = mysqli_fetch_assoc($resultado)) {
@@ -110,10 +114,16 @@ if ($_POST) {
             $valido['success'] = false;
             $valido['mensaje'] = "Numero no habilitado.";
         }else {
-            
-            $sql = "INSERT INTO registro_moto_numero (id_moto, irm, numero, signo, vendedor, fecha, nombre_comprador, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago) VALUES (NULL, '$irmot', '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$cantidaPago')";
+            switch ($metodoDePago) {
+                case 1:
+                    $sql = "INSERT INTO registro_moto_numero (id_moto, irm, numero, signo, vendedor, fecha, nombre_comprador, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irmot', '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago', '$montoBolivares', '$cantidaPago')";
+                    break;
+                
+                default:
+                    $sql = "INSERT INTO registro_moto_numero (id_moto, irm, numero, signo, vendedor, fecha, nombre_comprador, cedula, valor, tipo_de_rifa,  metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irmot', '$numero','$signo', '$vendedor', '$fecha', '$nombre', '$cedula', '$valor','$tipo_de_rifa','$metodoDePago','$cantidaPago', '$montoBolivares')";
+                    break;
+            }
             $resultadoRegistro = $mysqli->query($sql);
-    
             if ($resultadoRegistro === true) {
                 $valido['success'] = true;
                 $valido['mensaje'] = "Registro Realizado.";
@@ -122,11 +132,8 @@ if ($_POST) {
                 $valido['success'] = false;
                 $valido['mensaje'] = "No se realizo el registro";
             }
-            
         }
     }
-
-   
 }
 echo json_encode($valido);
 ?>

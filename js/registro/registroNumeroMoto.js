@@ -11,6 +11,7 @@ const RegistroNumeroMoto = async()=>{
     var ReferenciaPagoMovil = document.querySelector("#ReferenciaPagoMovilNA").value;
     var cantidadDivisas = document.querySelector("#cantidadDivisasNA").value;
     var cantidadDeBolivares = document.querySelector("#cantidadBolivaresNA").value;
+    var montoBolivares = document.querySelector("#montoBolivaresNA").value;
     var valores = []; 
     for (var i = 0; i < metodoDePago.length; i++) {
       valores.push(metodoDePago[i].value);
@@ -85,6 +86,14 @@ const RegistroNumeroMoto = async()=>{
             });
           return;
           }
+          if (!validarMontoBolivares(montoBolivares)) {
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Debe ingresar el monto correspondiente",
+            });
+          return;
+          }
         break;
       case "2": 
           if (!validarDivisas(cantidadDivisas)) {
@@ -120,17 +129,17 @@ const RegistroNumeroMoto = async()=>{
       case "1":
         datos.append("metodoDePago", metodoDePago); 
         datos.append("referencia", ReferenciaPagoMovil); 
-        console.log(ReferenciaPagoMovil);
+        datos.append("montoBolivares", montoBolivares); 
         break;
       case "2":
         datos.append("metodoDePago", metodoDePago); 
         datos.append("referencia", cantidadDivisas);
-        console.log(cantidadDivisas); 
+        datos.append("montoBolivares", montoBolivares); 
         break;
       case "3":
         datos.append("metodoDePago", metodoDePago); 
         datos.append("referencia", cantidadDeBolivares);
-        console.log(cantidadDeBolivares); 
+        datos.append("montoBolivares", montoBolivares); 
         break;
     }
 

@@ -78,3 +78,8 @@ const validarDivisas = (divisas)=>{
 const validadBolivares = (bolivares)=>{
     return /^[0-9]/.test(bolivares.trim());
 }
+
+// PAGO MOVIL
+const validarMontoBolivares = (montoBolivares)=>{
+    return /^[0-9]/.test(montoBolivares.trim());
+}
