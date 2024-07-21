@@ -115,7 +115,7 @@ $Cantidad = $rowCantidad['numero'];
                             <thead>
                                 <tr>
                                     <th>Numero</th>
-                                    <th>Triplicacion</th>
+                                    <th>Ganancia</th>
                                     <th>Vendedor</th>
                                     <th>Nombre del Comprador</th>
                                     <th>Cedula del Comprador</th>
