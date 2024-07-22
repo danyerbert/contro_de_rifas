@@ -1,15 +1,15 @@
 <!-- Modal -->
-<div class="modal fade" id="generarReporteTriple" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="generarReporteMillo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title fs-5" id="exampleModalLabel">Generación de Reporte Rifa Triple 500</h3>
+                <h3 class="modal-title fs-5" id="exampleModalLabel">Generación de Reporte Rifa Millonaria</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="php/redireccionamientoTriple.php" method="POST" id="generarRifaDeMoto">
+                <form action="php/redireccionamientoMillo.php" method="POST" id="generarRifaDeMoto">
                     <div class="form-group">
                         <label for="fechaDesde" class="col-form-label">Desde</label>
                         <input type="date" class="form-control" id="fechaDesde" name="fechaDesde">

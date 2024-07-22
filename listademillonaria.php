@@ -16,7 +16,8 @@
 	INNER JOIN vendedores AS v ON v.cedula = m.vendedor 
 	INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago WHERE m.fecha = '$fecha'";
 	$resultadoRifaMoto = $mysqli->query($sqlRifaMillonaria);
-
+    $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
+    $resultadoMetodoPago = $mysqli->query($sqlMetodoPago);
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 
@@ -46,6 +47,9 @@
         <!-- Page header end -->
         <div class="row gutters">
             <div class="col-xl-3 col-sm-6 col-12">
+                <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#generarReporteMillo"> <i
+                        class="icon-export"></i> Generar Reporte</a>
+                <br>
                 <div class="card">
                     <div class="card-body pricing-plan">
                         <h5 class="card-title">Reglas del Juego</h5>
@@ -59,20 +63,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="btn-group dropright">
-                    <button type="button" class="btn btn-primary">
-                        <i class="icon-export"></i> Generar Reporte
-                    </button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="report/excel/reporteRifaMillonaria.php" target="_blank">EXCEL</a>
-                        <a class="dropdown-item" href="#" href="report/pdf/reporteRifaMillonaria.php"
-                            target="_blank">PDF</a>
-                    </div>
-                </div>
+
             </div>
         </div>
         <br>
@@ -129,6 +120,7 @@
 				include "content/modal/bloquearNumeroMoto.php"; 
 				include "content/modal/bloquearNumeroDoble.php"; 
 				include "content/modal/bloquearNumeroTriple.php"; 
+				include "content/modal/report/generarReporteRifaMillo.php"; 
 			//Script 
 			include "content/inc/script.php";
 			switch ($rol) {
