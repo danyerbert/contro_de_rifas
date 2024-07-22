@@ -24,7 +24,8 @@ $sqlCantidadVenta = "SELECT COUNT(*) numero FROM registro_numero_triple_500 WHER
 $resultadoCantidadVenta = $mysqli->query($sqlCantidadVenta);
 $rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
 $Cantidad = $rowCantidad['numero'];
-
+$sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
+    $resultadoMetodoPago = $mysqli->query($sqlMetodoPago);
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 
@@ -62,20 +63,8 @@ $Cantidad = $rowCantidad['numero'];
                         <p>Numeros Vendidos:</p>
                         <h5><?php echo $Cantidad;?></h5>
                         <br>
-                        <div class="btn-group dropright">
-                            <button type="button" class="btn btn-primary">
-                                <i class="icon-export"></i> Generar Reporte
-                            </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="report/excel/reporteRifaTriple.php"
-                                    target="_blank">Excel</a>
-                                <a class="dropdown-item" href="report/pdf/reporteRifaTriple.php" target="_blank">PDF</a>
-                            </div>
-                        </div>
+                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#generarReporteTriple"> <i class="icon-export"></i> Generar Reporte</a>
                     </div>
                 </div>
 
@@ -174,6 +163,7 @@ $Cantidad = $rowCantidad['numero'];
 			include "content/modal/bloquearNumeroMoto.php"; 
 			include "content/modal/bloquearNumeroDoble.php"; 
 			include "content/modal/bloquearNumeroTriple.php"; 
+			include "content/modal/report/generarReporteRifaTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
 			
