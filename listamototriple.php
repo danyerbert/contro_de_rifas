@@ -23,7 +23,8 @@
 	$rowCantidad = mysqli_fetch_assoc($resultadoCantidadVenta);
 	$CantidadPrimero = $rowCantidad['numero_primero'];
 	$MontoTotal = $CantidadPrimero * 1;
-	
+    $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
+    $resultadoMetodoPago = $mysqli->query($sqlMetodoPago);
 
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
@@ -64,21 +65,8 @@
                         <p>Monto Total:</p>
                         <h5><?php echo $MontoTotal . "$";?></h5>
                         <br>
-                        <div class="btn-group dropright">
-                            <button type="button" class="btn btn-primary">
-                                <i class="icon-export"></i> Generar Reporte
-                            </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="report/excel/reporteRifaMotoTriples.php"
-                                    target="_blank">excel</a>
-                                <a class="dropdown-item" href="report/pdf/reporteRifaMotoTriples.php"
-                                    target="_blank">PDF</a>
-                            </div>
-                        </div>
+                        <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#generarReporteMotoTriple"> <i class="icon-export"></i> Generar Reporte</a>
                     </div>
                 </div>
             </div>
@@ -153,6 +141,7 @@
 			include "content/modal/bloquearNumeroMoto.php"; 
 			include "content/modal/bloquearNumeroDoble.php"; 
 			include "content/modal/bloquearNumeroTriple.php"; 
+			include "content/modal/report/generarReporteRifaMotoTriple.php"; 
 			//Script 
 			include "content/inc/script.php";
 
