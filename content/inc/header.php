@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Responsive Bootstrap Admin Dashboards">
     <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="img/logo_bueno.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/Logo_bueno.png" type="image/x-icon">
     <title>ROYAL 11:22</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="fonts/style.css">
