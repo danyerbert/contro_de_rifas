@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="signin-content">
                         <div class="signin-image">
-                            <figure><img src="img/logo_bueno.png" alt="iniciar session imagen"></figure>
+                            <figure><img src="./img/logo_bueno.png" alt="iniciar session imagen"></figure>
                         </div>
 
                         <div class="signin-form">
