@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="signin-form">
-                            <h2 class="form-title">App de Rifas</h2>
+                            <h2 class="form-title">Royal 11:22</h2>
                             <form method="POST" class="register-form" id="login-form" action="login.php">
                                 <div class="form-group">
                                     <label for="usuario"><i class="zmdi zmdi-account material-icons-name"></i></label>
