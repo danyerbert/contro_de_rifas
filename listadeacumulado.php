@@ -15,6 +15,10 @@
 	$sqlRifaMoto = "SELECT m.irta, m.numero, m.cedula_comprador, m.fecha, v.nombre FROM triple_acomulado AS m 
     INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
 	$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
+    // Consulta para traer todas las rifas creadas
+	$sqlRifas = "SELECT id_rifas, nombre FROM tipo_de_rifas";
+	$resultadoRifas = $mysqli->query($sqlRifas);
+
 
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
@@ -45,22 +49,21 @@
         <div class="row gutters">
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="info-stats2">
-                <div class="btn-group dropright">
-                            <button type="button" class="btn btn-primary">
-                                <i class="icon-export"></i> Generar Reporte
-                            </button>
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="report/excel/reporteRifaMoto.php"
-                                    target="_blank">Excel</a>
-                                <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
-                            </div>
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-primary">
+                            <i class="icon-export"></i> Generar Reporte
+                        </button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="report/excel/reporteRifaMoto.php" target="_blank">Excel</a>
+                            <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
                         </div>
+                    </div>
                     <div class="sale-num">
-                        
+
                     </div>
                 </div>
             </div>
@@ -83,7 +86,7 @@
 								</div>
 							</div>
 						</div> -->
-            </div>
+        </div>
         <!-- Row start -->
         <div class="row gutters">
             <div class="col-sm-12">

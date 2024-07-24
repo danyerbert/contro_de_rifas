@@ -28,6 +28,10 @@
 	
     $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
     $resultadoMetodoPago = $mysqli->query($sqlMetodoPago);
+    // Consulta para traer todas las rifas creadas
+	$sqlRifas = "SELECT id_rifas, nombre FROM tipo_de_rifas";
+	$resultadoRifas = $mysqli->query($sqlRifas);
+
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";
 
