@@ -1,45 +1,45 @@
 <!-- Loading starts -->
-		<div id="loading-wrapper">
-			<div class="spinner-border" role="status">
-			</div>
-		</div>
-		<!-- Loading ends -->
+<div id="loading-wrapper">
+    <div class="spinner-border" role="status">
+    </div>
+</div>
+<!-- Loading ends -->
 
-		<!-- Page wrapper start -->
-		<div class="page-wrapper">
+<!-- Page wrapper start -->
+<div class="page-wrapper">
 
-			<!-- Sidebar wrapper start -->
-			<nav id="sidebar" class="sidebar-wrapper">
-				<!-- User profile start -->
-				<div class="sidebar-user-details">
-					<div class="user-profile">
-						<img src="img/LOGO.jpeg" class="profile-thumb" alt="Admin Dashboards">
-                        <!-- REALIZAR VALIDACION PARA GENERAR EL USUARIO -->
-						<?php 
+    <!-- Sidebar wrapper start -->
+    <nav id="sidebar" class="sidebar-wrapper">
+        <!-- User profile start -->
+        <div class="sidebar-user-details">
+            <div class="user-profile">
+                <img src="img/LOGO.jpeg" class="profile-thumb" alt="Admin Dashboards">
+                <!-- REALIZAR VALIDACION PARA GENERAR EL USUARIO -->
+                <?php 
 							$usuario = $_SESSION['usuario'];
 
 							echo '
 							<h6 class="profile-name">'.$usuario.'</h6>
 							';
 						?>
-						<ul class="profile-actions">
-							<li>
-								<a href="logout.php">
-									<i class="icon-exit_to_app"></i>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- User profile end -->
+                <ul class="profile-actions">
+                    <li>
+                        <a href="logout.php">
+                            <i class="icon-exit_to_app"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- User profile end -->
 
-				<!-- Sidebar content start -->
-				<div class="sidebar-content">
+        <!-- Sidebar content start -->
+        <div class="sidebar-content">
 
-					<!-- sidebar menu start -->
-					<div class="sidebar-menu">
-						<ul>
-							<?php 
+            <!-- sidebar menu start -->
+            <div class="sidebar-menu">
+                <ul>
+                    <?php 
 								$rol = $_SESSION['rol'];
 								switch ($rol) {
 									case 1:
@@ -77,6 +77,9 @@
 													</li>
 													<li>
 														<a href="listamototriple.php">Rifa Moto Triples</a>
+													</li>
+													<li>
+														<a href="listadeacumulado.php">Lista de Acumulado</a>
 													</li>
 												</ul>
 											</div>
@@ -186,15 +189,15 @@
 										break;
 								}
 							?>
-                            
-							
-							
-						</ul>
-					</div>
-					<!-- sidebar menu end -->
 
-				</div>
-				<!-- Sidebar content end -->
 
-			</nav>
-			<!-- Sidebar wrapper end -->
+
+                </ul>
+            </div>
+            <!-- sidebar menu end -->
+
+        </div>
+        <!-- Sidebar content end -->
+
+    </nav>
+    <!-- Sidebar wrapper end -->

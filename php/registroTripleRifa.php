@@ -4,6 +4,8 @@ require "../config/conexion.php";
 require "function.php";
 
 date_default_timezone_set('America/Caracas');
+$horaServer =  date('h:i:s A');
+
 $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     $horaServer =  date('h:i:s A');
     $horaDeCierre = "01:00:00 PM";
@@ -36,7 +38,7 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
         $valido['mensaje'] = "Solo se permite desde el 00 al 99.";
     }
 
-    $loteria = $_POST['loterias'];
+    $loteria = $_POST['loteria'];
     if ($loteria == '') {
         $valido['success'] = false;
         $valido['mensaje'] = "Seleccione una loteria.";

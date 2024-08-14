@@ -54,15 +54,11 @@ while ($row = $resultado->fetch_assoc()) {
     $hoja_excel->setCellValue('B'.$fila, $row['numero']);
     $hoja_excel->setCellValue('C'.$fila, $row['zodiaco']);
     $hoja_excel->setCellValue('D'.$fila, $row['nombre']);
-    $hoja_excel->setCellValue('D'.$fila, $row['nombre_comprador']);
-    $hoja_excel->setCellValue('D'.$fila, $row['metodo']);
-    $hoja_excel->setCellValue('D'.$fila, $row['cantidad_pago']);
+    $hoja_excel->setCellValue('E'.$fila, $row['nombre_comprador']);
+    $hoja_excel->setCellValue('F'.$fila, $row['metodo']);
+    $hoja_excel->setCellValue('G'.$fila, $row['cantidad_pago']);
     $fila++;
 }
-$hoja_excel->setCellValue('A'.$fila, 'Monto total de numeros: ');
-$hoja_excel->setCellValue('B'.$fila, $Cantidad);
-$hoja_excel->setCellValue('C'.$fila, 'Monto total: ');
-$hoja_excel->setCellValue('D'.$fila, $MontoTotal . '$');
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header('Content-Disposition: attachment;filename="listadenumerorifamoto_'.$fecha.'_.xlsx"');

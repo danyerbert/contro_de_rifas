@@ -43,6 +43,7 @@
             <!-- Breadcrumb start -->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Administrador | Inicio</li>
+                <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalPrueba">Prueba</a>
             </ol>
         </div>
         <!-- Page header end -->
@@ -120,7 +121,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-12">
+        <!-- <div class="col-lg-4 col-sm-12">
             <div class="pricing-plan">
                 <div class="pricing-header">
                     <h4 class="pricing-title">Rifa Triple 500</h4>
@@ -134,11 +135,10 @@
                         Triple Gana.</li>
                 </ul>
                 <div class="pricing-footer">
-                    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
-                        data-target="#rifaTriplePrueba2">Ticket</a>
+                    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaTriple">Ticket</a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- Row end -->
 </div>
@@ -157,7 +157,7 @@
 				// include "content/modal/rifatriple.php";
 				include "content/modal/rifamotoTriples.php";
 				include "content/modal/acumuladoTriple.php";
-				include "content/modal/ModalPrueba2.php";
+				include "content/modal/ModalPrueba.php";
 			//Modales de bloqueo de numeros
 				include "content/modal/bloquearNumeroMoto.php"; 
 				include "content/modal/bloquearNumeroDoble.php"; 
@@ -167,11 +167,13 @@
 			//Script 
 			include "content/inc/script.php";
 		?>
+<script src="js/jquery/jquery3.7.1.js"></script>
+<script src="js/jquery/registroTriple.js"></script>
 <script src="js/funtion.js"></script>
 <!-- JS para el tema de recoleccion de informacion -->
 <script src="js/registro/registroNumeroMoto.js"></script>
 <script src="js/registro/registroNumeroDoble.js"></script>
-<script src="js/registro//registronumerotriple.js"></script>
+<!-- <script src="js/registro//registronumerotriple.js"></script> -->
 <script src="js/registro//registronumerotriple2.js"></script>
 <script src="js/registro/registroNumeroMillonaria.js"></script>
 <script src="js/registro/registroNumeroTripleMoto.js"></script>

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="vendor/datatables/dataTables.bs4.css" />
     <link rel="stylesheet" href="vendor/datatables/dataTables.bs4-custom.css" />
     <link href="vendor/datatables/buttons.bs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 </head>
 
 <body>
