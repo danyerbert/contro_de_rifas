@@ -21,11 +21,6 @@ if ($_POST) {
         $valido['success'] = false;
         $valido['mensaje'] = "El usuario no cumple con los caracteres establecidos.";
     }
-    // $password = limpiarDatos($_POST['password']);
-    // if (!preg_match("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{12,16}$/", $password)) {
-    //     $valido['success'] = false;
-    //     $valido['mensaje'] = "La contrasena no cumple con los caracteres establecidos.";
-    // }
     $password = limpiarDatos($_POST['password']);
     if ($password == "") {
         $valido['success'] = false;

@@ -12,7 +12,7 @@ date_default_timezone_set('America/Caracas');
 $cedula = $_SESSION['cedula'];
 // Traer los datos de los vendedores
 
-$sqlVendedores = "SELECT cedula, nombre, telefono, correo FROM vendedores";
+$sqlVendedores = "SELECT cedula, nombre, apellido, telefono, correo FROM vendedores";
 $respuestaVendedores = $mysqli->query($sqlVendedores);
 
 $zodiaco = "SELECT id_zodiaco, zodiaco FROM zodiaco";
@@ -21,6 +21,9 @@ $zodiaco = "SELECT id_zodiaco, zodiaco FROM zodiaco";
 	// Consulta para traer todas las rifas creadas
 	$sqlRifas = "SELECT id_rifas, nombre FROM tipo_de_rifas";
 	$resultadoRifas = $mysqli->query($sqlRifas);
+
+    $sqlRoles = "SELECT id, roles FROM roles";
+    $resultadoRoles = $mysqli->query($sqlRoles);
 
 	include "content/inc/header.php";
 	include "content/inc/sidebar.php";

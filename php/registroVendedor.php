@@ -23,6 +23,11 @@ if ($_POST) {
         $valido['success'] = false;
         $valido['mensaje'] = "El nombre no cumple con los caracteres requeridos.";
     }
+    $apellido = limpiarDatos($_POST['apellido']);
+    if (!preg_match("/[a-zA-Z\s]{4,30}/", $nombre)) {
+        $valido['success'] = false;
+        $valido['mensaje'] = "El nombre no cumple con los caracteres requeridos.";
+    }
     $telefono = limpiarDatos($_POST['telefono']);
     if (!preg_match("/\b/", $telefono)) {
         $valido['success'] = false;
@@ -41,7 +46,7 @@ if ($_POST) {
         $valido['success'] = false;
         $valido['mensaje'] = "El vendedor ya existe.";
     }else {
-        $sqlRegistro = "INSERT INTO vendedores (cedula, nombre, telefono, correo) VALUES ('$cedula','$nombre','$telefono','$correo')";
+        $sqlRegistro = "INSERT INTO vendedores (cedula, nombre, apellido, telefono, correo) VALUES ('$cedula','$nombre', '$apellido','$telefono','$correo')";
         $resultadoRegistro = $mysqli->query($sqlRegistro);
 
         if ($resultadoRegistro === true) {

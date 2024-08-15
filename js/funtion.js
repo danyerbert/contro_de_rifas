@@ -62,7 +62,7 @@ const validarusuario = (usuario) =>{
 
 // Validacion de contraseña de 12 - 16 caracteres, al menos 1 digito, al menos 1 minuscula y al menos 1 mayuscula
 const validarpassword=(password)=>{
-    return /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{12,16}$/.test(password.trim());
+    return /[a-zA-Z0-9#]{8,16}/.test(password.trim());
 }
 
 // VALIDACIONES DE METODO DE PAGO

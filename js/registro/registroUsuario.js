@@ -32,14 +32,14 @@ const RegistroUsuario = async() =>{
           });
         return;
     }
-    if (!validarpassword(password)) {
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "La contrasena no cumple con los caracteres establecidos.",
-          });
-        return;
-    }
+    // if (!validarpassword(password)) {
+    //     Swal.fire({
+    //         icon: "error",
+    //         title: "Error",
+    //         text: "La contrasena no cumple con los caracteres establecidos.",
+    //       });
+    //     return;
+    // }
 
     const datos = new FormData();
     datos.append("cedulaUsuario", cedula);

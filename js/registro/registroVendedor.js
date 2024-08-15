@@ -1,11 +1,13 @@
 const RegistrarVendedor = async() =>{
     var cedula = document.querySelector("#cedulaVendedor").value;
-    var nombre = document.querySelector("#nombreApellido").value;
+    var nombre = document.querySelector("#nombre").value;
+    var apellido = document.querySelector("#apellido").value;
     var telefono = document.querySelector("#telefono").value;
     var correo = document.querySelector("#correo").value;
 
     if (cedula.trim() === ''||
         nombre.trim() === ''||
+        apellido.trim()=== '' ||
         telefono.trim()===''||
         correo.trim()=== '') {
             Swal.fire({
@@ -31,6 +33,14 @@ const RegistrarVendedor = async() =>{
           });
         return; 
     }
+    if (!validarnombre(apellido)) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "El apellido no cumple con los caracteres establecidos.",
+          });
+        return; 
+    }
     if (!validarTelefono(telefono)) {
         Swal.fire({
             icon: "error",
@@ -50,6 +60,7 @@ const RegistrarVendedor = async() =>{
     const datos = new FormData();
     datos.append("cedulaVendedor", cedula);
     datos.append("nombre", nombre);
+    datos.append("apellido", apellido);
     datos.append("telefono", telefono);
     datos.append("correo", correo);
 
