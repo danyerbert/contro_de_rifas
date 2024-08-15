@@ -59,7 +59,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="btn-group dropright">
+                <!-- <div class="btn-group dropright">
                     <button type="button" class="btn btn-primary">
                         <i class="icon-export"></i> Generar Reporte
                     </button>
@@ -72,7 +72,7 @@
                         <a class="dropdown-item" href="#" href="report/pdf/reporteRifaMillonaria.php"
                             target="_blank">PDF</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <br>

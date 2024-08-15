@@ -133,7 +133,8 @@
                         Triple Gana.</li>
                 </ul>
                 <div class="pricing-footer">
-                    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rifaTriple">Ticket</a>
+                    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#rifaTriplePrueba2">Ticket</a>
                 </div>
             </div>
         </div>
@@ -152,9 +153,10 @@
 				include "content/modal/rifamoto.php";
 				include "content/modal/rifaDobleOportunidad.php";
 				include "content/modal/rifaMillonaria.php";
-				include "content/modal/rifatriple.php";
+				// include "content/modal/rifatriple.php";
 				include "content/modal/rifamotoTriples.php";
 				include "content/modal/acumuladoTriple.php";
+                include "content/modal/ModalPrueba2.php";
 			//Script 
 			include "content/inc/script.php";
 		?>

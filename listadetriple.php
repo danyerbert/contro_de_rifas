@@ -155,7 +155,8 @@ $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
                                         }else {
                                             echo "No participa";
                                         }
-                                    ?></td>
+                                    ?>
+                                    </td>
                                     <?php 
                                     
                                             include "content/modal/acumuladoTriple.php";

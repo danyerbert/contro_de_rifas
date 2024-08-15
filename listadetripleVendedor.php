@@ -14,7 +14,7 @@ $cedula = $_SESSION['cedula'];
 $rol = $_SESSION['rol'];
 
 // CONSULTA PARA EXTRAER TODOS LOS DATOS
-$sqlRifaMoto = "SELECT m.numero, m.monto_total, m.nombre_comprador, m.cedula, m.cantidad_pago, m.referencia_pm, p.metodo, v.nombre FROM registro_numero_triple_500 AS m 
+$sqlRifaMoto = "SELECT  m.numero, m.cantidad, m.irtq, m.loteria_one, m.monto_total, m.nombre_comprador, m.cedula, m.cantidad_pago, m.referencia_pm, p.metodo, v.nombre FROM registro_numero_triple_500 AS m 
 INNER JOIN vendedores AS v ON v.cedula = m.vendedor 
 INNER JOIN metodo_de_pago AS p ON p.id_metodo_pago = m.metodo_pago WHERE fecha = '$fecha' AND vendedor = '$cedula'";
 $resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
@@ -62,7 +62,7 @@ $Cantidad = $rowCantidad['numero'];
                         <p>Numeros Vendidos:</p>
                         <h5><?php echo $Cantidad;?></h5>
                         <br>
-                        <div class="btn-group dropright">
+                        <!-- <div class="btn-group dropright">
                             <button type="button" class="btn btn-primary">
                                 <i class="icon-export"></i> Generar Reporte
                             </button>
@@ -75,7 +75,7 @@ $Cantidad = $rowCantidad['numero'];
                                     target="_blank">Excel</a>
                                 <a class="dropdown-item" href="report/pdf/reporteRifaTriple.php" target="_blank">PDF</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -114,27 +114,41 @@ $Cantidad = $rowCantidad['numero'];
                         <table id="basicExample" class="table custom-table">
                             <thead>
                                 <tr>
+                                    <th>Identificador</th>
                                     <th>Numero</th>
                                     <th>Ganancia</th>
                                     <th>Vendedor</th>
                                     <th>Nombre del Comprador</th>
-                                    <th>Cedula del Comprador</th>
+                                    <th>Loteria</th>
                                     <th>Metodo de Pago</th>
-                                    <th>Cantidad Pagada</th>
+                                    <th>Cantidad a jugar</th>
                                     <th>Referencia</th>
+                                    <th>Acumulado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php while ($rowNumero = $resultadoRifaMoto->fetch_assoc()):?>
                                 <tr>
+                                    <td><?php echo $rowNumero['irtq'];?></td>
                                     <td><?php echo $rowNumero['numero'];?></td>
                                     <td><?php echo $rowNumero['monto_total'] . "$";?></td>
                                     <td><?php echo $rowNumero['nombre'];?></td>
-                                    <td><?php echo $rowNumero['nombre_comprador'];?></td>
-                                    <td><?php echo $rowNumero['cedula'];?></td>
+                                    <td><?php echo $rowNumero['nombre_comprador'] ." ". $rowNumero['cedula'];?></td>
+                                    <td><?php echo $rowNumero['loteria_one'];?></td>
                                     <td><?php echo $rowNumero['metodo'];?></td>
-                                    <td><?php echo $rowNumero['cantidad_pago'];?></td>
+                                    <td><?php echo $rowNumero['cantidad'];?></td>
                                     <td><?php echo $rowNumero['referencia_pm'];?></td>
+                                    <td><?php 
+                                        if ($rowNumero['cantidad'] == 4) {
+                                            echo '
+                                                <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                                                data-target="#AcumuladoTriple">Participa Acumulado</a>
+                                            ';
+                                        }else {
+                                            echo "No participa";
+                                        }
+                                    ?>
+                                    </td>
                                     <?php 
                                                 endwhile;
                                             ?>

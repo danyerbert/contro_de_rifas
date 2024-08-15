@@ -69,7 +69,7 @@
                         <p>Monto Total:</p>
                         <h5><?php echo $MontoTotal . "$";?></h5>
                         <br>
-                        <div class="btn-group dropright">
+                        <!-- <div class="btn-group dropright">
                             <button type="button" class="btn btn-primary">
                                 <i class="icon-export"></i> Generar Reporte
                             </button>
@@ -82,7 +82,7 @@
                                     target="_blank">Excel</a>
                                 <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
