@@ -62,6 +62,7 @@ const registroAcomulado = async() => {
           icon: "error",
           title: "ERROR",
           text: resultado.mensaje,
+          footer: '<a href="report/pdf/ticketAcumulado.php?irta='+ resultado.ticket +'" class="btn btn-primary" target="_blank">Ticket</a>'
         });
       }
 }

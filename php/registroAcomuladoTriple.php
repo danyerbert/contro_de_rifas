@@ -58,10 +58,12 @@ if ($_POST) {
         $valido['mensaje'] = "El numero de triple 500 no enviado.";
     }
 
-    $sqlValidacion = "SELECT irta FROM triple acumulado WHERE identificador = '$identificador'";
+    $sqlValidacion = "SELECT irta FROM triple_acomulado WHERE identificador = '$identificador'";
     $resultadoValidacion = $mysqli->query($sqlValidacion);
-    $n = $resultadoValidation->num_rows;
-    $ticketAcumulado = $n['irta'];
+    $n = $resultadoValidacion->num_rows;
+    // $ticketAcumulado = $n['irta'];
+    $rowValidacion = $resultadoValidacion->fetch_assoc();
+    $ticketAcumulado = $rowValidacion['irta'];
     if ($n == 0) {
        
         $datos = "SELECT MAX(id_triple_acomulado) AS id_triple_acomulado FROM triple_acomulado WHERE fecha = '$fecha'";

@@ -193,6 +193,7 @@ $sqlMetodoPago = "SELECT id_metodo_pago, metodo FROM metodo_de_pago";
 					break;
 			}
 		?>
+<script src="js/funtion.js"></script>
 <script src="js/registro/registroAcomuladoTriple.js"></script>
 </body>
 

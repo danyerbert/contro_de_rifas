@@ -28,8 +28,10 @@
             echo $fecha;
           ?>">
                     <input type="hidden" name="ParticipaAcumulado" id="ParticipaAcumulado" value="Si">
-                    <input type="hidden" name="identificador" value="<?php echo $rowNumero['irtq'];?>">
-                    <input type="hidden" name="numeroTriple" value="<?php echo $rowNumero['numero'];?>">
+                    <input type="hidden" name="identificador" id="identificador"
+                        value="<?php echo $rowNumero['irtq'];?>">
+                    <input type="hidden" name="numeroTriple" id="numeroTriple"
+                        value="<?php echo $rowNumero['numero'];?>">
                 </form>
             </div>
             <div class="modal-footer">
