@@ -67,7 +67,7 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     } 
     $valor = 2;
 
-    $datos = "SELECT MAX(id_doble_oportunidad) AS id_doble_oportunidad FROM registro_numero_doble_oportunidad WHERE fecha = '$fecha'";
+    $datos = "SELECT MAX(id_doble_oportunidad) AS id_doble_oportunidad FROM registro_numero_doble_oportunidad";
     $resultado=mysqli_query($mysqli,$datos);
     while ($row = mysqli_fetch_assoc($resultado)) {
         $valor1 = $row['id_doble_oportunidad'];

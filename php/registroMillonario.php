@@ -109,7 +109,7 @@ $valido['success']=array('success', false, 'mensaje'=>"", 'ticket' => "");
     //     $valido['mensaje'] = "Numero no permitido: " . $numeroCinco;
     // }else {
     
-        $datos = "SELECT MAX(id_millonaria) AS id_millonaria  FROM registro_numero_millonaria WHERE fecha = '$fecha'";
+        $datos = "SELECT MAX(id_millonaria) AS id_millonaria  FROM registro_numero_millonaria";
         $resultado=mysqli_query($mysqli,$datos);
         while ($row = mysqli_fetch_assoc($resultado)) {
             $valor1 = $row['id_millonaria'];

@@ -1,3 +1,23 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Bootstrap Admin Dashboards">
+    <meta name="author" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="../img/Logo_bueno.png" type="image/x-icon">
+    <title>ROYAL 11:22</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../fonts/style.css">
+    <link rel="stylesheet" href="../css/main.min.css">
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="../vendor/datatables/dataTables.bs4.css" />
+    <link rel="stylesheet" href="../vendor/datatables/dataTables.bs4-custom.css" />
+    <link href="../vendor/datatables/buttons.bs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+</head>
+
 <?php
 require "../config/conexion.php";
 require "function.php";
@@ -135,6 +155,7 @@ if ($_POST) {
             }
             $irtq =  date("Y", strtotime($fecha)) ."-"."TQ". "-". $contadordb ;
     }
+    $codigo = $irtq;
     foreach( $_POST['numeroTriple'] as $indice => $numero ){
         if ($numero == false || $numero == 0) {
         }else {
@@ -168,50 +189,49 @@ if ($_POST) {
                     $sql = "INSERT INTO registro_numero_triple_500 (id_triple, irtq, numero, cantidad, monto_total,vendedor, loteria_one, fecha, nombre_comprador, cedula, tipo_de_rifa, metodo_pago, cantidad_pago, referencia_pm) VALUES (NULL, '$irtq', '$numero','$cantidad', '$monto_total', '$vendedor', '$loteria', '$fecha', '$nombre', '$cedula' , '$tipo_de_rifa', '$metodoDePago', '$cantidaPago', '$montoBolivares')";
                     break;
             }
+            if ($cantidad == 4) {
+                $paraAcumulado = $cantidad;
+            }
             $resultadoRegistro = $mysqli->query($sql);
 
         }
         
     }
-    $html = '<a href="report/pdf/ticketRifaTriple500.php?irt500="'.$irtq.'"class="btn btn-primary" target="_blank">Ticket</a>';
-    $footer = '<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#AcumuladoTriple">Partica Acumulado.</a>';
     if ($resultadoRegistro === true) {
-        echo "
-        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-        <script language='JavaScript'>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Registro realizado con exito.',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'OK',
-                html:'".$html."' ,
-                footer:'".$footer."',
-                timer: 35000
-            }).then(() => {
-                location.assign('../listadetriple.php');
-            });
+        ?>
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+<script language='JavaScript'>
+document.addEventListener('DOMContentLoaded', function() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Registro realizado con exito.',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        html: '<a href="../report/pdf/ticketRifaTriple500.php?irt500=<?php echo $irtq;?>" class="btn btn-primary" target="_blank">Ticket</a> ',
+        timer: 35000
+    }).then(() => {
+        location.assign('../listadetriple.php');
     });
-        </script>";
-    }else {
-        echo "
-        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-        <script language='JavaScript'>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error el realizar el registro.',
-                showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'OK',
-                timer: 35000
-            }).then(() => {
-                location.assign('../listadetriple.php');
-            });
+});
+</script>
+<?php
+}else {
+echo "
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+<script language='JavaScript'>
+document.addEventListener('DOMContentLoaded', function() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error el realizar el registro.',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+        timer: 35000
+    }).then(() => {
+        location.assign('../listadetriple.php');
     });
-        </script>";
-    }
+});
+</script>";
 }
-
-include "";
+}

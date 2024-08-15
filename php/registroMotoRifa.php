@@ -68,7 +68,7 @@ if ($_POST) {
         $montoBolivares = "N/A";
     } 
     
-    $datos = "SELECT MAX(id_moto) AS id_moto FROM registro_moto_numero WHERE fecha = '$fecha'";
+    $datos = "SELECT MAX(id_moto) AS id_moto FROM registro_moto_numero ";
     $resultado=mysqli_query($mysqli,$datos);
     while ($row = mysqli_fetch_assoc($resultado)) {
         $valor1 = $row['id_moto'];

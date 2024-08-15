@@ -89,7 +89,7 @@ date_default_timezone_set('America/Caracas');
         $montoBolivares = "N/A";
     }
     $valor = 1;
-    $datos = "SELECT MAX(id_rifa_moto_triple) AS id_rifa_moto_triple FROM registro_moto_triples WHERE fecha = '$fecha'";
+    $datos = "SELECT MAX(id_rifa_moto_triple) AS id_rifa_moto_triple FROM registro_moto_triples";
     $resultado=mysqli_query($mysqli,$datos);
     while ($row = mysqli_fetch_assoc($resultado)) {
         $valor1 = $row['id_rifa_moto_triple'];
