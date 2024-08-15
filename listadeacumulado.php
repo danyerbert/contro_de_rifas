@@ -12,7 +12,7 @@
 	$cedula = $_SESSION['cedula'];
 	
 	// CONSULTA PARA EXTRAER TODOS LOS DATOS
-	$sqlRifaMoto = "SELECT m.irta, m.numero, m.cedula_comprador, m.fecha, v.nombre FROM triple_acomulado AS m 
+	$sqlRifaMoto = "SELECT m.irta, m.numero, m.cedula_comprador, m.fecha, m.numero_triple, m.identificador, v.nombre FROM triple_acomulado AS m 
     INNER JOIN vendedores AS v ON v.cedula = m.vendedor WHERE fecha = '$fecha'";
 	$resultadoRifaMoto = $mysqli->query($sqlRifaMoto);
     // Consulta para traer todas las rifas creadas
@@ -49,19 +49,8 @@
         <div class="row gutters">
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="info-stats2">
-                    <div class="btn-group dropright">
-                        <button type="button" class="btn btn-primary">
-                            <i class="icon-export"></i> Generar Reporte
-                        </button>
-                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="report/excel/reporteRifaMoto.php" target="_blank">Excel</a>
-                            <a class="dropdown-item" href="report/pdf/reporteRifaMoto.php" target="_blank">PDF</a>
-                        </div>
-                    </div>
+                    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#generarReporteAcumulado"> <i class="icon-export"></i> Generar Reporte</a>
                     <div class="sale-num">
 
                     </div>
@@ -100,6 +89,8 @@
                                     <th>Numero</th>
                                     <th>Cedula Del Jugador</th>
                                     <th>Vendedor</th>
+                                    <th>Numero de triple 500</th>
+                                    <th>ID de triple 500</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,6 +100,8 @@
                                     <td><?php echo $rowNumero['numero'];?></td>
                                     <td><?php echo $rowNumero['cedula_comprador'];?></td>
                                     <td><?php echo $rowNumero['nombre'];?></td>
+                                    <td><?php echo $rowNumero['numero_triple'];?></td>
+                                    <td><?php echo $rowNumero['identificador'];?></td>
                                     <?php 
                                                 endwhile;
                                             ?>
@@ -133,6 +126,7 @@
 			include "content/modal/bloquearNumeroMoto.php"; 
 			include "content/modal/bloquearNumeroDoble.php"; 
 			include "content/modal/bloquearNumeroTriple.php"; 
+            include "content/modal/report/generarReporteAcumulado.php";
 			//Script 
 			include "content/inc/script.php";
             switch ($rol) {
